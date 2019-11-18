@@ -1,0 +1,38 @@
+---
+title: "Widening by fewer countries"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+Ran into an issue with widening the long dataset (total_long_common), as it returned only NAs. Going to start with one country and then get bigger.
+```{r}
+test0 <- total_long_common %>% 
+  select(country, wave, person_id, weights, category_question, answer_measure) %>% 
+  filter(country == "Argentina") %>% 
+  pivot_wider(names_from = category_question, values_from = answer_measure)
+```
+
+```{r}
+test1 <- total_long_common %>% 
+  select(country, wave, person_id, weights, category_question, answer_measure) %>% 
+  filter(country == c("Argentina", "Bolivia")) %>% 
+  pivot_wider(id_cols = person_id, names_from = category_question, values_from = answer_measure)
+```
+
+```{r}
+spec <- pivot_wider_spec(total_long_common, names_from = category_question, values_from = c(answer_dimension, answer_measure))
+
+spec2 <- total_long_common %>% 
+  expand(category_question, .value = c(answer_dimension, answer_measure))
+```
+
+```{r}
+spec3 <- pivot_wider_spec(total_long_common,
+                          names_from = category_question,
+                          values_from = c(answer_dimension, answer_measure)) %>%
+  expand(category_question,
+         .value = answer_measure)
+```
+
+

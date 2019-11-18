@@ -1,0 +1,310 @@
+---
+title: "5-Lengthening and Joining"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Structure
+In this document, we lengthened all of the data frames we created before, combined the 2016/17 datasets with their respecitve factored and unfactored versions, and merged the unfactored and factored versions together.
+
+Lengthening the data frames allows for us to put the data in a tidy format. Tidy data is a way of organizing data that makes it easy to visualize. This was developed by Hadley Wickham, and you can read more about tidy data [here](https://vita.had.co.nz/papers/tidy-data.pdf). When we simply read in the datasets, there are hundreds of columns, but by lengthening the data frame, we narrow the column down to five and it is easier to manage.
+
+## Functions to lengthen unfactored versions
+The first thing that we do is create a long, tidy version of the data. This makes it easier to filter and select what we want later on. We gathered the data so that "column_name" would have all the column names and "answer" would have all the observations to the corresponding column name.
+
+Then, we transformed answer to a character which is necessary for the later combination with the 2016/17 data frame. If you are not merging, you *do not* need to transform the answer column.
+
+Finally, we select the five columns that we want.
+
+### For merged unfactored datasets
+```{r}
+lengthen <- function(country) {
+  #Makes sure the weight is saved
+  weight <- country %>%
+    select(weight1500)
+  weight <- weight %>%
+    rename(weights = weight1500)
+  #Brings together the following columns
+  country <- bind_cols(country,weight)
+  country <- country %>%
+    gather(column_name, answer_measure, estratopri:formatq)
+  #Necessary when joining with 16/17
+  country <- transform(country, answer_measure = as.character(answer_measure))
+  #Selects the columns we want
+  country <- country %>% 
+    select(pais, wave, person_id, column_name, answer_measure, weights)
+  return(country)
+}
+```
+
+### For 16/17 unfactored datasets.
+```{r}
+lengthen_16 <- function(country) {
+  #Makes sure the weight is saved
+  weight <- country %>%
+    select(wt)
+  weight <- weight %>%
+    rename(weights = wt)
+  #Brings together the following columns
+  country <- bind_cols(country,weight)
+  country <- country %>%
+    #Brings together the following columns
+    gather(column_name, answer_measure, estratopri:formatq)
+  
+  #Necessary when joining with merged files
+  country <- transform(country, answer_measure = as.character(answer_measure))
+  
+  #Selects the columns we want
+  country <- country %>% 
+    select(pais, wave, person_id, column_name, answer_measure, weights)
+  return(country)
+}
+```
+
+## Functions to lengthen factored versions
+These functions are almost identical to the ones above except, they have "_factor" for the column names.
+
+### For merged, factored datasets
+```{r}
+lengthen_factor <- function(country) {
+  #Makes sure the weight is saved
+  weight <- country %>%
+    select(weight1500_factor)
+ weight <- weight %>%
+   rename(weights_factor = weight1500_factor)
+  #Brings together the following columns
+  country <- bind_cols(country,weight)
+  country <- country %>%
+    #Brings together the following columns
+    gather(column_name_factor, answer_dimension, estratopri_factor:formatq_factor)
+  
+  #Selects columns that we want
+  country <- country %>% 
+    select(pais_factor, wave_factor, person_id_factor, column_name_factor, answer_dimension, weights_factor)
+  return(country)
+}
+```
+
+### For 2016/17 factored datasets
+```{r}
+lengthen_16factor <- function(country) {
+  #Makes sure the weight is saved
+  weight <- country %>%
+    select(wt_factor)
+  weight <- weight %>% rename(weights_factor = wt_factor) %>%
+    transform(weights_factor = as.numeric(weights_factor))
+  #Brings together the following columns
+  country <- bind_cols(country,weight)
+  country <- country %>%
+    #Brings together the following columns
+    gather(column_name_factor, answer_dimension, estratopri_factor:formatq_factor)
+  
+  #Selects columns that we want
+  country <- country %>% 
+    select(pais_factor, wave_factor, person_id_factor, column_name_factor, answer_dimension, weights_factor)
+  return(country)
+}
+```
+
+#Connects the category and question excel to the dataframes
+```{r}
+factor_add <- function(country){
+  #Uses left joins to bring together the excel doc and dataframe based on column name
+  country <- country %>%
+    left_join(factored_questions, by = 'column_name_factor') %>%
+    left_join(factored_categories, by = 'column_name_factor')
+  return(country)
+}
+```
+
+#Connects the category and question excel to the dataframes
+```{r}
+unfactor_add <- function(country){
+  #Uses left joins to bring together the excel doc and dataframe based on column name
+  country <- country %>%
+    left_join(unfactored_questions, by = 'column_name') %>%
+    left_join(unfactored_categories, by = 'column_name')
+  return(country)
+}
+```
+
+# Creating a list of unwated variables
+These variables are not to be shown in the visualizations, so in order to remove them from the datasets above, we created a vector with the variable names that will then be applied to a function that removes them.
+
+If in the future you want to remove more variables, just add them to the list and run the same function.
+```{r}
+variables <- c('ls3r', 'a4r', 'cp4ar', 'np1r', 'np2r', 'prot3r', 'prot7r', 'jc15ar', 'vic1extr', 'vic1hogarr',
+'jc10rr', 'jc13rr', 'sgl1r', 'm1r', 'cp5r', 'cp6r', 'cp7r', 'cp8r', 'cp9r', 'cp13r', 'cp20r', 'it1r', 'pn4r', 'pol1r', 'exc7r', 'community' ,'anyvictim', 'aoj11r', 'sd2r', 'sd3r', 'sd6r', 'coupr', 'b1r', 'b2r', 'b3r', 'b4r', 'b6r', 'b12r', 'b32r','n11r', 'n9r', 'mil3r', 'mil4r', 'eff1r', 'eff2r', 'mil7r', 'ing4r', 'ros1r', 'ros4r', 'psar', 'psa5r', 'psa2r', 'd1r', 'd2r', 'd3r', 'd4r', 'd5r', 'tolr', 'tol2r','bar2x2', 'exc2r', 'exc6r', 'ecexc11r', 'exc11r', 'exc13r', 'exc14r', 'exc15r', 'exc16r', 'exc20r', 'exctot', 'exctot5r', 'exctot3r', 'corvic', 'vb2r', 'mujer', 'edr', 'edad', 'age1', 'age2', 'age3', 'age4', 'age5', 'age6', 'q5br', 'q10dr', 'housewife', 'etidr', 'indigenous', 'black', 'white', 'mestizo', 'mulatto', 'other', 'quintall', 'ed2r', 'intid', 'ideology', 'ti', 'q11nr', 'q5bnr')
+```
+
+# Final clean
+This function uses the list made above to remove the desire variables. It also further formats the data frame into the shape it needs to be when we bind all the countries together.
+```{r}
+clean <- function(country){
+  #Filters out the column names that are not in the list, variables.
+  country <- country %>%
+   filter(!(column_name %in% variables)) %>%
+    #Selects the columns that are no longer needed
+    select(-wave_factor, -person_id, -column_name, -column_name_factor, -question_factor, -weights_factor) %>% 
+    #Renames pais_factor to country
+    rename(country = pais_factor)
+  return(country)
+}
+```
+
+#Unmerged combination
+This function takes in the unfactored version for before 2016 as well as after. It takes each dataframe, lengthens it, adds the unfactored versions to each other, and the factored versions to each other. Then it filters out the NAs from both, and combines them togehter. For the majority of each step there is a call to a function written above.
+```{r}
+unmerged <- function(unfactor, unfactor16, factor, factor16){
+  #Lengthens all dataframes through above wrtten lengthen functions
+  unfactor <- lengthen(unfactor)
+  unfactor16 <- lengthen_16(unfactor16)
+  factor <- lengthen_factor(factor)
+  factor16 <- lengthen_16factor(factor16)
+  
+  #Brings unfactored and factored seperated date dataframes together
+  unfactor_plus <- union_all(unfactor,unfactor16) %>% 
+    transform(answer_measure = as.numeric(answer_measure)) 
+  factor_plus <- union_all(factor,factor16)
+  
+  #Gets rid of the NAs, and adds the category and question column by above written functions 
+  unfactor_plus <- unfactor_add(unfactor_plus) %>%
+    filter(is.na(category) == FALSE)
+  factor_plus <- factor_add(factor_plus) %>%
+    filter(is.na(category) == FALSE)
+  
+  #Finally combines the unfactor and factor using bind_cols
+  unfactor_plus <- unfactor_plus %>%
+    select(-category)
+  complete <- bind_cols(factor_plus, unfactor_plus)  %>%
+    transform(answer_measure = as.numeric(answer_measure))
+  
+  #Cleans the final version with above written function
+  complete <- clean(complete)
+}
+```
+
+#Merged combination
+Similar to the above function, but this is used when there is no need to merge other dataframes together from multiple years
+```{r}
+merged <- function(unfactor, factor){
+  #Lengthens all dataframes through above wrtten lengthen functions
+  unfactor <- lengthen(unfactor)
+  factor <- lengthen_factor(factor)
+  
+  #Gets rid of the NAs, and adds the category and question column by above written functions 
+  unfactor <- unfactor_add(unfactor) %>%
+    filter(is.na(category) == FALSE)
+  factor <- factor_add(factor) %>%
+    filter(is.na(category) == FALSE)
+
+  #Finally combines the unfactor and factor using bind_cols
+  unfactor <- unfactor %>%
+    select(-category)
+  complete <- bind_cols(factor, unfactor)  %>%
+    transform(answer_measure = as.numeric(answer_measure))
+  
+  #Cleans the final version with above written function
+  complete <- clean(complete)
+}
+```
+
+
+```{r}
+#Argentina
+argentina_clean <- unmerged(argentina_unique_unfactor, argentina_16_unfactor, argentina_unique_factor, argentina_16_factor)
+
+#Belize
+belize_clean <- merged(belize_unique_unfactor, belize_unique_factor)
+
+#Bolivia
+bolivia_clean <- unmerged(bolivia_unique_unfactor, bolivia_16_unfactor, bolivia_unique_factor, bolivia_16_factor)
+
+#Brazil
+brazil_clean <- unmerged(brazil_unique_unfactor, brazil_16_unfactor, brazil_unique_factor, brazil_16_factor)
+
+#Canada
+canada_clean <- unmerged(canada_unique_unfactor, canada_16_unfactor, canada_unique_factor, canada_16_factor)
+
+#Chile
+chile_clean <- unmerged(chile_unique_unfactor, chile_16_unfactor, chile_unique_factor, chile_16_factor)
+
+#Colombia
+#colombia_clean <- unmerged(colombia_unique_unfactor, colombia_16_unfactor, colombia_unique_factor, colombia_16_factor)
+
+#Costa Rica
+costa_clean <- unmerged(costa_unique_unfactor, costa_16_unfactor, costa_unique_factor, costa_16_factor)
+
+#Ecuador
+ecuador_clean <- unmerged(ecuador_unique_unfactor, ecuador_16_unfactor, ecuador_unique_factor, ecuador_16_factor)
+
+#El Salvador
+elsalvador_clean <- unmerged(elsalvador_unique_unfactor, elsalvador_16_unfactor, elsalvador_unique_factor, elsalvador_16_factor)
+
+#Guatemala
+guatemala_clean <- unmerged(guatemala_unique_unfactor, guatemala_16_unfactor, guatemala_unique_factor, guatemala_16_factor)
+
+#Guyana
+guyana_clean <- unmerged(guyana_unique_unfactor, guyana_16_unfactor, guyana_unique_factor, guyana_16_factor) %>% 
+  filter(country == "Guyana")
+
+#Honduras
+honduras_clean <- unmerged(honduras_unique_unfactor, honduras_16_unfactor, honduras_unique_factor, honduras_16_factor)
+
+#Jamaica
+jamaica_clean <- unmerged(jamaica_unique_unfactor, jamaica_16_unfactor, jamaica_unique_factor, jamaica_16_factor)
+
+#Mexico
+mexico_clean <- unmerged(mexico_unique_unfactor, mexico_16_unfactor, mexico_unique_factor, mexico_16_factor)
+
+#Nicaragua
+nicaragua_clean <- unmerged(nicaragua_unique_unfactor, nicaragua_16_unfactor, nicaragua_unique_factor, nicaragua_16_factor)
+
+#Panama
+panama_clean <- unmerged(panama_unique_unfactor, panama_16_unfactor, panama_unique_factor, panama_16_factor)
+
+#Paraguay
+paraguay_clean <- unmerged(paraguay_unique_unfactor, paraguay_16_unfactor, paraguay_unique_factor, paraguay_16_factor)
+
+#Peru
+peru_clean <- unmerged(peru_unique_unfactor, peru_16_unfactor, peru_unique_factor, peru_16_factor)
+
+#Suriname
+suriname_clean <- merged(suriname_unique_unfactor, suriname_unique_factor)
+
+#United States
+usa_clean <- unmerged(usa_unique_unfactor, usa_16_unfactor, usa_unique_factor, usa_16_factor)
+
+#Uruguay
+uruguay_clean <- unmerged(uruguay_unique_unfactor, uruguay_16_unfactor, uruguay_unique_factor, uruguay_16_factor)
+
+#Venezuela
+venezuela_clean <- unmerged(venezuela_unique_unfactor, venezuela_16_unfactor, venezuela_unique_factor, venezuela_16_factor)
+```
+
+
+## Combining all clean versions
+Making list of all the data frames
+```{r}
+total_clean <- list(argentina_clean, belize_clean, brazil_clean, chile_clean, bolivia_clean, canada_clean, costa_clean, ecuador_clean, elsalvador_clean, guatemala_clean, guyana_clean, honduras_clean, jamaica_clean, mexico_clean, nicaragua_clean, panama_clean, paraguay_clean, peru_clean, suriname_clean, uruguay_clean, usa_clean, venezuela_clean)
+
+#colombia_clean not resolved
+```
+
+Combining dataframes - outputs data frame with 25 million rows. Going to look into `pivot_wider()` for spreading the data and getting below the maximum row limit with Tableau Public.
+```{r}
+make_total_clean <- function(country_df){
+  country_df %>% 
+    rbind() %>% 
+    select(-person_id_factor)
+}
+
+combined_clean <- map_dfr(total_clean, make_total_clean)
+combined_clean <- combined_clean %>% 
+  mutate(person_id = row_number()) 
+assert(combined_clean, is_uniq, person_id)
+```
+
+
+

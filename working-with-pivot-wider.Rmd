@@ -8,17 +8,47 @@ editor_options:
 Ran into an issue with widening the long dataset (total_long_common), as it returned only NAs. Going to start with one country and then get bigger.
 ```{r}
 test0 <- total_long_common %>% 
+  select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
+  filter(country == "Argentina") %>% 
+  pivot_wider(id_cols = person_id_factor, names_from = category_question, values_from = answer_measure)
+```
+
+Produced filtered total_long_common for analysis.
+```{r}
+argentina <- total_long_common %>% 
   select(country, wave, person_id, weights, category_question, answer_measure) %>% 
   filter(country == "Argentina") %>% 
-  pivot_wider(names_from = category_question, values_from = answer_measure)
+  filter(person_id == 5921)
 ```
+
 
 ```{r}
 test1 <- total_long_common %>% 
-  select(country, wave, person_id, weights, category_question, answer_measure) %>% 
-  filter(country == c("Argentina", "Bolivia")) %>% 
-  pivot_wider(id_cols = person_id, names_from = category_question, values_from = answer_measure)
+  select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
+  filter(country == "Bolivia") %>% 
+  pivot_wider(id_cols = person_id_factor, names_from = category_question, values_from = answer_measure)
 ```
+
+Using tabyl() for analysis
+```{r}
+total_long_common %>%
+  filter(person_id_factor == "BOL04_7469") %>% 
+  tabyl(category_question)
+```
+
+```{r}
+total_long_common %>% 
+  count(category_question)
+```
+
+```{r}
+total_long_common %>% 
+  count(person_id_factor) %>% 
+  arrange()
+```
+
+
+
 
 ```{r}
 spec <- pivot_wider_spec(total_long_common, names_from = category_question, values_from = c(answer_dimension, answer_measure))

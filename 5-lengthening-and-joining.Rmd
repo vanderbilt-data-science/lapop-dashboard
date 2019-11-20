@@ -296,8 +296,8 @@ Combining dataframes - outputs data frame with 25 million rows. Going to look in
 ```{r}
 make_total_clean <- function(country_df){
   country_df %>% 
-    rbind() %>% 
-    select(-person_id_factor)
+    rbind() #%>% 
+    #select(-person_id_factor)
 }
 
 combined_clean <- map_dfr(total_clean, make_total_clean)

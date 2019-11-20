@@ -32,6 +32,8 @@ final_wide <- total_long_common %>%
   pivot_wider(id_cols = person_id,
               names_from = category_question,
               values_from = answer_measure)
+
+final_wide
 ```
 
 

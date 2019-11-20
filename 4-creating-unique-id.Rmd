@@ -22,6 +22,7 @@ making_uniqueID <- function(country){
                     idnum = ifelse(idnum_14 == '',
                                    idnum,
                                    paste(idnum,idnum_14,sep = "_"))) %>%
+    mutate(., idnum = paste(idnum, row_number(), sep = "_")) %>% 
     #Makes new column, person_id
     mutate(.,
            person_id = paste(
@@ -34,7 +35,8 @@ making_uniqueID <- function(country){
              idnum, sep = "_"))
   
   #Converts person_id column to a character
-  country <- transform(country, person_id = as.character(person_id))
+  country <- transform(country, person_id = as.character(person_id)) %>% 
+    assert(is_uniq, person_id)
   return(country)
 }
 ```
@@ -76,6 +78,7 @@ making_uniqueID_factor <- function(country){
                     idnum_factor = ifelse(idnum_14_factor == '',
                                    idnum_factor,
                                    paste(idnum_factor,idnum_14_factor, sep = "_"))) %>%
+    mutate(., idnum_factor = paste(idnum_factor, row_number(), sep = "_")) %>% 
     #Makes new column, uniq_id_factor
     mutate(.,
            person_id_factor = paste(
@@ -87,7 +90,8 @@ making_uniqueID_factor <- function(country){
              #Separates the country name from the year with underscore
              idnum_factor, sep = "_"))
   #Converts uniq_id column to a character
-  country <- transform(country, person_id_factor = as.character(person_id_factor))
+  country <- transform(country, person_id_factor = as.character(person_id_factor)) %>% 
+    assert(is_uniq, person_id_factor)
   return(country)
 }
 ```

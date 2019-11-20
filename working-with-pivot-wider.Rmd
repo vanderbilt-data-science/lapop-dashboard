@@ -38,31 +38,39 @@ total_long_common %>%
 
 ```{r}
 total_long_common %>% 
-  count(category_question)
+  count(category_question) %>% 
+  arrange(n)
+```
+This shows that there are 69 questions with varying counts (from 197,549 to 229,634)
+
+```{r}
+id_arranged <- total_long_common %>% 
+  count(person_id_factor) %>% 
+  arrange(n)
 ```
 
 ```{r}
 total_long_common %>% 
-  count(person_id_factor) %>% 
-  arrange()
+  tabyl(category_question)
 ```
 
 
 
 
-```{r}
-spec <- pivot_wider_spec(total_long_common, names_from = category_question, values_from = c(answer_dimension, answer_measure))
-
-spec2 <- total_long_common %>% 
-  expand(category_question, .value = c(answer_dimension, answer_measure))
-```
-
-```{r}
-spec3 <- pivot_wider_spec(total_long_common,
-                          names_from = category_question,
-                          values_from = c(answer_dimension, answer_measure)) %>%
-  expand(category_question,
-         .value = answer_measure)
-```
+## !Don't use - Reference only
+# ```{r}
+# spec <- pivot_wider_spec(total_long_common, names_from = category_question, values_from = c(answer_dimension, answer_measure))
+# 
+# spec2 <- total_long_common %>% 
+#   expand(category_question, .value = c(answer_dimension, answer_measure))
+# ```
+# 
+# ```{r}
+# spec3 <- pivot_wider_spec(total_long_common,
+#                           names_from = category_question,
+#                           values_from = c(answer_dimension, answer_measure)) %>%
+#   expand(category_question,
+#          .value = answer_measure)
+# ```
 
 

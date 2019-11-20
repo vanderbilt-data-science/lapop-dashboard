@@ -134,8 +134,7 @@ These variables are not to be shown in the visualizations, so in order to remove
 
 If in the future you want to remove more variables, just add them to the list and run the same function.
 ```{r}
-variables <- c('ls3r', 'a4r', 'cp4ar', 'np1r', 'np2r', 'prot3r', 'prot7r', 'jc15ar', 'vic1extr', 'vic1hogarr',
-'jc10rr', 'jc13rr', 'sgl1r', 'm1r', 'cp5r', 'cp6r', 'cp7r', 'cp8r', 'cp9r', 'cp13r', 'cp20r', 'it1r', 'pn4r', 'pol1r', 'exc7r', 'community' ,'anyvictim', 'aoj11r', 'sd2r', 'sd3r', 'sd6r', 'coupr', 'b1r', 'b2r', 'b3r', 'b4r', 'b6r', 'b12r', 'b32r','n11r', 'n9r', 'mil3r', 'mil4r', 'eff1r', 'eff2r', 'mil7r', 'ing4r', 'ros1r', 'ros4r', 'psar', 'psa5r', 'psa2r', 'd1r', 'd2r', 'd3r', 'd4r', 'd5r', 'tolr', 'tol2r','bar2x2', 'exc2r', 'exc6r', 'ecexc11r', 'exc11r', 'exc13r', 'exc14r', 'exc15r', 'exc16r', 'exc20r', 'exctot', 'exctot5r', 'exctot3r', 'corvic', 'vb2r', 'mujer', 'edr', 'edad', 'age1', 'age2', 'age3', 'age4', 'age5', 'age6', 'q5br', 'q10dr', 'housewife', 'etidr', 'indigenous', 'black', 'white', 'mestizo', 'mulatto', 'other', 'quintall', 'ed2r', 'intid', 'ideology', 'ti', 'q11nr', 'q5bnr')
+variables <- c('ls3r', 'a4r', 'cp4ar', 'np1r', 'np2r', 'prot3r', 'prot7r', 'jc15ar', 'vic1extr', 'vic1hogarr', 'jc10rr', 'jc13rr', 'sgl1r', 'm1r', 'cp5r', 'cp6r', 'cp7r', 'cp8r', 'cp9r', 'cp13r', 'cp20r', 'it1r', 'pn4r', 'pol1r', 'exc7r', 'community' ,'anyvictim', 'aoj11r', 'sd2r', 'sd3r', 'sd6r', 'coupr', 'b1r', 'b2r', 'b3r', 'b4r', 'b6r', 'b12r', 'b32r','n11r', 'n9r', 'mil3r', 'mil4r', 'eff1r', 'eff2r', 'mil7r', 'ing4r', 'ros1r', 'ros4r', 'psar', 'psa5r', 'psa2r', 'd1r', 'd2r', 'd3r', 'd4r', 'd5r', 'tolr', 'tol2r','bar2x2', 'exc2r', 'exc6r', 'ecexc11r', 'exc11r', 'exc13r', 'exc14r', 'exc15r', 'exc16r', 'exc20r', 'exctot', 'exctot5r', 'exctot3r', 'corvic', 'vb2r', 'mujer', 'edr', 'edad', 'age1', 'age2', 'age3', 'age4', 'age5', 'age6', 'q5br', 'q10dr', 'housewife', 'etidr', 'indigenous', 'black', 'white', 'mestizo', 'mulatto', 'other', 'quintall', 'ed2r', 'intid', 'ideology', 'ti', 'q11nr', 'q5bnr')
 ```
 
 # Final clean
@@ -303,8 +302,42 @@ make_total_clean <- function(country_df){
 combined_clean <- map_dfr(total_clean, make_total_clean)
 combined_clean <- combined_clean %>% 
   mutate(person_id = row_number()) 
-assert(combined_clean, is_uniq, person_id)
+assert(combined_clean, is_uniq, person_id_factor)
+```
+
+```{r}
+arg_test_id <- argentina_clean %>% 
+  filter(person_id_factor == "ARG08_594_1")
+```
+
+```{r}
+#Results in 1 only
+argentina_16_factor %>% 
+  count(person_id_factor) %>% 
+  arrange(desc(n))
+
+argentina_16_unfactor %>% 
+  count(person_id) %>% 
+  arrange(desc(n))
+
+argentina_unique_factor %>% 
+  count(person_id_factor) %>% 
+  arrange(desc(n))
+
+argentina_unique_unfactor %>% 
+  count(person_id) %>% 
+  arrange(desc(n))
 ```
 
 
+```{r}
+argentina_clean %>% 
+  count(person_id_factor) %>% 
+  arrange()
+```
 
+
+```{r}
+argentina_clean %>% 
+  filter(person_id_factor == "ARG08_14_2")
+```

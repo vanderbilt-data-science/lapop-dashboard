@@ -171,38 +171,80 @@ factor16_country <- function(country){
 ```
 
 ```{r}
-argentina_16_factor <- factor16_country("data/2016_argentina.dta")
-bolivia_16_factor  <- factor16_country("data/2016_bolivia.dta")
+argentina_16_factor <- factor16_country("data/2016_argentina.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
+bolivia_16_factor  <- factor16_country("data/2016_bolivia.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
 brazil_16_factor  <- factor16_country("data/2016_brazil.dta") %>% 
-  mutate(pais_factor = recode(pais_factor, Brasil = "Brazil"))
+  mutate(pais_factor = recode(pais_factor, Brasil = "Brazil")) %>% 
+  assert(is_uniq, person_id_factor)
+
 canada_16_factor  <- factor16_country("data/2016_canada.dta") %>% 
   #Correcting for inconsistencies in accents
-  mutate(pais_factor = recode(pais_factor, Canadá = "Canada"))
-chile_16_factor  <- factor16_country("data/2016_chile.dta")
-colombia_16_factor  <- factor16_country("data/2016_colombia.dta")
-costa_16_factor  <- factor16_country("data/2016_costa_rica.dta")
-ecuador_16_factor  <- factor16_country("data/2016_ecuador.dta")
-elsalvador_16_factor  <- factor16_country("data/2016_el_salvador.dta")
-guatemala_16_factor  <- factor16_country("data/2016_guatemala.dta")
+  mutate(pais_factor = recode(pais_factor, Canadá = "Canada")) %>% 
+  assert(is_uniq, person_id_factor)
+
+chile_16_factor  <- factor16_country("data/2016_chile.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
+colombia_16_factor  <- factor16_country("data/2016_colombia.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
+costa_16_factor  <- factor16_country("data/2016_costa_rica.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
+ecuador_16_factor  <- factor16_country("data/2016_ecuador.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
+elsalvador_16_factor  <- factor16_country("data/2016_el_salvador.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
+guatemala_16_factor  <- factor16_country("data/2016_guatemala.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
 guyana_16_factor  <- factor16_country("data/2016_guyana.dta") %>% 
   transform(pais_factor = as.factor(pais_factor)) %>% 
-  mutate(pais_factor = recode(pais_factor, `24` = "Guyana")) 
+  mutate(pais_factor = recode(pais_factor, `24` = "Guyana")) %>% 
+  assert(is_uniq, person_id_factor)
+
 #haiti_16_factor <- factor16_country("data/2016_haiti.dta")
-honduras_16_factor  <- factor16_country("data/2016_honduras.dta")
-jamaica_16_factor  <- factor16_country("data/2016_jamaica.dta")
+
+honduras_16_factor  <- factor16_country("data/2016_honduras.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
+jamaica_16_factor  <- factor16_country("data/2016_jamaica.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
 mexico_16_factor  <- factor16_country("data/2016_mexico.dta") %>% 
-  mutate(pais_factor = recode(pais_factor, México = "Mexico"))
-nicaragua_16_factor  <- factor16_country("data/2016_nicaragua.dta")
+  mutate(pais_factor = recode(pais_factor, México = "Mexico")) %>% 
+  assert(is_uniq, person_id_factor)
+
+nicaragua_16_factor  <- factor16_country("data/2016_nicaragua.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
 panama_16_factor  <- factor16_country("data/2016_panama.dta") %>% 
-  mutate(pais_factor = recode(pais_factor, Panamá = "Panama"))
-paraguay_16_factor <- factor16_country("data/2016_paraguay.dta")
+  mutate(pais_factor = recode(pais_factor, Panamá = "Panama")) %>% 
+  assert(is_uniq, person_id_factor)
+
+paraguay_16_factor <- factor16_country("data/2016_paraguay.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
 peru_16_factor  <- factor16_country("data/2016_peru.dta") %>% 
-  mutate(pais_factor = recode(pais_factor, Perú = "Peru"))
+  mutate(pais_factor = recode(pais_factor, Perú = "Peru")) %>% 
+  assert(is_uniq, person_id_factor)
+
 usa_16_factor  <- factor16_country("data/2016_united_states.dta") %>% 
   #Correcting for inconsistencies in spelling
-  mutate(pais_factor = recode(pais_factor, "Estados Unidos" = "United States"))
-uruguay_16_factor  <- factor16_country("data/2016_uruguay.dta")
-venezuela_16_factor  <- factor16_country("data/2016_venezuela.dta")
+  mutate(pais_factor = recode(pais_factor, "Estados Unidos" = "United States")) %>% 
+  assert(is_uniq, person_id_factor)
+
+uruguay_16_factor  <- factor16_country("data/2016_uruguay.dta") %>% 
+  assert(is_uniq, person_id_factor)
+
+venezuela_16_factor  <- factor16_country("data/2016_venezuela.dta") %>% 
+  assert(is_uniq, person_id_factor)
 ```
 
 
@@ -212,85 +254,106 @@ We renamed the unique ID column to `person_id` and transformed it to a character
 ```{r}
 argentina_16_unfactor <- read_dta("data/2016_argentina.dta") %>%
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 bolivia_16_unfactor  <- read_dta("data/2016_bolivia.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 brazil_16_unfactor  <- read_dta("data/2016_brazil.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 canada_16_unfactor  <- read_dta("data/2016_canada.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 chile_16_unfactor  <- read_dta("data/2016_chile.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 colombia_16_unfactor  <- read_dta("data/2016_chile.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 costa_16_unfactor  <- read_dta("data/2016_costa_rica.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 ecuador_16_unfactor  <- read_dta("data/2016_ecuador.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 elsalvador_16_unfactor  <- read_dta("data/2016_el_salvador.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 guatemala_16_unfactor  <- read_dta("data/2016_guatemala.dta") %>%
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 guyana_16_unfactor  <- read_dta("data/2016_guyana.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 honduras_16_unfactor  <- read_dta("data/2016_honduras.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 jamaica_16_unfactor  <- read_dta("data/2016_jamaica.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 mexico_16_unfactor  <- read_dta("data/2016_mexico.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 nicaragua_16_unfactor  <- read_dta("data/2016_nicaragua.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 panama_16_unfactor  <- read_dta("data/2016_panama.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 paraguay_16_unfactor <- read_dta("data/2016_paraguay.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 peru_16_unfactor  <- read_dta("data/2016_peru.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 usa_16_unfactor  <- read_dta("data/2016_united_states.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 uruguay_16_unfactor  <- read_dta("data/2016_uruguay.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 
 venezuela_16_unfactor  <- read_dta("data/2016_venezuela.dta") %>% 
   rename(person_id = uniq_id) %>% 
+  assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 ```

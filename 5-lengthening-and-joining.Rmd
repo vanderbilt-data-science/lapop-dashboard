@@ -38,6 +38,13 @@ lengthen <- function(country) {
 }
 ```
 
+```{r}
+test <- lengthen(argentina_unique_unfactor)
+test2 <- lengthen_16(argentina_16_unfactor)
+combined_test <- union_all(test, test2)
+```
+
+
 ### For 16/17 unfactored datasets.
 ```{r}
 lengthen_16 <- function(country) {

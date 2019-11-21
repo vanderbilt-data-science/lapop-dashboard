@@ -4,16 +4,13 @@ output: html_notebook
 editor_options: 
   chunk_output_type: inline
 ---
-**This should be placed before step 5
-
-
 # Structure
 This document contains the most recent list of categories and columns LAPOP specificied. It comes from the Topic Menu Items_LAPOP AB Cores_07.29.19 file that Maita shared with us on 7/29. In this file they listed the topics they wanted covered and the corresponding columns from the core questionnaires.
 
 
 For the categories, we created two separate excel documents. They both have columns for column name and categories. They're separated depending on if they are factored or unfactored. For factored, column name is written as "column_name_factor". The elements in this column are also followed by "_factor". For unfactored it is written as "column_name". The column for category is listed as "category" for both.
 
-The reason we use two separate names for "column_name" is so that we can differentiate between factor/unfactor, but we left category the same so that we could join the two datasets later on. 
+The reason we use two separate names for "column_name" is so that we can differentiate between factor/unfactored, but we left category the same so that we could join the two datasets later on. 
 
 For the questions, we created two separate excel documents, as well. They both have columns for column name and questions. The column name follows the same format as described aboved. The questions are slightly different because the factored spreadsheet, the question column is called "question_factor" and all of its elements are followed by "_factor". The unfactored version, "question_unfactor" has elements followed by "_unfactor" instead. 
 
@@ -26,7 +23,7 @@ Make sure if you are adding a column name, that it does not repeat any of the on
 ## Reading in .csv files
 You will need to replace the file name below with the file name that is listed on your computer. The most recent version of the files should be provided to you by LAPOP.
 
-If the csv file is combining columns together, make sure you have dragged the column line in excel to be the width of the longest item.
+If the .csv file is combining columns together, make sure you have dragged the column line in excel to be the width of the longest item.
 
 The reason we used `select()` was to ensure that you are only selecting the first two columns.
 ```{r, message=FALSE}

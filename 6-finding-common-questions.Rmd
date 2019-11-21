@@ -5,36 +5,37 @@ editor_options:
   chunk_output_type: inline
 ---
 
-# Testing `janitor`
+# Structure
+In order to cut down on the size of the data, we are reducing the total combination of all countries to the common questions.
+
 ```{r, message=FALSE}
 library(janitor)
 library(rlang)
 ```
 
 ## Alternate approach
-In the long format, try unique() on country name
-
 We need country, wave, and questions to create a new data frame with `unique()`. Then we need to create a function that gets - `select()` - these columns, makes them unique, creates a new column with its count - `summarize(n())` - and finally filters down to the ones that occur in all datasets - `filter(x == total # of countries)`.
 
-*Current total number of countries is 23*
+*Current total number of countries is 23* Note, there is an issue with Colombia, so belueve I use n == 22.
 
 I am first going to test on Argentina and Bolivia.
+*Jesse, this is not necessary for you to run*
 ### Collecting all questions
 ```{r}
-argentina_narrow <- argentina_clean %>% 
-  #Narrows data frame to two variables
-  select(country, question) %>% 
-  mutate(country = as.character(country)) %>% 
-  #Returns each question once
-  unique()
-
-#Repeating the process
-bolivia_narrow <- bolivia_clean %>% 
-  #Narrows data frame to two variables
-  select(country, question) %>% 
-  mutate(country = as.character(country)) %>% 
-  #Returns each question once
-  unique()
+# argentina_narrow <- argentina_clean %>% 
+#   #Narrows data frame to two variables
+#   select(country, question) %>% 
+#   mutate(country = as.character(country)) %>% 
+#   #Returns each question once
+#   unique()
+# 
+# #Repeating the process
+# bolivia_narrow <- bolivia_clean %>% 
+#   #Narrows data frame to two variables
+#   select(country, question) %>% 
+#   mutate(country = as.character(country)) %>% 
+#   #Returns each question once
+#   unique()
 
 #test1 <- bind_rows(argentina_narrow, bolivia_narrow)
 #str(argentina_narrow)
@@ -55,11 +56,11 @@ select_questions <- function(country_df){
 #Creating a list with all the clean data frames
 countries <- list(argentina_clean, belize_clean, bolivia_clean, brazil_clean, canada_clean, chile_clean, costa_clean, ecuador_clean, elsalvador_clean, guatemala_clean, guyana_clean, honduras_clean, jamaica_clean, mexico_clean, nicaragua_clean, panama_clean, paraguay_clean, peru_clean, suriname_clean, uruguay_clean, usa_clean, venezuela_clean) #colombia_clean not resolved
 
-length(countries) #There are 23 countries
+#length(countries) There are 22 countries, excluding colombia_clean
 
 #Narrowing countries to just have two columns and combining into one data frame
 combined_questions <- map_dfr(countries, select_questions)
-length(combined_questions)
+#length(combined_questions)
 
 
 #Frequency table for total number of questions
@@ -72,7 +73,7 @@ combined_questions %>%
   unique()
 
 #Checking structure of object `question_frequency`
-str(question_frequency)
+#str(question_frequency)
 
 #Isolating common questions
 common_questions <- question_frequency %>% 
@@ -84,7 +85,7 @@ common_questions <- question_frequency %>%
 #str(common_questions)
 
 #Testing to see if semi_join works
-semi_join(argentina_clean, common_questions, by = "question")
+#semi_join(argentina_clean, common_questions, by = "question")
 
 #Function for joining dataframes to ensure each country has only the common questions
 find_common <- function(country_dfr, questions_dfr) {

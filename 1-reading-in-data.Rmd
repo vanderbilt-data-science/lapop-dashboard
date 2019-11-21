@@ -16,7 +16,9 @@ Suggested order to follow:
 3. Adding Wave Column
 4. Creating Unique ID
 5. Lengthening and Joining
-6. Subsetting Categories
+6. Finding Common Questions
+7. Widening for Tableau Public
+8. Writing .csv
 
 ### Factored vs. Unfactored
 The data in the Stata files are factored, meaning that a yes or no question would be entered in as 0 and 1. These numbers are then assigned labels as such: 0 - "yes" and 1 - "no", and we refer to data frames where the labels are visible in the observations as *factored*. When data frames use only the numbered observations, we refer to this as *unfactored*.

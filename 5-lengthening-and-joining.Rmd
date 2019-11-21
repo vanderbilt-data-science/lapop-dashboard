@@ -38,17 +38,6 @@ lengthen <- function(country) {
 }
 ```
 
-```{r}
-test <- lengthen(argentina_unique_unfactor)
-test2 <- lengthen_16(argentina_16_unfactor)
-combined_test <- union_all(test, test2)
-
-combined_test %>% 
-  count(person_id) %>% 
-  arrange(desc(n))
-```
-
-
 ### For 16/17 unfactored datasets.
 ```{r}
 lengthen_16 <- function(country) {
@@ -71,6 +60,27 @@ lengthen_16 <- function(country) {
     select(pais, wave, person_id, column_name, answer_measure, weights)
   return(country)
 }
+```
+
+# Testing effect of lengthen function
+*Note for Jesse* Here I checked what the long versions of `argentina_unique_unfactor` and `argentina_16_unfactor` looked like and what the effect of `union_all()` is.
+
+```{r}
+test <- lengthen(argentina_unique_unfactor)
+test2 <- lengthen_16(argentina_16_unfactor)
+combined_test <- union_all(test, test2)
+
+test %>% 
+  count(person_id) %>% 
+  arrange(desc(n)) #This results in n = 508 for all IDs
+
+test2 %>% 
+  count(person_id) %>% 
+  arrange() #This results in n = 208 which makes sense because this is only one wave
+
+combined_test %>% 
+  count(person_id) %>% 
+  arrange(desc(n)) #This just shows that the two datasets are stacked on top of each other
 ```
 
 ## Functions to lengthen factored versions
@@ -118,6 +128,27 @@ lengthen_16factor <- function(country) {
 }
 ```
 
+# Testing effect of lengthen function
+*Note for Jesse* Here I checked what the long versions of `argentina_unique_factor` and `argentina_16_factor` looked like and what the effect of `union_all()` is.
+
+```{r}
+test3 <- lengthen_factor(argentina_unique_factor)
+test4<- lengthen_16factor(argentina_16_factor)
+combined_test2 <- union_all(test3, test4)
+
+test3 %>% 
+  count(person_id_factor) %>% 
+  arrange(desc(n)) #This results in n = 508 for all IDs - same as above
+
+test4 %>% 
+  count(person_id_factor) %>% 
+  arrange() #This results in n = 208 which makes sense because this is only one wave - same as above
+
+a <- combined_test2 %>% 
+  count(person_id_factor) %>% 
+  arrange(desc(n)) #This just shows that the two datasets are stacked on top of each other - same as above
+```
+
 #Connects the category and question excel to the dataframes
 ```{r}
 factor_add <- function(country){
@@ -163,7 +194,7 @@ clean <- function(country){
 }
 ```
 
-#Unmerged combination
+# Unmerged combination
 This function takes in the unfactored version for before 2016 as well as after. It takes each dataframe, lengthens it, adds the unfactored versions to each other, and the factored versions to each other. Then it filters out the NAs from both, and combines them togehter. For the majority of each step there is a call to a function written above.
 ```{r}
 unmerged <- function(unfactor, unfactor16, factor, factor16){
@@ -195,7 +226,7 @@ unmerged <- function(unfactor, unfactor16, factor, factor16){
 }
 ```
 
-#Merged combination
+# Merged combination
 Similar to the above function, but this is used when there is no need to merge other dataframes together from multiple years
 ```{r}
 merged <- function(unfactor, factor){
@@ -311,8 +342,8 @@ make_total_clean <- function(country_df){
 }
 
 combined_clean <- map_dfr(total_clean, make_total_clean)
-combined_clean <- combined_clean %>% 
-  mutate(person_id = row_number()) 
+#combined_clean <- combined_clean %>% 
+#  mutate(person_id = row_number()) 
 assert(combined_clean, is_uniq, person_id_factor)
 ```
 

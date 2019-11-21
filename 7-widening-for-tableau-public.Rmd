@@ -13,11 +13,7 @@ In order to do this we are going to:
 
 * combine columns into the format of "category:question text"
 * select the necessary columns (country, wave, person_id, weight, category_question, answer_measure)
-
-```{r}
-library(assertr)
-```
-
+* pivot using names from `category_question` and values from `answer_measure`
 
 ## Combining category and question
 ```{r}
@@ -26,6 +22,7 @@ total_long_common <- total_long_common %>%
 ```
 
 ## Pivoting Wider (!Runs error because answer_measure not uniquely identified)
+Also, this is where my memory fails
 ```{r}
 final_wide <- total_long_common %>% 
   select(country, wave, person_id, weights, category_question, answer_measure) %>% 
@@ -38,10 +35,7 @@ final_wide
 
 
 
-
-
-
-
+*Jesse, not sure if the code below is useful at all, but I will leave it uncommented*
 ## Combining category and question
 ```{r}
 countries_common_only <- countries_common_only %>% 

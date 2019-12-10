@@ -333,6 +333,9 @@ total_clean <- list(argentina_clean, belize_clean, brazil_clean, chile_clean, bo
 #colombia_clean not resolved
 ```
 
+
+
+
 Combining dataframes - outputs data frame with 25 million rows. Going to look into `pivot_wider()` for spreading the data and getting below the maximum row limit with Tableau Public.
 ```{r}
 make_total_clean <- function(country_df){
@@ -344,8 +347,12 @@ make_total_clean <- function(country_df){
 combined_clean <- map_dfr(total_clean, make_total_clean)
 #combined_clean <- combined_clean %>% 
 #  mutate(person_id = row_number()) 
-assert(combined_clean, is_uniq, person_id_factor)
+
+#We would not expect the person_id_factor to be unique. It is repeated for every question a person answers, so no need to run this assert
+#assert(combined_clean, is_uniq, person_id_factor)
 ```
+
+
 
 ```{r}
 arg_test_id <- argentina_clean %>% 
@@ -368,18 +375,25 @@ argentina_unique_factor %>%
 
 argentina_unique_unfactor %>% 
   count(person_id) %>% 
-  arrange(desc(n))
+  arrange(n)
 ```
 
+We need to make sure person_id_factor x question is unique. Start with a check for a single country. 
 
 ```{r}
 argentina_clean %>% 
-  count(person_id_factor) %>% 
-  arrange()
+  count(person_id_factor, question) %>% 
+  arrange(desc(n)) 
 ```
 
+
+It is unique. This should be unique for all countries in the combined, as well. 
 
 ```{r}
-argentina_clean %>% 
-  filter(person_id_factor == "ARG08_14_2")
+combined_clean %>% 
+  count(person_id_factor, question) %>% 
+  arrange(desc(n)) 
 ```
+
+
+

@@ -33,6 +33,7 @@ library(sjmisc)
 library(tidyverse)
 library(assertr)
 library(haven)
+library(varhandle)
 ```
 
 The first function we wrote, `factor_country()`, reads the file in and edits the column name so that it ends in "_factor" to differentiate between unfactored and factored when we combine them later.

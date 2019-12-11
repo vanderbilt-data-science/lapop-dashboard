@@ -148,6 +148,12 @@ a <- combined_test2 %>%
   count(person_id_factor) %>% 
   arrange(desc(n)) #This just shows that the two datasets are stacked on top of each other - same as above
 ```
+Cleaning up the combined_test*
+```{r}
+rm("combined_test")
+rm("combined_test2")
+```
+
 
 #Connects the category and question excel to the dataframes
 ```{r}
@@ -273,6 +279,7 @@ chile_clean <- unmerged(chile_unique_unfactor, chile_16_unfactor, chile_unique_f
 
 #Colombia
 #colombia_clean <- unmerged(colombia_unique_unfactor, colombia_16_unfactor, colombia_unique_factor, colombia_16_factor)
+#See Issue #11
 
 #Costa Rica
 costa_clean <- unmerged(costa_unique_unfactor, costa_16_unfactor, costa_unique_factor, costa_16_factor)
@@ -353,6 +360,8 @@ combined_clean <- map_dfr(total_clean, make_total_clean)
 ```
 
 
+## Data Checks Below (no need to run)
+
 
 ```{r}
 arg_test_id <- argentina_clean %>% 
@@ -395,5 +404,5 @@ combined_clean %>%
   arrange(desc(n)) 
 ```
 
-
+It IS unique!
 

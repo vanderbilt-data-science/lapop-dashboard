@@ -92,12 +92,16 @@ find_common <- function(country_dfr, questions_dfr) {
   semi_join(country_dfr, questions_dfr, by = "question")
 }
 
+## This is suspicious. 
+
 #Applying `map_dfr` to create combined dataframe
 countries_common_only <- map_dfr(countries, find_common, common_questions)
 
 #Trying `map_dfr` on combined_clean
-total_long_common <- find_common(combined_clean, common_questions)
-assert(total_long_common, is_uniq, person_id)
+total_long_common <- find_common(combined_clean, common_questions) 
+# assert(total_long_common, is_uniq, person_id_factor)
+
+# The number of cases in total_long_common matches countries_common_only, so it has only common questions. 
 ```
 
 ## !DO NOT USE REFERENCE ONLY

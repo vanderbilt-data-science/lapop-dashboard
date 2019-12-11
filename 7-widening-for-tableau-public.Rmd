@@ -5,6 +5,8 @@ editor_options:
   chunk_output_type: inline
 ---
 
+
+
 # Structure
 
 Now that we finally have a single dataframe with all the countries with only the common questions, we need to widen it so that it fits within Tableau Public's limit.
@@ -18,19 +20,27 @@ In order to do this we are going to:
 ## Combining category and question
 ```{r}
 total_long_common <- total_long_common %>% 
-  unite(category_question, category, question, sep = ":")
+  unite(category_question, category, question, sep = ":") %>%
+  select(country, wave, person_id = person_id_factor, weights, category_question, answer_measure) 
 ```
 
-## Pivoting Wider (!Runs error because answer_measure not uniquely identified)
+Clear out all but needed dataframes to reduce memory
+
+```{r}
+rm.all.but(c("total_long_common", "countries_common_only"))
+```
+
+
+## Pivoting Wider 
 Also, this is where my memory fails
 ```{r}
 final_wide <- total_long_common %>% 
-  select(country, wave, person_id, weights, category_question, answer_measure) %>% 
-  pivot_wider(id_cols = person_id,
+#  head(10000000) %>% # Get first 100K questions to reduce memory %>%
+  pivot_wider(id_cols = c(person_id, country, wave), 
               names_from = category_question,
               values_from = answer_measure)
 
-final_wide
+write_csv(final_wide, "lapop_wide.csv")
 ```
 
 

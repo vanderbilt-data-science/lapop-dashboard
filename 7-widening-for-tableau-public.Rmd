@@ -48,79 +48,79 @@ write_csv(final_wide, "lapop_wide.csv")
 *Jesse, not sure if the code below is useful at all, but I will leave it uncommented*
 ## Combining category and question
 ```{r}
-countries_common_only <- countries_common_only %>% 
-  unite(category_question, category, question, sep = ":")
+# countries_common_only <- countries_common_only %>% 
+#   unite(category_question, category, question, sep = ":")
 ```
 
 ## Pivoting Wider (!Runs error because answer_measure not uniquely identified)
 ```{r}
-countries_common_only <- countries_common_only %>% 
-  select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
-  pivot_wider(id_cols = person_id, names_from = category_question, values_from = answer_measure)
+# countries_common_only <- countries_common_only %>% 
+#   select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
+#   pivot_wider(id_cols = person_id, names_from = category_question, values_from = answer_measure)
 ```
 
 Ran into error saying that values are not uniquely identified. Going to try to identify duplicates. 
 Check "Testing Wide Unique ID.Rmd" for results
 ```{r}
-test0 <- countries_common_only %>% 
-  select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
-  filter(country == c("Argentina", "Bolivia")) %>% 
-  pivot_wider(names_from = category_question, values_from = answer_measure)
+# test0 <- countries_common_only %>% 
+#   select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
+#   filter(country == c("Argentina", "Bolivia")) %>% 
+#   pivot_wider(names_from = category_question, values_from = answer_measure)
 ```
 
 ```{r}
-test0 <- countries_common_only %>% 
-  select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
-  filter(country ==  "Guyana") %>% 
-  pivot_wider(names_from = category_question, values_from = answer_measure)
+# test0 <- countries_common_only %>% 
+  # select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
+  # filter(country ==  "Guyana") %>% 
+  # pivot_wider(names_from = category_question, values_from = answer_measure)
 ```
 
 ## Pivoting countries that have confirmed unique IDs
 ```{r}
-wide_confirmed_countries <- countries_common_only %>% 
-  select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
-  filter(country == c("Argentina", "Belize", "Brazil", "Chile", "Guyana", "Nicaragua", "Panama", "Paraguay", "Peru", "Suriname", "United States", "Uruguay", "Venezuela")) %>% 
-  pivot_wider(names_from = category_question, values_from = answer_measure)
-
-wide_confirmed_countries
+# wide_confirmed_countries <- countries_common_only %>% 
+#   select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
+#   filter(country == c("Argentina", "Belize", "Brazil", "Chile", "Guyana", "Nicaragua", "Panama", "Paraguay", "Peru", "Suriname", "United States", "Uruguay", "Venezuela")) %>% 
+#   pivot_wider(names_from = category_question, values_from = answer_measure)
+# 
+# wide_confirmed_countries
 ```
 
 Above thew an error that "longer object length is not a multiple of shorter length" so I'm going to try to find where that is.
 
 ## Testing different combinations of countries
 ```{r}
-combo_1 <- countries_common_only %>% 
-  select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
-  filter(country == c("Argentina", "Belize")) %>% 
-  pivot_wider(names_from = category_question, values_from = answer_measure)
-         
-combo_1 #Throws length error but produces some values
+# combo_1 <- countries_common_only %>% 
+#   select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
+#   filter(country == c("Argentina", "Belize")) %>% 
+#   pivot_wider(names_from = category_question, values_from = answer_measure)
+#          
+# combo_1 #Throws length error but produces some values
 ```
 
 ```{r}
-combo_2 <- countries_common_only %>% 
-  select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
-  filter(country == c("Argentina", "Belize", "Brazil")) %>% 
-  pivot_wider(names_from = category_question, values_from = answer_measure)
-         
-combo_2 #No error thrown but more missing values
+# combo_2 <- countries_common_only %>% 
+#   select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
+#   filter(country == c("Argentina", "Belize", "Brazil")) %>% 
+#   pivot_wider(names_from = category_question, values_from = answer_measure)
+#          
+# combo_2 #No error thrown but more missing values
 ```
 
 ```{r}
-combo_3 <- countries_common_only %>% 
-  select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
-  filter(country == c("Argentina", "Belize", "Brazil", "Chile")) %>% 
-  pivot_wider(names_from = category_question, values_from = answer_measure)
-         
-combo_3 #Throws length error but produces a lot more values
-```
-```{r}
-argentina_wide <- countries_common_only %>% 
-  select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
-  filter(country == "Argentina") %>% 
-  pivot_wider(names_from = category_question, values_from = answer_measure)
-         
-argentina_wide
+# combo_3 <- countries_common_only %>% 
+#   select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
+#   filter(country == c("Argentina", "Belize", "Brazil", "Chile")) %>% 
+#   pivot_wider(names_from = category_question, values_from = answer_measure)
+#          
+# combo_3 #Throws length error but produces a lot more values
+# ```
+# ```{r}
+# argentina_wide <- countries_common_only %>% 
+#   select(country, wave, person_id_factor, weights, category_question, answer_measure) %>% 
+#   filter(country == "Argentina") %>% 
+#   pivot_wider(names_from = category_question, values_from = answer_measure)
+#          
+# argentina_wide
 ```
 
 Going to try adding in a row number

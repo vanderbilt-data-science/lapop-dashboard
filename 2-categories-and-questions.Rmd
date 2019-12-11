@@ -27,26 +27,26 @@ If the .csv file is combining columns together, make sure you have dragged the c
 
 The reason we used `select()` was to ensure that you are only selecting the first two columns.
 ```{r, message=FALSE}
-factored_categories <- read_csv('Lapop Categories Factored.csv')
+factored_categories <- read_csv('LAPOP_categories_labeled.csv')
 factored_categories <- factored_categories %>%
   select(column_name_factor, category)
 
-unfactored_categories <- read_csv('LAPOP categories unfactored.csv')
+unfactored_categories <- read_csv('LAPOP_categories_numeric.csv')
 unfactored_categories <- unfactored_categories %>%
   select(column_name, category)
 
-unfactored_questions <- read_csv('updated unfactor questions.csv')
+unfactored_questions <- read_csv('LAPOP_questions_labeled')
 unfactored_questions <- unfactored_questions %>%
   select(column_name, question)
 
-factored_questions <- read_csv('updated factor questions.csv')
+factored_questions <- read_csv('LAPOP_questions_labeled.csv')
 factored_questions <- factored_questions %>%
   select(column_name_factor, question_factor)
 ```
 LAPOP_categories_labeled
 LAPOP_categories_numeric
 LAPOP_questions_labeled
-LAPOP_questions_numeric
+LAPOP_questions_labeled
 
 # !Do not use, reference only
 

@@ -19,28 +19,76 @@ In order to do this we are going to:
 
 ## Combining category and question
 ```{r}
-total_long_common <- total_long_common %>% 
-  unite(category_question, category, question, sep = ":") %>%
-  select(country, wave, person_id = person_id_factor, weights, category_question, answer_measure) 
+total_long_common_narrow <- total_long_common %>% 
+  unite(category_question, category, question, sep = ":", remove = FALSE) %>%
+  select(country, wave, person_id = person_id_factor, weights, category_question, question, answer_measure, answer_dimension) 
 ```
 
 Clear out all but needed dataframes to reduce memory
 
 ```{r}
-rm.all.but(c("total_long_common", "countries_common_only"))
+rm.all.but(c("total_long_common", "total_long_common_narrow", "countries_common_only", "combined_clean"))
 ```
 
 
 ## Pivoting Wider 
-Also, this is where my memory fails
+
+Adding in just a few of the categorical. 
+
 ```{r}
-final_wide <- total_long_common %>% 
+final_wide_measure <- total_long_common_narrow %>% 
 #  head(10000000) %>% # Get first 100K questions to reduce memory %>%
   pivot_wider(id_cols = c(person_id, country, wave), 
-              names_from = category_question,
+              names_from = question,
               values_from = answer_measure)
+
+final_wide_factor <- total_long_common_narrow %>%
+  filter(
+    question %in% c(
+      "Sexo",
+      "Estado civil",
+      "Participó en una protesta",
+      "Simpatiza con algún partido político",
+      "	Votó en las últimas elecciones presidenciales"
+    )
+  ) %>%
+  pivot_wider(id_cols = c(person_id, country, wave), 
+              names_from = question,
+              values_from = answer_dimension)
+
+final_wide <- final_wide_factor %>%
+  left_join(final_wide_measure, by = c("person_id", "country", "wave"), suffix = c("_l", "_n"))
+  
+  
+#join
 
 write_csv(final_wide, "lapop_wide.csv")
 ```
 
+
+##Find specific questions
+```{r}
+q_explore <- total_long_common %>%
+  select(question) %>%
+  distinct()
+
+total_long_common %>%
+  filter(question %in% c("Sexo", "Estado civil", "Participó en una protesta", "Simpatiza con algún partido político", "	Votó en las últimas elecciones presidenciales"))
+
+```
+
+
+# Analyze wider version
+
+Look at summary of each column
+```{r}
+summary(final_wide)
+```
+
+Try tabyl:
+
+```{r}
+final_wide %>%
+  tabyl(`Crime, Insecurity, and Policy Preferences:Víctima de delincuencia en los últimos 12 meses`)
+```
 

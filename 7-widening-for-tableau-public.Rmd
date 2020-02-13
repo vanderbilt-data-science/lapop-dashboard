@@ -62,7 +62,7 @@ final_wide <- final_wide_factor %>%
   
 #join
 
-write_csv(final_wide, "lapop_wide.csv")
+write_csv(final_wide, "lapop_wide_v2.csv") 
 ```
 
 
@@ -73,7 +73,7 @@ q_explore <- total_long_common %>%
   distinct()
 
 total_long_common %>%
-  filter(question %in% c("Sexo", "Estado civil", "Participó en una protesta", "Simpatiza con algún partido político", "	Votó en las últimas elecciones presidenciales"))
+  filter(question %in% c("Sexo", "Estado civil", "Participó en una protesta", "Simpatiza con algún partido político", "Votó en las últimas elecciones presidenciales", "Solicitó ayuda a un miembro de la Asamblea Legistlativa"))
 
 ```
 

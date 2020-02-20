@@ -13,6 +13,85 @@ library(janitor)
 library(rlang)
 ```
 
+
+## NOTE: SEE ISSUE #35
+
+LAPOP has defined which questions to inlcude. Rather than determining which questions appear across all country questionnaires, we'll do a lookup using 
+
+QWORD_2018_Core_10plus_countries(v1.0).csv
+LAB_VAL_2018_Core_10plus_countries(v1.0).csv
+
+QWORD_2018_Core_10plus_countries(v1.0).csv
+LAB_VAL_2018_Core_10plus_countries(v1.0).csv
+
+contain a listing of all of the questions (QWORD) and values (LAB_VAL) for all survey questions that appeared in 10 or more countries in the 2018 wave. 
+
+We will use this data to:
+1. Define the common questions that are to appear in the dashboards (Issue #37)
+2. Rescale the values for each of the responses to be between 0 and 100 (Issue #32)
+3. Group by age group (Issue #29)
+
+We will read in the data here, and address 1-3 elsewhere in the code (follow the commits closing each issue to identify where these tables are used)
+
+## Read in reference tables
+
+```{r}
+label_val <-
+  read_csv(
+    "LAB_VAL_2018_Core_10plus_countries(v1.0).csv",
+    col_types = cols(recoded = col_character(),
+                     value = col_character()),
+    locale = locale(encoding = "ISO-8859-1")
+  ) %>%
+  clean_names()
+qword <- read_csv("QWORD_2018_Core_10plus_countries(v1.0).csv", 
+    locale = locale(encoding = "ISO-8859-1")) %>%
+  clean_names()
+```
+
+Using the lookup tables above, filter our the questions that are not
+
+Use qword, then get unique of question, feed to find_common.
+
+
+
+```{r}
+#Common questions as defined by LAPOP 
+common_questions <- qword %>%
+  select(question = qword_esp) %>%
+  distinct()
+
+#Creating a list with all the clean data frames
+countries <- list(argentina_clean, belize_clean, bolivia_clean, brazil_clean, canada_clean, chile_clean, costa_clean, ecuador_clean, elsalvador_clean, guatemala_clean, guyana_clean, honduras_clean, jamaica_clean, mexico_clean, nicaragua_clean, panama_clean, paraguay_clean, peru_clean, suriname_clean, uruguay_clean, usa_clean, venezuela_clean) #colombia_clean not resolved
+
+#Function for joining dataframes to ensure each country has only the common questions
+find_common <- function(country_dfr, questions_dfr) {
+  semi_join(country_dfr, questions_dfr, by = "question")
+}
+
+#Applying `map_dfr` to create combined dataframe
+countries_common_only <- map_dfr(countries, find_common, common_questions)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## THE FOLLOWING IS DEPRECATED
+
+Remove the following once the new approach is validated.
+
 ## Alternate approach
 We need country, wave, and questions to create a new data frame with `unique()`. Then we need to create a function that gets - `select()` - these columns, makes them unique, creates a new column with its count - `summarize(n())` - and finally filters down to the ones that occur in all datasets - `filter(x == total # of countries)`.
 
@@ -63,10 +142,10 @@ combined_questions <- map_dfr(countries, select_questions)
 #length(combined_questions)
 
 
-#Frequency table for total number of questions
-question_frequency <- combined_questions %>% 
-  tabyl(question)
+```
 
+
+```{r}
 #Checking to make sure no countries were repeated
 combined_questions %>% 
   select(country) %>% 
@@ -87,15 +166,6 @@ common_questions <- question_frequency %>%
 #Testing to see if semi_join works
 #semi_join(argentina_clean, common_questions, by = "question")
 
-#Function for joining dataframes to ensure each country has only the common questions
-find_common <- function(country_dfr, questions_dfr) {
-  semi_join(country_dfr, questions_dfr, by = "question")
-}
-
-## This is suspicious. 
-
-#Applying `map_dfr` to create combined dataframe
-countries_common_only <- map_dfr(countries, find_common, common_questions)
 
 #Trying `map_dfr` on combined_clean
 total_long_common <- find_common(combined_clean, common_questions) 
@@ -105,37 +175,23 @@ total_long_common <- find_common(combined_clean, common_questions)
 ```
 
 ## !DO NOT USE REFERENCE ONLY
-```{r}
-#Checking total number of unique questions
-#number_without_repeats <- combined_questions %>% 
-  #select(question) %>% 
-  #n_distinct()
-
-#number_without_repeats #Returns 119
-
-#Finding all the questions without repeats
-#common_questions <- combined_questions %>% 
-  #select(question) %>% 
-  #unique()
-
-#common_questions
-
-#Trying to just keep the ones that are in the list...
-# isolated <- argentina_narrow %>% 
-#   select(question) %>% 
-#   filter(question %in% common_questions)
-```
 
 ### Filter common questions
+
+
+
+## Exploring Issue #21
+
 ```{r}
-# find_common_questions <- function(country1, country2){
-#   left_join(country1, country2, by = "question") %>% 
-#     filter(!is.na(country.x)) %>% 
-#     filter(!is.na(country.y))
-# }
-# 
-# first_test <- find_common_questions(argentina_narrow, bolivia_narrow)
-# 
-# first_test
+#Frequency table for total number of questions
+question_frequency <- combined_questions %>% 
+  tabyl(question)
+```
+
+In which countries does Urbano/Rural NOT appear?
+```{r}
+combined_questions %>% 
+  filter()
+
 ```
 

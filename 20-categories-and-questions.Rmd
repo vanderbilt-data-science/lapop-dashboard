@@ -5,7 +5,7 @@ editor_options:
   chunk_output_type: inline
 ---
 # Structure
-This document contains the most recent list of categories and columns LAPOP specificied. It comes from the Topic Menu Items_LAPOP AB Cores_07.29.19 file that Maita shared with us on 7/29. In this file they listed the topics they wanted covered and the corresponding columns from the core questionnaires.
+This document contains the most recent list of categories and columns LAPOP specificied. It comes from the Topic Menu Items_LAPOP AB Cores_07.29.19 file that Maita shared with us on 7/29/2019. In this file they listed the topics they wanted covered and the corresponding columns from the core questionnaires.
 
 
 For the categories, we created two separate excel documents. They both have columns for column name and categories. They're separated depending on if they are factored or unfactored. For factored, column name is written as "column_name_factor". The elements in this column are also followed by "_factor". For unfactored it is written as "column_name". The column for category is listed as "category" for both.

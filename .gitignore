@@ -4,3 +4,11 @@
 .Ruserdata
 /data/
 *.html
+lapop_wide.csv
+lapop_wide.zip
+1-reading-in-data.nb.html
+2-categories-and-questions.nb.html
+4-creating-unique-id.nb.html
+5-lengthening-and-joining.nb.html
+6-finding-common-questions.nb.html
+7-widening-for-tableau-public.nb.html

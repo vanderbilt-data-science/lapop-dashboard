@@ -49,7 +49,7 @@ qword <- read_csv("QWORD_2018_Core_10plus_countries(v1.0).csv",
   clean_names()
 ```
 
-Using the lookup tables above, filter our the questions that are not
+Using the lookup tables above, filter out the questions that are not in the list
 
 Use qword, then get unique of question, feed to find_common.
 
@@ -58,7 +58,7 @@ Use qword, then get unique of question, feed to find_common.
 ```{r}
 #Common questions as defined by LAPOP 
 common_questions <- qword %>%
-  select(question = qword_esp) %>%
+  select(column_name = name, question = qword_esp) %>%
   distinct()
 
 #Creating a list with all the clean data frames
@@ -66,15 +66,33 @@ countries <- list(argentina_clean, belize_clean, bolivia_clean, brazil_clean, ca
 
 #Function for joining dataframes to ensure each country has only the common questions
 find_common <- function(country_dfr, questions_dfr) {
-  semi_join(country_dfr, questions_dfr, by = "question")
+  semi_join(country_dfr, questions_dfr, by = "column_name")
 }
 
 #Applying `map_dfr` to create combined dataframe
-countries_common_only <- map_dfr(countries, find_common, common_questions)
+#countries_common_only <- map_dfr(countries, find_common, common_questions)
+
+#Trying `map_dfr` on combined_clean
+total_long_common <- find_common(combined_clean, common_questions) 
 
 ```
 
+Testing
+```{r}
+argentina_clean %>%
+  semi_join(common_questions, by = "column_name") %>%
+  tabyl(question)
+```
 
+## Testing
+
+How many questions?
+```{r}
+total_long_common %>%
+  tabyl(country, question_en)
+```
+
+Joining is not working. Might need to persist question code, but check on join first. 
 
 
 
@@ -122,56 +140,56 @@ I am first going to test on Argentina and Bolivia.
 
 ## Creating single dataframe with all countries and common questions
 ```{r}
-#Making a function that can be iterated multiple times
-select_questions <- function(country_df){
-  country_df %>% 
-    select(country, question) %>% 
-    mutate(country = as.character(country)) %>% 
-    unique()
-}
-
-#test <- select_questions(belize_clean)
-
-#Creating a list with all the clean data frames
-countries <- list(argentina_clean, belize_clean, bolivia_clean, brazil_clean, canada_clean, chile_clean, costa_clean, ecuador_clean, elsalvador_clean, guatemala_clean, guyana_clean, honduras_clean, jamaica_clean, mexico_clean, nicaragua_clean, panama_clean, paraguay_clean, peru_clean, suriname_clean, uruguay_clean, usa_clean, venezuela_clean) #colombia_clean not resolved
-
-#length(countries) There are 22 countries, excluding colombia_clean
-
-#Narrowing countries to just have two columns and combining into one data frame
-combined_questions <- map_dfr(countries, select_questions)
-#length(combined_questions)
+# #Making a function that can be iterated multiple times
+# select_questions <- function(country_df){
+#   country_df %>% 
+#     select(country, question) %>% 
+#     mutate(country = as.character(country)) %>% 
+#     unique()
+# }
+# 
+# #test <- select_questions(belize_clean)
+# 
+# #Creating a list with all the clean data frames
+# countries <- list(argentina_clean, belize_clean, bolivia_clean, brazil_clean, canada_clean, chile_clean, costa_clean, ecuador_clean, elsalvador_clean, guatemala_clean, guyana_clean, honduras_clean, jamaica_clean, mexico_clean, nicaragua_clean, panama_clean, paraguay_clean, peru_clean, suriname_clean, uruguay_clean, usa_clean, venezuela_clean) #colombia_clean not resolved
+# 
+# #length(countries) There are 22 countries, excluding colombia_clean
+# 
+# #Narrowing countries to just have two columns and combining into one data frame
+# combined_questions <- map_dfr(countries, select_questions)
+# #length(combined_questions)
 
 
 ```
 
 
 ```{r}
-#Checking to make sure no countries were repeated
-combined_questions %>% 
-  select(country) %>% 
-  unique()
-
-#Checking structure of object `question_frequency`
-#str(question_frequency)
-
-#Isolating common questions
-common_questions <- question_frequency %>% 
-  select(n, question) %>% 
-  #Change this back to 23
-  filter(n == 22) %>% 
-  select(question)
-
-#str(common_questions)
-
-#Testing to see if semi_join works
-#semi_join(argentina_clean, common_questions, by = "question")
-
-
-#Trying `map_dfr` on combined_clean
-total_long_common <- find_common(combined_clean, common_questions) 
-# assert(total_long_common, is_uniq, person_id_factor)
-
-# The number of cases in total_long_common matches countries_common_only, so it has only common questions. 
+# #Checking to make sure no countries were repeated
+# combined_questions %>% 
+#   select(country) %>% 
+#   unique()
+# 
+# #Checking structure of object `question_frequency`
+# #str(question_frequency)
+# 
+# #Isolating common questions
+# common_questions <- question_frequency %>% 
+#   select(n, question) %>% 
+#   #Change this back to 23
+#   filter(n == 22) %>% 
+#   select(question)
+# 
+# #str(common_questions)
+# 
+# #Testing to see if semi_join works
+# #semi_join(argentina_clean, common_questions, by = "question")
+# 
+# 
+# #Trying `map_dfr` on combined_clean
+# total_long_common <- find_common(combined_clean, common_questions) 
+# # assert(total_long_common, is_uniq, person_id_factor)
+# 
+# # The number of cases in total_long_common matches countries_common_only, so it has only common questions. 
 ```
 
 ## !DO NOT USE REFERENCE ONLY
@@ -183,15 +201,15 @@ total_long_common <- find_common(combined_clean, common_questions)
 ## Exploring Issue #21
 
 ```{r}
-#Frequency table for total number of questions
-question_frequency <- combined_questions %>% 
-  tabyl(question)
+# #Frequency table for total number of questions
+# question_frequency <- combined_questions %>% 
+#   tabyl(question)
 ```
 
 In which countries does Urbano/Rural NOT appear?
 ```{r}
-combined_questions %>% 
-  filter()
+# combined_questions %>% 
+#   filter()
 
 ```
 

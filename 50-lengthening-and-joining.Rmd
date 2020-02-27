@@ -66,7 +66,7 @@ lengthen_16 <- function(country) {
 *Note for Jesse* Here I checked what the long versions of `argentina_unique_unfactor` and `argentina_16_unfactor` looked like and what the effect of `union_all()` is.
 
 ```{r}
-# test <- lengthen(argentina_unique_unfactor)
+#test <- lengthen(argentina_unique_unfactor)
 # test2 <- lengthen_16(argentina_16_unfactor)
 # combined_test <- union_all(test, test2)
 # 
@@ -187,13 +187,15 @@ variables <- c('ls3r', 'a4r', 'cp4ar', 'np1r', 'np2r', 'prot3r', 'prot7r', 'jc15
 
 # Final clean
 This function uses the list made above to remove the desire variables. It also further formats the data frame into the shape it needs to be when we bind all the countries together.
+
+NOTE: REMOVING -column_name
 ```{r}
 clean <- function(country){
   #Filters out the column names that are not in the list, variables.
   country <- country %>%
    filter(!(column_name %in% variables)) %>%
     #Selects the columns that are no longer needed
-    select(-wave_factor, -person_id, -column_name, -column_name_factor, -question_factor, -weights_factor) %>% 
+    select(-wave_factor, -person_id, -column_name_factor, -question_factor, -weights_factor) %>% 
     #Renames pais_factor to country
     rename(country = pais_factor)
   return(country)
@@ -359,50 +361,4 @@ combined_clean <- map_dfr(total_clean, make_total_clean)
 #assert(combined_clean, is_uniq, person_id_factor)
 
 ```
-
-## Data Checks Below (no need to run)
-
-
-```{r}
-arg_test_id <- argentina_clean %>% 
-  filter(person_id_factor == "ARG08_594_1")
-```
-
-```{r}
-#Results in 1 only
-argentina_16_factor %>% 
-  count(person_id_factor) %>% 
-  arrange(desc(n))
-
-argentina_16_unfactor %>% 
-  count(person_id) %>% 
-  arrange(desc(n))
-
-argentina_unique_factor %>% 
-  count(person_id_factor) %>% 
-  arrange(desc(n))
-
-argentina_unique_unfactor %>% 
-  count(person_id) %>% 
-  arrange(n)
-```
-
-We need to make sure person_id_factor x question is unique. Start with a check for a single country. 
-
-```{r}
-argentina_clean %>% 
-  count(person_id_factor, question) %>% 
-  arrange(desc(n)) 
-```
-
-
-It is unique. This should be unique for all countries in the combined, as well. 
-
-```{r}
-#combined_clean %>% 
-#  count(person_id_factor, question) %>% 
-#  arrange(desc(n)) 
-```
-
-It IS unique!
 

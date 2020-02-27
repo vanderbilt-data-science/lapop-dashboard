@@ -77,6 +77,10 @@ total_long_common <- find_common(combined_clean, common_questions)
 
 ```
 
+*NOTE*
+
+There are 96 questions that came across. See which ones were dropped from list. Issue
+
 Testing
 ```{r}
 argentina_clean %>%
@@ -89,7 +93,10 @@ argentina_clean %>%
 How many questions?
 ```{r}
 total_long_common %>%
-  tabyl(country, question_en)
+  tabyl(question) 
+
+total_long_common %>%
+  count(question)
 ```
 
 Joining is not working. Might need to persist question code, but check on join first. 

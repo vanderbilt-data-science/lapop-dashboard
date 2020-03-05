@@ -19,15 +19,15 @@ In order to do this we are going to:
 
 ## Combining category and question
 ```{r}
-total_long_common_narrow <- total_long_common %>% 
+total_long_common_narrow <- total_long_common_recoded %>% 
   unite(category_question, category, question, sep = ":", remove = FALSE) %>%
-  select(country, wave, person_id = person_id_factor, weights, category_question, question, answer_measure, answer_dimension) 
+  select(country, wave, person_id = person_id_factor, weights, category_question, question, column_name, answer_measure, answer_dimension) 
 ```
 
 Clear out all but needed dataframes to reduce memory
 
 ```{r}
-rm.all.but(c("total_long_common", "total_long_common_narrow", "countries_common_only", "combined_clean"))
+rm.all.but(c("total_long_common_recoded", "total_long_common", "total_long_common_narrow", "combined_clean", "label_val", "qword"))
 ```
 
 
@@ -37,15 +37,15 @@ Adding in just a few of the categorical.
 
 ```{r}
 final_wide_measure <- total_long_common_narrow %>% 
-#  head(10000000) %>% # Get first 100K questions to reduce memory %>%
   pivot_wider(id_cols = c(person_id, country, wave), 
               names_from = question,
               values_from = answer_measure)
-
+#Replace this with lookup from labval
 final_wide_factor <- total_long_common_narrow %>%
   filter(
     question %in% c(
       "Sexo",
+      "Edad",
       "Estado civil",
       "Participó en una protesta",
       "Simpatiza con algún partido político",
@@ -62,7 +62,7 @@ final_wide <- final_wide_factor %>%
   
 #join
 
-write_csv(final_wide, "lapop_wide_v2.csv") 
+write_csv(final_wide, "lapop_wide_v3.csv") 
 ```
 
 

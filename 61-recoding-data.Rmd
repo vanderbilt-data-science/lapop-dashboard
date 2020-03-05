@@ -57,23 +57,31 @@ NOTE: We are looking up the values instead of directly calculating because some 
 response_labels <- label_val %>%
   rename(column_name = lname) %>% 
   left_join(qword, by = c("column_name" = "name")) %>%
-  select(column_name, question_es = qword_esp, value, recoded) 
+  select(column_name, question_es = qword_esp, value, recoded, label_esp) 
 
-# check to make sure join will work
-total_long_common %>%
-  mutate(answer_measure = as.character(answer_measure)) %>%
-  anti_join(response_labels, 
-            by = c("column_name" = "column_name", "answer_measure" = "value"))
+# # check to make sure join will work
+# total_long_common %>%
+#   mutate(answer_measure = as.character(answer_measure)) %>%
+#   anti_join(response_labels, 
+#             by = c("column_name" = "column_name", "answer_measure" = "value"))
 
 ## Do not replace if NA, keep the same then
 total_long_common_recoded <- total_long_common %>%
   mutate(answer_measure = as.character(answer_measure)) %>%
   left_join(response_labels, 
             by = c("column_name" = "column_name", "answer_measure" = "value")) %>%
-  mutate(answer_measure = if_else(is.na(recoded), answer_measure, recoded))
+  mutate(answer_measure = if_else(is.na(recoded), answer_measure, recoded),
+         answer_dimension = if_else(is.na(label_esp), answer_dimension, label_esp))
+```
 
-
-
+## Examine q1
+```{r}
+total_long_common_recoded %>%
+  filter(column_name == "q1") %>%
+  select(answer_measure, answer_dimension) %>% 
+  distinct()
+  
+  tabyl(answer_measure)
 ```
 
 

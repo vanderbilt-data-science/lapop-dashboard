@@ -1,132 +1,132 @@
-﻿column_name,category_en,category_es
-soct2,The Economy,
-idio2,The Economy,
-q10e,The Economy,
-fs2,The Economy,
-fs8,The Economy,
-ros4,The Economy,
-redist1,The Economy,
-redist2,The Economy,
-redist2a,The Economy,
-redist3,The Economy,
-cp2,Civic and Political Engagement,
-cp6,Civic and Political Engagement,
-cp7,Civic and Political Engagement,
-cp8,Civic and Political Engagement,
-cp13,Civic and Political Engagement,
-cp20,Civic and Political Engagement,
-prot3,Civic and Political Engagement,
-vb2,Civic and Political Engagement,
-vb10,Civic and Political Engagement,
-vb20,Civic and Political Engagement,
-np1,Local Government,
-sd2new2,Local Government,
-sd3new2,Local Government,
-sd6new2,Local Government,
-infrax,Local Government,
-b1,"Evaluation of Institutions, Political System and Other Persons",
-b2,"Evaluation of Institutions, Political System and Other Persons",
-b3,"Evaluation of Institutions, Political System and Other Persons",
-b4,"Evaluation of Institutions, Political System and Other Persons",
-b6,"Evaluation of Institutions, Political System and Other Persons",
-b12,"Evaluation of Institutions, Political System and Other Persons",
-b13,"Evaluation of Institutions, Political System and Other Persons",
-b18,"Evaluation of Institutions, Political System and Other Persons",
-b20,"Evaluation of Institutions, Political System and Other Persons",
-b20a,"Evaluation of Institutions, Political System and Other Persons",
-b21,"Evaluation of Institutions, Political System and Other Persons",
-b21a,"Evaluation of Institutions, Political System and Other Persons",
-b31,"Evaluation of Institutions, Political System and Other Persons",
-b32,"Evaluation of Institutions, Political System and Other Persons",
-b37,"Evaluation of Institutions, Political System and Other Persons",
-b47a,"Evaluation of Institutions, Political System and Other Persons",
-m1,"Evaluation of Institutions, Political System and Other Persons",
-a4r,"Evaluation of Institutions, Political System and Other Persons",
-lib1,"Evaluation of Institutions, Political System and Other Persons",
-lib2c,"Evaluation of Institutions, Political System and Other Persons",
-eff1,"Evaluation of Institutions, Political System and Other Persons",
-eff2,"Evaluation of Institutions, Political System and Other Persons",
-it1 ,"Evaluation of Institutions, Political System and Other Persons",
-jc10,Support for Democracy and Democratic Institutions,
-jc13,Support for Democracy and Democratic Institutions,
-jc15a,Support for Democracy and Democratic Institutions,
-jc16a,Support for Democracy and Democratic Institutions,
-ing4,Support for Democracy and Democratic Institutions,
-pn4,Support for Democracy and Democratic Institutions,
-vic1ext,"Crime, Insecurity, and Policy Preferences",
-vic1exta,"Crime, Insecurity, and Policy Preferences",
-aoj11,"Crime, Insecurity, and Policy Preferences",
-aoj12,"Crime, Insecurity, and Policy Preferences",
-exc2,Corruption,
-exc6,Corruption,
-exc20,Corruption,
-exc11,Corruption,
-exc13,Corruption,
-exc14,Corruption,
-exc15,Corruption,
-exc16,Corruption,
-exc18,Corruption,
-exc7,Corruption,
-exc7new,Corruption,
-d1,Political Tolerance,
-d2,Political Tolerance,
-d3,Political Tolerance,
-d4,Political Tolerance,
-d5,Political Tolerance,
-d6,Political Tolerance,
-e5,Political Tolerance,
-pol1,Political/Electoral Engagement,
-gi0,Political/Electoral Engagement,
-gi0n,Political/Electoral Engagement,
-clien1n,Political/Electoral Engagement,
-clien1na,Political/Electoral Engagement,
-q10a,Migration,
-q14,Migration,
-dst1b,Climate Change/Disaster Risk Reduction,
-drk1,Climate Change/Disaster Risk Reduction,
-env1c,Climate Change/Disaster Risk Reduction,
-env2b,Climate Change/Disaster Risk Reduction,
-vb50,Gender,
-vb51,Gender,
-vb52,Gender,
-v58,Gender,
-w14a,Gender,
-mil10a,Foreign Relations,
-mil10e,Foreign Relations,
-smedia1,Social Media,
-smedia4,Social Media,
-smedia7,Social Media,
-l1,Political and Religious Orientation,
-l1b,Political and Religious Orientation,
-q5a,Political and Religious Orientation,
-q5b,Political and Religious Orientation,
-q3cn,Political and Religious Orientation,
-year,Sample Identification/Geographic,
-ur,Sample Identification/Geographic,
-q1,Socio-Demographic Characteristics,
-q2,Socio-Demographic Characteristics,
-ed,Socio-Demographic Characteristics,
-q10new,Socio-Demographic Characteristics,
-ocup4a,Socio-Demographic Characteristics,
-ocup1a,Socio-Demographic Characteristics,
-q11n,Socio-Demographic Characteristics,
-r3,Socio-Demographic Characteristics,
-r4,Socio-Demographic Characteristics,
-r4a,Socio-Demographic Characteristics,
-r5,Socio-Demographic Characteristics,
-r6,Socio-Demographic Characteristics,
-r7,Socio-Demographic Characteristics,
-r8,Socio-Demographic Characteristics,
-r12,Socio-Demographic Characteristics,
-r14,Socio-Demographic Characteristics,
-r15,Socio-Demographic Characteristics,
-r18,Socio-Demographic Characteristics,
-r1,Socio-Demographic Characteristics,
-r16,Socio-Demographic Characteristics,
-q12,Socio-Demographic Characteristics,
-q12bn,Socio-Demographic Characteristics,
-q12c,Socio-Demographic Characteristics,
-etid,Socio-Demographic Characteristics,
-leng1,Socio-Demographic Characteristics,
-wf1,Socio-Demographic Characteristics,
-cct1b,Socio-Demographic Characteristics,
+﻿column_name,category_en,category_short_en,category_es,category_short_es
+soct2,The Economy,Economy,La economía,Economía
+idio2,The Economy,Economy,La economía,Economía
+q10e,The Economy,Economy,La economía,Economía
+fs2,The Economy,Economy,La economía,Economía
+fs8,The Economy,Economy,La economía,Economía
+ros4,The Economy,Economy,La economía,Economía
+redist1,The Economy,Economy,La economía,Economía
+redist2,The Economy,Economy,La economía,Economía
+redist2a,The Economy,Economy,La economía,Economía
+redist3,The Economy,Economy,La economía,Economía
+cp2,Civic and Political Engagement,Civic Engagement,Participación cívica y política,Participación cívica
+cp6,Civic and Political Engagement,Civic Engagement,Participación cívica y política,Participación cívica
+cp7,Civic and Political Engagement,Civic Engagement,Participación cívica y política,Participación cívica
+cp8,Civic and Political Engagement,Civic Engagement,Participación cívica y política,Participación cívica
+cp13,Civic and Political Engagement,Civic Engagement,Participación cívica y política,Participación cívica
+cp20,Civic and Political Engagement,Civic Engagement,Participación cívica y política,Participación cívica
+prot3,Civic and Political Engagement,Civic Engagement,Participación cívica y política,Participación cívica
+vb2,Civic and Political Engagement,Civic Engagement,Participación cívica y política,Participación cívica
+vb10,Civic and Political Engagement,Civic Engagement,Participación cívica y política,Participación cívica
+vb20,Civic and Political Engagement,Civic Engagement,Participación cívica y política,Participación cívica
+np1,Local Government,Local Government,Gobierno local,Gobierno local
+sd2new2,Local Government,Local Government,Gobierno local,Gobierno local
+sd3new2,Local Government,Local Government,Gobierno local,Gobierno local
+sd6new2,Local Government,Local Government,Gobierno local,Gobierno local
+infrax,Local Government,Local Government,Gobierno local,Gobierno local
+b1,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b2,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b3,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b4,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b6,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b12,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b13,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b18,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b20,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b20a,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b21,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b21a,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b31,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b32,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b37,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+b47a,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+m1,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+a4r,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+lib1,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+lib2c,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+eff1,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+eff2,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+it1 ,"Evaluation of Institutions, Political System and Other Persons",Evaluations,"Evaluación de instituciones, sistema política y otras personas",Evaluaciones
+jc10,Support for Democracy and Democratic Institutions,Democratic Support,Apoyo a la democracia e instituciones democráticas ,Apoyo democrático
+jc13,Support for Democracy and Democratic Institutions,Democratic Support,Apoyo a la democracia e instituciones democráticas ,Apoyo democrático
+jc15a,Support for Democracy and Democratic Institutions,Democratic Support,Apoyo a la democracia e instituciones democráticas ,Apoyo democrático
+jc16a,Support for Democracy and Democratic Institutions,Democratic Support,Apoyo a la democracia e instituciones democráticas ,Apoyo democrático
+ing4,Support for Democracy and Democratic Institutions,Democratic Support,Apoyo a la democracia e instituciones democráticas ,Apoyo democrático
+pn4,Support for Democracy and Democratic Institutions,Democratic Support,Apoyo a la democracia e instituciones democráticas ,Apoyo democrático
+vic1ext,"Crime, Insecurity, and Policy Preferences",Democratic Support,Apoyo a la democracia e instituciones democráticas ,Apoyo democrático
+vic1exta,"Crime, Insecurity, and Policy Preferences",Democratic Support,Apoyo a la democracia e instituciones democráticas ,Apoyo democrático
+aoj11,"Crime, Insecurity, and Policy Preferences",Democratic Support,Apoyo a la democracia e instituciones democráticas ,Apoyo democrático
+aoj12,"Crime, Insecurity, and Policy Preferences",Democratic Support,Apoyo a la democracia e instituciones democráticas ,Apoyo democrático
+exc2,Corruption,Corruption,Corrupción,Corrupción
+exc6,Corruption,Corruption,Corrupción,Corrupción
+exc20,Corruption,Corruption,Corrupción,Corrupción
+exc11,Corruption,Corruption,Corrupción,Corrupción
+exc13,Corruption,Corruption,Corrupción,Corrupción
+exc14,Corruption,Corruption,Corrupción,Corrupción
+exc15,Corruption,Corruption,Corrupción,Corrupción
+exc16,Corruption,Corruption,Corrupción,Corrupción
+exc18,Corruption,Corruption,Corrupción,Corrupción
+exc7,Corruption,Corruption,Corrupción,Corrupción
+exc7new,Corruption,Corruption,Corrupción,Corrupción
+d1,Political Tolerance,Tolerance,Tolerancia política,Tolerancia
+d2,Political Tolerance,Tolerance,Tolerancia política,Tolerancia
+d3,Political Tolerance,Tolerance,Tolerancia política,Tolerancia
+d4,Political Tolerance,Tolerance,Tolerancia política,Tolerancia
+d5,Political Tolerance,Tolerance,Tolerancia política,Tolerancia
+d6,Political Tolerance,Tolerance,Tolerancia política,Tolerancia
+e5,Political Tolerance,Tolerance,Tolerancia política,Tolerancia
+pol1,Political/Electoral Engagement,Electoral Engagement,Participación política/electoral,Participación electoral
+gi0,Political/Electoral Engagement,Electoral Engagement,Participación política/electoral,Participación electoral
+gi0n,Political/Electoral Engagement,Electoral Engagement,Participación política/electoral,Participación electoral
+clien1n,Political/Electoral Engagement,Electoral Engagement,Participación política/electoral,Participación electoral
+clien1na,Political/Electoral Engagement,Electoral Engagement,Participación política/electoral,Participación electoral
+q10a,Migration,Migration,Migración ,Migración 
+q14,Migration,Migration,Migración ,Migración 
+dst1b,Climate Change/Disaster Risk Reduction,Environment,Cambio climático/Reducción de riesgos por desastres,Ambiente
+drk1,Climate Change/Disaster Risk Reduction,Environment,Cambio climático/Reducción de riesgos por desastres,Ambiente
+env1c,Climate Change/Disaster Risk Reduction,Environment,Cambio climático/Reducción de riesgos por desastres,Ambiente
+env2b,Climate Change/Disaster Risk Reduction,Environment,Cambio climático/Reducción de riesgos por desastres,Ambiente
+vb50,Gender,Gender,Género,Género
+vb51,Gender,Gender,Género,Género
+vb52,Gender,Gender,Género,Género
+v58,Gender,Gender,Género,Género
+w14a,Gender,Gender,Género,Género
+mil10a,Foreign Relations,Foreign relations,Relaciones internacionales,Relaciones internacionales
+mil10e,Foreign Relations,Foreign relations,Relaciones internacionales,Relaciones internacionales
+smedia1,Social Media,Social Media,Medios sociales,Medios sociales
+smedia4,Social Media,Social Media,Medios sociales,Medios sociales
+smedia7,Social Media,Social Media,Medios sociales,Medios sociales
+l1,Political and Religious Orientation,Beliefs,Orientación política y religiosa,Creencias
+l1b,Political and Religious Orientation,Beliefs,Orientación política y religiosa,Creencias
+q5a,Political and Religious Orientation,Beliefs,Orientación política y religiosa,Creencias
+q5b,Political and Religious Orientation,Beliefs,Orientación política y religiosa,Creencias
+q3cn,Political and Religious Orientation,Beliefs,Orientación política y religiosa,Creencias
+year,Sample Identification/Geographic,Sample Id,Identificación muestral/geográfica,Id muestral
+ur,Sample Identification/Geographic,Sample Id,Identificación muestral/geográfica,Id muestral
+q1,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+q2,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+ed,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+q10new,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+ocup4a,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+ocup1a,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+q11n,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r3,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r4,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r4a,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r5,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r6,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r7,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r8,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r12,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r14,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r15,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r18,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r1,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+r16,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+q12,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+q12bn,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+q12c,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+etid,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+leng1,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+wf1,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.
+cct1b,Socio-Demographic Characteristics,Socio-Dem.,Características sociodemográficas,Sociodem.

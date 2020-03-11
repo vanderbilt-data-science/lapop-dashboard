@@ -65,13 +65,15 @@ response_labels <- label_val %>%
 #   anti_join(response_labels, 
 #             by = c("column_name" = "column_name", "answer_measure" = "value"))
 
-## Do not replace if NA, keep the same then
+## Use recoded values only for answer_measure. If there is no recoding, it's not a measure 
+## See Issue 52
+## Replace in all cases if answer_dimension 
 total_long_common_recoded <- total_long_common %>%
   mutate(answer_measure = as.character(answer_measure)) %>%
   left_join(response_labels, 
             by = c("column_name" = "column_name", "answer_measure" = "value")) %>%
-  mutate(answer_measure = if_else(is.na(recoded), answer_measure, recoded),
-         answer_dimension = if_else(is.na(label_esp), answer_dimension, label_esp))
+  mutate(answer_measure = recoded,
+         answer_dimension = label_esp)
 ```
 
 ## Examine q1

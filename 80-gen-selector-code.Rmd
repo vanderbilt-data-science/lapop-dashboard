@@ -1,0 +1,91 @@
+---
+title: "80-gen-selector-code"
+output: html_notebook
+---
+
+# Generate Selector Code for Tableau
+
+See https://help.tableau.com/current/pro/desktop/en-us/changing-views-using-parameters.htm for background on where to put this generated code.
+
+Use dimensions and measures lists. 
+
+Join to lookup tables to get short categories and short questions
+
+Use Glue to put together string or prints
+
+## Create category/short question dataframe
+```{r}
+library(glue)
+cat_numxl <- read_excel("LAPOP_categories_numeric_es.xlsx") 
+qwordxl <- read_excel("QWORD_2018_Core_10plus_countries.v2.0.xlsx")
+measures_cat_short <- tibble(column_name = measures, ) %>%
+  left_join(qwordxl, by = c("column_name" = "name")) %>%
+  left_join(cat_numxl, by = "column_name") %>%
+  select(column_name, category_short_es, varlab_esp, qword_esp) %>% 
+  semi_join(total_long_common_narrow, by = "column_name") #Remove any column_names that are not in total_long_common_narrow
+```
+
+
+## Parameter definition
+
+
+Copy and paste this output into the Parameter dialog to select variables and set text for them
+```{r}
+measures_cat_short %>% 
+  arrange(category_short_es, varlab_esp) %>% 
+  glue_data('{column_name}, {category_short_es}:{varlab_esp}')
+```
+
+
+## Calculated field code for custom parameters
+
+In Tableau, custom parameters will be used to select variables to display on the dashboards. The following output should be cut and pasted into the code window for calculated fields. 
+
+```{r}
+cat("CASE [Choose Variable]
+")
+
+measures_cat_short %>% 
+  glue_data("WHEN '{column_name}' THEN [{column_name}]")
+
+cat("ELSE NULL
+END")
+```
+
+
+
+## Calculated Field Code for Question Text Short
+
+Cut and paste the code below into a field for Question Short
+
+```{r}
+cat("CASE [Choose Variable]
+")
+
+measures_cat_short %>% 
+  glue_data("WHEN '{category_short_es}:{varlab_esp}' THEN '{varlab_esp}'")
+
+cat("ELSE ''
+END")
+```
+
+
+## Calculated Field Code for Question Text Long
+
+Cut and paste the code below into a calculated field for 'Question Long'
+
+```{r}
+cat("CASE [Choose Variable]
+")
+
+measures_cat_short %>% 
+  glue_data("WHEN '{category_short_es}:{varlab_esp}' THEN '{qword_esp}'")
+
+cat("ELSE ''
+END")
+```
+
+## Code for Calculated Field Anchor Text
+
+For numerics with both numbers and text, just the text.
+

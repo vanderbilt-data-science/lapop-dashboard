@@ -14,10 +14,6 @@ Note that weights will be calculated on the fly within the Tableau dashboard as 
 
 Data is now in long format, so we need to recode within a answer_measure IF question_es is q2 Edad
 
-
-
-
-
 ```{r}
 total_long_common %>%
   mutate(answer_dimension = if_else(column_name == "q2", 

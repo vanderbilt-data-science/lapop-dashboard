@@ -114,7 +114,7 @@ dimensions_cat_short %>%
 In Tableau, custom parameters will be used to select variables to display on the dashboards. The following output should be cut and pasted into the code window for calculated fields. 
 
 ```{r}
-cat("CASE [Choose Dimension]
+cat("CASE [Choose Crosstab Dimension]
 ")
 
 dimensions_cat_short %>% 
@@ -123,3 +123,26 @@ dimensions_cat_short %>%
 cat("ELSE NULL
 END")
 ```
+
+
+## Generate code for Calculated Field for measure label/values
+
+Grouped mutate to roll up multiple lines into one with /n separators, tabs?
+
+```{r}
+  cat("CASE [Choose Variable]
+")
+
+label_val %>% 
+  group_by(lname) %>% 
+  summarise(lab_val = paste0(label_esp, "--", recoded, collapse = "\n")) %>% 
+  ungroup() %>%
+  glue_data("WHEN '{lname}' THEN '{lab_val}'")
+
+cat("ELSE NULL
+END")
+  
+
+
+```
+

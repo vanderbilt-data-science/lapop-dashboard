@@ -240,7 +240,8 @@ final_wide <- final_wide_dimension %>%
   
 #join
 
-write_csv(final_wide, "lapop_wide_v4.csv", na = "NULL ") 
+# Update the version of the csv to reflect code cleanup
+write_csv(final_wide, "lapop_wide_v5.csv", na = "NULL ") 
 ```
 
 

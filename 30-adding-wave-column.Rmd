@@ -18,7 +18,49 @@ If your individual years differ from 16/17, you will need to change the name of 
 
 ## Lists of files by year
 ```{r}
-countries_2016 <- list(argentina_16_factor, argentina_16_unfactor, bolivia_16_factor, bolivia_16_unfactor, brazil_16_factor, brazil_16_unfactor, canada_16_factor, canada_16_unfactor, chile_16_factor, chile_16_unfactor, guatemala_16_factor, guatemala_16_unfactor, jamaica_16_factor, jamaica_16_unfactor, mexico_16_factor, mexico_16_unfactor, peru_16_factor, peru_16_unfactor, usa_16_factor, usa_16_unfactor, uruguay_16_factor, uruguay_16_unfactor, colombia_16_factor, colombia_16_unfactor, costa_16_factor, costa_16_unfactor, elsalvador_16_factor, elsalvador_16_unfactor, guyana_16_factor, guyana_16_unfactor, honduras_16_factor, honduras_16_unfactor, nicaragua_16_factor, nicaragua_16_unfactor, paraguay_16_factor, paraguay_16_unfactor, ecuador_16_factor, ecuador_16_unfactor, venezuela_16_factor, venezuela_16_unfactor)
+countries_2016 <-
+  list(
+    argentina_16_factor,
+    argentina_16_unfactor,
+    bolivia_16_factor,
+    bolivia_16_unfactor,
+    brazil_16_factor,
+    brazil_16_unfactor,
+    canada_16_factor,
+    canada_16_unfactor,
+    chile_16_factor,
+    chile_16_unfactor,
+    guatemala_16_factor,
+    guatemala_16_unfactor,
+    jamaica_16_factor,
+    jamaica_16_unfactor,
+    mexico_16_factor,
+    mexico_16_unfactor,
+    peru_16_factor,
+    peru_16_unfactor,
+    usa_16_factor,
+    usa_16_unfactor,
+    uruguay_16_factor,
+    uruguay_16_unfactor,
+    colombia_16_factor,
+    colombia_16_unfactor,
+    costa_16_factor,
+    costa_16_unfactor,
+    elsalvador_16_factor,
+    elsalvador_16_unfactor,
+    guyana_16_factor,
+    guyana_16_unfactor,
+    honduras_16_factor,
+    honduras_16_unfactor,
+    nicaragua_16_factor,
+    nicaragua_16_unfactor,
+    paraguay_16_factor,
+    paraguay_16_unfactor,
+    ecuador_16_factor,
+    ecuador_16_unfactor,
+    venezuela_16_factor,
+    venezuela_16_unfactor
+  )
 ```
 
 ## Function to adding wave column

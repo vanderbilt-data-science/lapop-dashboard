@@ -1,0 +1,41 @@
+---
+title: "90-output-tests"
+output: html_notebook
+---
+
+# Check Differences Between CSV Output versions
+
+We are refactoring a significant portion of the code base and need to ensure that changes to the final produce data tables change in an understandable way. 
+
+Version 4 lapop_wide_v4.csv is the last version written by the old code base. New versions need to write a file that is the same structure and fundamentally the same data as that one. 
+
+## Compare Version 4 and Version 4
+
+### Read Versions 4 and 5
+```{r}
+lwv4 <- read_csv("lapop_wide_v4.csv", na = "NULL ") 
+lwv5 <- read_csv("lapop_wide_v5.csv", na = "NULL ") 
+```
+
+## Compare Columns
+```{r}
+
+```
+
+## Find Missing/Added Data
+
+Rows in 4 but Missing in 5
+```{r}
+
+```
+
+Rows New in 5
+```{r}
+
+```
+
+Data Changed Between 4 and 5
+```{r}
+
+```
+

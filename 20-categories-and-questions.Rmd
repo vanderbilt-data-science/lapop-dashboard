@@ -33,7 +33,7 @@ LAPOP_categories_numeric
 LAPOP_questions_labeled
 LAPOP_questions_labeled
 
-```{r, message=FALSE}
+```{r Import categories, message=FALSE}
 factored_categories <- read_csv('LAPOP_categories_labeled.csv')
 factored_categories <- factored_categories %>%
   select(column_name_factor, category_es, category_en)
@@ -53,7 +53,7 @@ factored_questions <- factored_questions %>%
 ## Set Language
 
 
-```{r, message=FALSE}
+```{r Set Language, message=FALSE}
 factored_categories <- factored_categories %>%
   mutate(category = category_en)
 

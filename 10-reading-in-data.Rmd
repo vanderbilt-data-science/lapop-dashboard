@@ -27,7 +27,7 @@ We use both versions of the data frames for ease of use in Tableau Public. Unfac
 
 ## Libraries
 These packages contain the functions that are necessary to run the code below. These can be installed using `install.packages()`, and then you should run the code chunk below so they are ready to be used.
-```{r Libraries, message=FALSE}
+```{r Import ibraries, message=FALSE}
 library(labelled)
 library(sjmisc)
 library(tidyverse)

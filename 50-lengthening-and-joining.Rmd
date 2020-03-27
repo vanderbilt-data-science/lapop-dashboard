@@ -18,7 +18,7 @@ Then, we transformed answer to a character which is necessary for the later comb
 Finally, we select the five columns that we want.
 
 ### For merged unfactored datasets
-```{r}
+```{r Define lengthen()}
 lengthen <- function(country) {
   #Makes sure the weight is saved
   weight <- country %>%
@@ -39,7 +39,7 @@ lengthen <- function(country) {
 ```
 
 ### For 16/17 unfactored datasets.
-```{r}
+```{r Define lengthen() for 16/17 df}
 lengthen_16 <- function(country) {
   #Makes sure the weight is saved
   weight <- country %>%
@@ -87,7 +87,7 @@ lengthen_16 <- function(country) {
 These functions are almost identical to the ones above except, they have "_factor" for the column names.
 
 ### For merged, factored datasets
-```{r}
+```{r Define lengthen_factor()}
 lengthen_factor <- function(country) {
   #Makes sure the weight is saved
   weight <- country %>%
@@ -108,7 +108,7 @@ lengthen_factor <- function(country) {
 ```
 
 ### For 2016/17 factored datasets
-```{r}
+```{r Define lengthen_16factor() for 16/17 df}
 lengthen_16factor <- function(country) {
   #Makes sure the weight is saved
   weight <- country %>%
@@ -149,14 +149,14 @@ lengthen_16factor <- function(country) {
 #   arrange(desc(n)) #This just shows that the two datasets are stacked on top of each other - same as above
 ```
 Cleaning up the combined_test*
-```{r}
+```{r Remove test data}
 rm("combined_test")
 rm("combined_test2")
 ```
 
 
 #Connects the category and question excel to the dataframes
-```{r}
+```{r Define factor_add()}
 factor_add <- function(country){
   #Uses left joins to bring together the excel doc and dataframe based on column name
   country <- country %>%
@@ -167,7 +167,7 @@ factor_add <- function(country){
 ```
 
 #Connects the category and question excel to the dataframes
-```{r}
+```{r Define unfactor_add()}
 unfactor_add <- function(country){
   #Uses left joins to bring together the excel doc and dataframe based on column name
   country <- country %>%
@@ -181,7 +181,7 @@ unfactor_add <- function(country){
 These variables are not to be shown in the visualizations, so in order to remove them from the datasets above, we created a vector with the variable names that will then be applied to a function that removes them.
 
 If in the future you want to remove more variables, just add them to the list and run the same function.
-```{r}
+```{r Create variables list}
 variables <- c('ls3r', 'a4r', 'cp4ar', 'np1r', 'np2r', 'prot3r', 'prot7r', 'jc15ar', 'vic1extr', 'vic1hogarr', 'jc10rr', 'jc13rr', 'sgl1r', 'm1r', 'cp5r', 'cp6r', 'cp7r', 'cp8r', 'cp9r', 'cp13r', 'cp20r', 'it1r', 'pn4r', 'pol1r', 'exc7r', 'community' ,'anyvictim', 'aoj11r', 'sd2r', 'sd3r', 'sd6r', 'coupr', 'b1r', 'b2r', 'b3r', 'b4r', 'b6r', 'b12r', 'b32r','n11r', 'n9r', 'mil3r', 'mil4r', 'eff1r', 'eff2r', 'mil7r', 'ing4r', 'ros1r', 'ros4r', 'psar', 'psa5r', 'psa2r', 'd1r', 'd2r', 'd3r', 'd4r', 'd5r', 'tolr', 'tol2r','bar2x2', 'exc2r', 'exc6r', 'ecexc11r', 'exc11r', 'exc13r', 'exc14r', 'exc15r', 'exc16r', 'exc20r', 'exctot', 'exctot5r', 'exctot3r', 'corvic', 'vb2r', 'mujer', 'edr', 'edad', 'age1', 'age2', 'age3', 'age4', 'age5', 'age6', 'q5br', 'q10dr', 'housewife', 'etidr', 'indigenous', 'black', 'white', 'mestizo', 'mulatto', 'other', 'quintall', 'ed2r', 'intid', 'ideology', 'ti', 'q11nr', 'q5bnr')
 ```
 
@@ -189,7 +189,7 @@ variables <- c('ls3r', 'a4r', 'cp4ar', 'np1r', 'np2r', 'prot3r', 'prot7r', 'jc15
 This function uses the list made above to remove the desire variables. It also further formats the data frame into the shape it needs to be when we bind all the countries together.
 
 NOTE: REMOVING -column_name
-```{r}
+```{r Define clean()}
 clean <- function(country){
   #Filters out the column names that are not in the list, variables.
   country <- country %>%
@@ -204,7 +204,7 @@ clean <- function(country){
 
 # Unmerged combination
 This function takes in the unfactored version for before 2016 as well as after. It takes each dataframe, lengthens it, adds the unfactored versions to each other, and the factored versions to each other. Then it filters out the NAs from both, and combines them togehter. For the majority of each step there is a call to a function written above.
-```{r}
+```{r Define unmerged()}
 unmerged <- function(unfactor, unfactor16, factor, factor16){
   #Lengthens all dataframes through above wrtten lengthen functions
   unfactor <- lengthen(unfactor)
@@ -236,7 +236,7 @@ unmerged <- function(unfactor, unfactor16, factor, factor16){
 
 # Merged combination
 Similar to the above function, but this is used when there is no need to merge other dataframes together from multiple years
-```{r}
+```{r Define merged()}
 merged <- function(unfactor, factor){
   #Lengthens all dataframes through above wrtten lengthen functions
   unfactor <- lengthen(unfactor)
@@ -336,7 +336,7 @@ venezuela_clean <- unmerged(venezuela_unique_unfactor, venezuela_16_unfactor, ve
 
 ## Combining all clean versions
 Making list of all the data frames
-```{r}
+```{r Create clean-data list}
 total_clean <- list(argentina_clean, belize_clean, brazil_clean, chile_clean, bolivia_clean, canada_clean, costa_clean, ecuador_clean, elsalvador_clean, guatemala_clean, guyana_clean, honduras_clean, jamaica_clean, mexico_clean, nicaragua_clean, panama_clean, paraguay_clean, peru_clean, suriname_clean, uruguay_clean, usa_clean, venezuela_clean)
 
 #colombia_clean not resolved

@@ -260,7 +260,7 @@ merged <- function(unfactor, factor){
 ```
 
 
-```{r}
+```{r Create clean df for each country}
 #Argentina
 argentina_clean <- unmerged(argentina_unique_unfactor, argentina_16_unfactor, argentina_unique_factor, argentina_16_factor)
 
@@ -346,7 +346,7 @@ total_clean <- list(argentina_clean, belize_clean, brazil_clean, chile_clean, bo
 
 
 Combining dataframes - outputs data frame with 25 million rows. Going to look into `pivot_wider()` for spreading the data and getting below the maximum row limit with Tableau Public.
-```{r}
+```{r Combine all clean-data together}
 make_total_clean <- function(country_df){
   country_df %>% 
     rbind() #%>% 

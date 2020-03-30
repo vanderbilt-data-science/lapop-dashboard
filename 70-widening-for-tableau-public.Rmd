@@ -246,7 +246,7 @@ write_csv(final_wide, "lapop_wide_v5.csv", na = "NULL ")
 
 
 ##Find specific questions
-```{r}
+```{r Check specific question}
 total_long_common_narrow %>% 
   filter(column_name == "a4")
 

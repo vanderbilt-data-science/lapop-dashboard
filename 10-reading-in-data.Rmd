@@ -27,7 +27,7 @@ We use both versions of the data frames for ease of use in Tableau Public. Unfac
 
 ## Libraries
 These packages contain the functions that are necessary to run the code below. These can be installed using `install.packages()`, and then you should run the code chunk below so they are ready to be used.
-```{r, message=FALSE}
+```{r Import ibraries, message=FALSE}
 library(labelled)
 library(sjmisc)
 library(tidyverse)
@@ -43,7 +43,7 @@ library(readxl)
 The first function we wrote, `factor_country()`, reads the file in and edits the column name so that it ends in "_factor" to differentiate between unfactored and factored when we combine them later.
 
 ## Creating factored and unfactored dataframes
-```{r}
+```{r Define factor_country()}
 factor_country <- function(country){
   #Reads file for the country
   country <- read_dta(country)
@@ -68,7 +68,7 @@ This is where we read in all the factored data. You should use the *most recent*
 If you want to change the files that are being read in, you can either make a new code chunk or replace the current file names. If you do this, you have to make sure there is an unfactored version of the file as well.
 
 ## Creating factored dataframes using `factor_country`
-```{r}
+```{r Create factored df}
 argentina_factor <- factor_country("data/merged_argentina_2008_2014.zip")
 
 belize_factor <- factor_country("data/merged_belize_2008_2014.dta")
@@ -138,7 +138,7 @@ venezuela_factor <- factor_country("data/merged_venezuela_2007_2014.zip")
 
 ## Creating unfactored dataframes using `read_dta`
 This is where we read in the unfactored data.
-```{r}
+```{r Create unfactored df}
 argentina_unfactor <- read_dta("data/merged_argentina_2008_2014.zip")
 
 belize_unfactor <- read_dta("data/merged_belize_2008_2014.dta")
@@ -203,7 +203,7 @@ If you are using the new merged files, you can skip this.
 
 ## Creating factored dataframes of 2016/17 questionnaires using `factor_country`
 This is the 16/17 version of the `factor_country()` used above. The same process applies, but we have renamed the `uniq_id` column to `person_id` for clarification.
-```{r}
+```{r Define factor16_country()}
 factor16_country <- function(country){
   #Reads file for the country
   country <- read_dta(country)
@@ -223,7 +223,7 @@ factor16_country <- function(country){
 }
 ```
 
-```{r}
+```{r Create factored df(16)}
 argentina_16_factor <- factor16_country("data/2016_argentina.dta") %>% 
   assert(is_uniq, person_id_factor)
 
@@ -304,7 +304,7 @@ venezuela_16_factor  <- factor16_country("data/2016_venezuela.dta") %>%
 ## Creating unfactored dataframes of 2016/17 questionnaires using `read_dta`
 This is the unfactored version of the 16/17 data frames, but we needed to apply modifications for when we eventually combined the 16/17 with the merged. 
 We renamed the unique ID column to `person_id` and transformed it to a character. This does not affect the data, but is necessary for the join.
-```{r}
+```{r Create unfactored df(16)}
 argentina_16_unfactor <- read_dta("data/2016_argentina.dta") %>%
   rename(person_id = uniq_id) %>% 
   assert(is_uniq, person_id) %>% 

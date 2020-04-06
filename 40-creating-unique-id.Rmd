@@ -15,7 +15,7 @@ Then, a similar function is written for the factored countries, but in this step
 The unfactored and factored datasets will be joined later in the process.
 
 ## Function to make unique ID for unfactored countries
-```{r}
+```{r Define making_uniqueID() for unfactored df}
 making_uniqueID <- function(country){
   #Combines idnum and idnum_14 with "/"
   country <- mutate(country,
@@ -44,7 +44,7 @@ making_uniqueID <- function(country){
 
 #### Applying `making_uniqueID` to all unfactored, merged countries
 Note: Guayana and Jamaica are written in English only. This will affect the way the Tableau viz looks, so if you do not want them in your visualizations, you can comment them out by adding a hashtag # before it. 
-```{r}
+```{r Make uniqueID for all unfactored df}
 argentina_unique_unfactor <- making_uniqueID(argentina_unfactor)
 belize_unique_unfactor <- making_uniqueID(belize_unfactor)
 bolivia_unique_unfactor <- making_uniqueID(bolivia_unfactor)
@@ -72,7 +72,7 @@ venezuela_unique_unfactor <- making_uniqueID(venezuela_unfactor)
 
 ## Function to make unique ID for factored countries
 The function below is the same as above, except `making_uniqueID` is now `making_uniqueID_factor` to indicate it needs to be used for factored data
-```{r}
+```{r Define making_uniqueID_factor() for factored df}
 making_uniqueID_factor <- function(country){
   #Combines idnum and idnum_14 with "/" and then makes unique id
   country <- mutate(country,
@@ -101,7 +101,7 @@ making_uniqueID_factor <- function(country){
 
 #### Applying `making_uniqueID_factor` to all countries
 The note about Guyana and Jamiaca applies here as well.
-```{r}
+```{r Make uniqueID for all factored df}
 argentina_unique_factor <- making_uniqueID_factor(argentina_factor)
 belize_unique_factor <- making_uniqueID_factor(belize_factor)
 bolivia_unique_factor <- making_uniqueID_factor(bolivia_factor)

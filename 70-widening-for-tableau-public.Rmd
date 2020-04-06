@@ -18,7 +18,7 @@ In order to do this we are going to:
 * pivot using names from `category_question` and values from `answer_measure`
 
 ## Combining category and question
-```{r}
+```{r Combine category and question}
 total_long_common_narrow <- total_long_common_recoded %>% 
   unite(category_question, category, question, sep = ":", remove = FALSE) %>%
   unite(category_colname, category, column_name, sep = ":", remove = FALSE) %>%
@@ -27,7 +27,7 @@ total_long_common_narrow <- total_long_common_recoded %>%
 
 Clear out all but needed dataframes to reduce memory
 
-```{r}
+```{r Remove useless df}
 rm.all.but(c("total_long_common_recoded", "total_long_common", "total_long_common_narrow", "combined_clean", "label_val", "qword", "response_labels"))
 ```
 
@@ -37,7 +37,7 @@ rm.all.but(c("total_long_common_recoded", "total_long_common", "total_long_commo
 Explicitly name the dimensions and measures 
 
 Define list of all columns names that are measures
-```{r}
+```{r Create measures/dimensions list}
 measures <- c(
       "a4",
       "aoj11",
@@ -210,7 +210,7 @@ dimensions <- c(
 ```
 
 
-```{r}
+```{r Save wide data as .csv}
 final_wide_measure <-
   total_long_common_narrow %>% # Include only measures (cols with recode)
   filter(
@@ -246,7 +246,7 @@ write_csv(final_wide, "lapop_wide_v5.csv", na = "NULL ")
 
 
 ##Find specific questions
-```{r}
+```{r Check specific question}
 total_long_common_narrow %>% 
   filter(column_name == "a4")
 

@@ -17,7 +17,7 @@ This step is only required for when individual years need to be combined with a 
 If your individual years differ from 16/17, you will need to change the name of the datasets and use the correct year in the add wave function.
 
 ## Lists of files by year
-```{r}
+```{r Create df list}
 countries_2016 <-
   list(
     argentina_16_factor,
@@ -65,7 +65,7 @@ countries_2016 <-
 
 ## Function to adding wave column
 ### For unfactored datasets
-```{r}
+```{r Define add_wave_unfactor_2016()}
 add_wave_unfactor_2016 <- function(country){
   #Adds new column, wave, with appropriate year
   country <- country %>%
@@ -75,7 +75,7 @@ add_wave_unfactor_2016 <- function(country){
 ```
 
 ### For factored datasets
-```{r}
+```{r Define add_wave_factor_2016()}
 add_wave_factor_2016 <- function(country){
   #Adds new column, wave, with appropriate year
   country <- country %>%
@@ -85,7 +85,7 @@ add_wave_factor_2016 <- function(country){
 ```
 
 # 2016/17 datasets, factored and unfactored
-```{r}
+```{r Add wave into 16/17 df}
 #Argentina
 argentina_16_factor <- add_wave_factor_2016(argentina_16_factor)
 argentina_16_unfactor <- add_wave_unfactor_2016(argentina_16_unfactor)

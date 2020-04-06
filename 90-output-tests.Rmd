@@ -25,7 +25,15 @@ lwv5 <- read_csv("lapop_wide_v5.csv", na = "NULL ")
 
 ## Compare Data Frames Function
 ```{r}
+# `comp_df` will return number of differences and the instances of differences in;
+# 1) rows
+# 2) columns
+# 3) and cells
 comp_df <- function (org_df, new_df) {
+# org_df : path of original data frame to be compared
+# new_df : path of new data frame to be compared
+# output : document showing the differences between the data frames
+
   org_df <- read_csv(org_df, na = "NULL ") 
   new_df <- read_csv(new_df, na = "NULL ") 
   render_diff(
@@ -34,11 +42,6 @@ comp_df <- function (org_df, new_df) {
   )
 }
 ```
-
-comp_df will return number of differences and the instances of differences in;
-1) rows
-2) columns
-3) and cells
 
 ## Compare Data Frames
 ```{r}

@@ -3,6 +3,11 @@ title: "90-output-tests"
 output: html_notebook
 ---
 
+```{r}
+library(daff)
+library(readr)
+```
+
 # Check Differences Between CSV Output versions
 
 We are refactoring a significant portion of the code base and need to ensure that changes to the final produce data tables change in an understandable way. 
@@ -13,29 +18,29 @@ Version 4 lapop_wide_v4.csv is the last version written by the old code base. Ne
 
 ### Read Versions 4 and 5
 ```{r}
+# not needed
 lwv4 <- read_csv("lapop_wide_v4.csv", na = "NULL ") 
 lwv5 <- read_csv("lapop_wide_v5.csv", na = "NULL ") 
 ```
 
-## Compare Columns
+## Compare Data Frames Function
 ```{r}
-
+comp_df <- function (org_df, new_df) {
+  org_df <- read_csv(org_df, na = "NULL ") 
+  new_df <- read_csv(new_df, na = "NULL ") 
+  render_diff(
+    diff_data(data_ref = org_df,
+              data = new_df)
+  )
+}
 ```
 
-## Find Missing/Added Data
+comp_df will return number of differences and the instances of differences in;
+1) rows
+2) columns
+3) and cells
 
-Rows in 4 but Missing in 5
+## Compare Data Frames
 ```{r}
-
+comp_df("lapop_wide_v4.csv","lapop_wide_v5.csv")
 ```
-
-Rows New in 5
-```{r}
-
-```
-
-Data Changed Between 4 and 5
-```{r}
-
-```
-

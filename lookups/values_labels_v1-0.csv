@@ -1,0 +1,1043 @@
+﻿column_name,value,label_en,label_es,value_recoded
+a4,1,Economy,Economía,1
+a4,2,Economy,Economía,1
+a4,3,Economy,Economía,1
+a4,4,Economy,Economía,1
+a4,7,Economy,Economía,1
+a4,9,Economy,Economía,1
+a4,26,Economy,Economía,1
+a4,1082,Economy,Economía,1
+a4,1092,Economy,Economía,1
+a4,1562,Economy,Economía,1
+a4,1563,Economy,Economía,1
+a4,1697,Economy,Economía,1
+a4,10105,Economy,Economía,1
+a4,5,Security,Seguridad,2
+a4,14,Security,Seguridad,2
+a4,17,Security,Seguridad,2
+a4,27,Security,Seguridad,2
+a4,31,Security,Seguridad,2
+a4,33,Security,Seguridad,2
+a4,57,Security,Seguridad,2
+a4,80,Security,Seguridad,2
+a4,862,Security,Seguridad,2
+a4,863,Security,Seguridad,2
+a4,1091,Security,Seguridad,2
+a4,1165,Security,Seguridad,2
+a4,1687,Security,Seguridad,2
+a4,18,Basic Services,Servicios básicos,3
+a4,19,Basic Services,Servicios básicos,3
+a4,21,Basic Services,Servicios básicos,3
+a4,22,Basic Services,Servicios básicos,3
+a4,23,Basic Services,Servicios básicos,3
+a4,24,Basic Services,Servicios básicos,3
+a4,55,Basic Services,Servicios básicos,3
+a4,60,Basic Services,Servicios básicos,3
+a4,1564,Basic Services,Servicios básicos,3
+a4,13,Politics,Política,4
+a4,15,Politics,Política,4
+a4,30,Politics,Política,4
+a4,56,Politics,Política,4
+a4,59,Politics,Política,4
+a4,61,Politics,Política,4
+a4,471,Politics,Política,4
+a4,472,Politics,Política,4
+a4,474,Politics,Política,4
+a4,1071,Politics,Política,4
+a4,1076,Politics,Política,4
+a4,1077,Politics,Política,4
+a4,1078,Politics,Política,4
+a4,1079,Politics,Política,4
+a4,1083,Politics,Política,4
+a4,1084,Politics,Política,4
+a4,1085,Politics,Política,4
+a4,1689,Politics,Política,4
+a4,10102,Politics,Política,4
+a4,6,Other,Otros,5
+a4,10,Other,Otros,5
+a4,11,Other,Otros,5
+a4,12,Other,Otros,5
+a4,16,Other,Otros,5
+a4,20,Other,Otros,5
+a4,25,Other,Otros,5
+a4,32,Other,Otros,5
+a4,58,Other,Otros,5
+a4,70,Other,Otros,5
+a4,864,Other,Otros,5
+a4,865,Other,Otros,5
+a4,1081,Other,Otros,5
+a4,1362,Other,Otros,5
+a4,1471,Other,Otros,5
+a4,1496,Other,Otros,5
+a4,2262,Other,Otros,5
+a4,2465,Other,Otros,5
+a4,2466,Other,Otros,5
+a4,10101,Other,Otros,5
+a4,10106,Other,Otros,5
+a4,10107,Other,Otros,5
+a4,10108,Other,Otros,5
+aoj11,4,Very Unsafe,Muy inseguro(a),0
+aoj11,3,Somewhat Unsafe,Algo inseguro(a),33.33333
+aoj11,2,Somewhat Safe,Algo seguro(a),66.66666
+aoj11,1,Very Safe,Muy seguro(a),100
+aoj12,4,None,Nada,0
+aoj12,3,Little,Poco,33.33333
+aoj12,2,Some,Algo,66.66666
+aoj12,1,A lot,Mucho,100
+b0,1,Not at All,Nada,0
+b0,2,2,2,16.66667
+b0,3,3,3,33.33333
+b0,4,4,4,50
+b0,5,5,5,66.66666
+b0,6,6,6,83.33334
+b0,7,A Lot,Mucho,100
+b1,1,Not at All,Nada,0
+b1,2,2,2,16.66667
+b1,3,3,3,33.33333
+b1,4,4,4,50
+b1,5,5,5,66.66666
+b1,6,6,6,83.33334
+b1,7,A Lot,Mucho,100
+b12,1,Not at All,Nada,0
+b12,2,2,2,16.66667
+b12,3,3,3,33.33333
+b12,4,4,4,50
+b12,5,5,5,66.66666
+b12,6,6,6,83.33334
+b12,7,A Lot,Mucho,100
+b13,1,Not at All,Nada,0
+b13,2,2,2,16.66667
+b13,3,3,3,33.33333
+b13,4,4,4,50
+b13,5,5,5,66.66666
+b13,6,6,6,83.33334
+b13,7,A Lot,Mucho,100
+b18,1,Not at All,Nada,0
+b18,2,2,2,16.66667
+b18,3,3,3,33.33333
+b18,4,4,4,50
+b18,5,5,5,66.66666
+b18,6,6,6,83.33334
+b18,7,A Lot,Mucho,100
+b2,1,Not at All,Nada,0
+b2,2,2,2,16.66667
+b2,3,3,3,33.33333
+b2,4,4,4,50
+b2,5,5,5,66.66666
+b2,6,6,6,83.33334
+b2,7,A Lot,Mucho,100
+b21,1,Not at All,Nada,0
+b21,2,2,2,16.66667
+b21,3,3,3,33.33333
+b21,4,4,4,50
+b21,5,5,5,66.66666
+b21,6,6,6,83.33334
+b21,7,A Lot,Mucho,100
+b21a,1,Not at All,Nada,0
+b21a,2,2,2,16.66667
+b21a,3,3,3,33.33333
+b21a,4,4,4,50
+b21a,5,5,5,66.66666
+b21a,6,6,6,83.33334
+b21a,7,A Lot,Mucho,100
+b3,1,Not at All,Nada,0
+b3,2,2,2,16.66667
+b3,3,3,3,33.33333
+b3,4,4,4,50
+b3,5,5,5,66.66666
+b3,6,6,6,83.33334
+b3,7,A Lot,Mucho,100
+b31,1,Not at All,Nada,0
+b31,2,2,2,16.66667
+b31,3,3,3,33.33333
+b31,4,4,4,50
+b31,5,5,5,66.66666
+b31,6,6,6,83.33334
+b31,7,A Lot,Mucho,100
+b32,1,Not at All,Nada,0
+b32,2,2,2,16.66667
+b32,3,3,3,33.33333
+b32,4,4,4,50
+b32,5,5,5,66.66666
+b32,6,6,6,83.33334
+b32,7,A Lot,Mucho,100
+b37,1,Not at All,Nada,0
+b37,2,2,2,16.66667
+b37,3,3,3,33.33333
+b37,4,4,4,50
+b37,5,5,5,66.66666
+b37,6,6,6,83.33334
+b37,7,A Lot,Mucho,100
+b4,1,Not at All,Nada,0
+b4,2,2,2,16.66667
+b4,3,3,3,33.33333
+b4,4,4,4,50
+b4,5,5,5,66.66666
+b4,6,6,6,83.33334
+b4,7,A Lot,Mucho,100
+b47a,1,Not at All,Nada,0
+b47a,2,2,2,16.66667
+b47a,3,3,3,33.33333
+b47a,4,4,4,50
+b47a,5,5,5,66.66666
+b47a,6,6,6,83.33334
+b47a,7,A Lot,Mucho,100
+b6,1,Not at All,Nada,0
+b6,2,2,2,16.66667
+b6,3,3,3,33.33333
+b6,4,4,4,50
+b6,5,5,5,66.66666
+b6,6,6,6,83.33334
+b6,7,A Lot,Mucho,100
+cct1b,2,No,No,0
+cct1b,1,Yes,Sí,100
+colorr,1,Very Light,Más claro,
+colorr,2,2,2,
+colorr,3,3,3,
+colorr,4,4,4,
+colorr,5,5,5,
+colorr,6,6,6,
+colorr,7,7,7,
+colorr,8,8,8,
+colorr,9,9,9,
+colorr,10,10,10,
+colorr,11,Very Dark,Más oscuro,
+colorr,12,12,12,
+conocim,1,Very High,Muy alto,
+conocim,2,High,Alto,
+conocim,3,Neither High Nor Low,Ni alto ni bajo,
+conocim,4,Low,Bajo,
+conocim,5,Very Low,Muy bajo,
+cp13,1,Once a Week,Una vez a la semana,
+cp13,2,Once or Twice a Month,Una o dos veces al mes,
+cp13,3,Once or Twice a Year,Una o dos veces al año,
+cp13,4,Never,Nunca,
+cp6,1,Once a Week,Una vez a la semana,
+cp6,2,Once or Twice a Month,Una o dos veces al mes,
+cp6,3,Once or Twice a Year,Una o dos veces al año,
+cp6,4,Never,Nunca,
+cp7,1,Once a Week,Una vez a la semana,
+cp7,2,Once or Twice a Month,Una o dos veces al mes,
+cp7,3,Once or Twice a Year,Una o dos veces al año,
+cp7,4,Never,Nunca,
+cp8,1,Once a Week,Una vez a la semana,
+cp8,2,Once or Twice a Month,Una o dos veces al mes,
+cp8,3,Once or Twice a Year,Una o dos veces al año,
+cp8,4,Never,Nunca,
+d1,1,Strongly disapprove,Desaprueba firmemente,0
+d1,2,2,2,11.11111
+d1,3,3,3,22.22222
+d1,4,4,4,33.33333
+d1,5,5,5,44.44444
+d1,6,6,6,55.55556
+d1,7,7,7,66.66666
+d1,8,8,8,77.77778
+d1,9,9,9,88.88889
+d1,10,Strongly approve,Aprueba firmemente,100
+d2,1,Strongly disapprove,Desaprueba firmemente,0
+d2,2,2,2,11.11111
+d2,3,3,3,22.22222
+d2,4,4,4,33.33333
+d2,5,5,5,44.44444
+d2,6,6,6,55.55556
+d2,7,7,7,66.66666
+d2,8,8,8,77.77778
+d2,9,9,9,88.88889
+d2,10,Strongly approve,Aprueba firmemente,100
+d3,1,Strongly disapprove,Desaprueba firmemente,0
+d3,2,2,2,11.11111
+d3,3,3,3,22.22222
+d3,4,4,4,33.33333
+d3,5,5,5,44.44444
+d3,6,6,6,55.55556
+d3,7,7,7,66.66666
+d3,8,8,8,77.77778
+d3,9,9,9,88.88889
+d3,10,Strongly approve,Aprueba firmemente,100
+d4,1,Strongly disapprove,Desaprueba firmemente,0
+d4,2,2,2,11.11111
+d4,3,3,3,22.22222
+d4,4,4,4,33.33333
+d4,5,5,5,44.44444
+d4,6,6,6,55.55556
+d4,7,7,7,66.66666
+d4,8,8,8,77.77778
+d4,9,9,9,88.88889
+d4,10,Strongly approve,Aprueba firmemente,100
+d5,1,Strongly disapprove,Desaprueba firmemente,0
+d5,2,2,2,11.11111
+d5,3,3,3,22.22222
+d5,4,4,4,33.33333
+d5,5,5,5,44.44444
+d5,6,6,6,55.55556
+d5,7,7,7,66.66666
+d5,8,8,8,77.77778
+d5,9,9,9,88.88889
+d5,10,Strongly approve,Aprueba firmemente,100
+d6,1,Strongly disapprove,Desaprueba firmemente,0
+d6,2,2,2,11.11111
+d6,3,3,3,22.22222
+d6,4,4,4,33.33333
+d6,5,5,5,44.44444
+d6,6,6,6,55.55556
+d6,7,7,7,66.66666
+d6,8,8,8,77.77778
+d6,9,9,9,88.88889
+d6,10,Strongly approve,Aprueba firmemente,100
+drk1,1,Not Likely at All,Nada probable,
+drk1,2,A Little Likely,Poco probable,
+drk1,3,Somewhat Likely,Algo probable,
+drk1,4,Very Likely,Muy probable,
+dst1b,1,Strongly Disagree,Muy en desacuerdo,0
+dst1b,2,2,2,16.66667
+dst1b,3,3,3,33.33333
+dst1b,4,4,4,50
+dst1b,5,5,5,66.66666
+dst1b,6,6,6,83.33334
+dst1b,7,Strongly Agree,Muy de acuerdo,100
+e5,1,Strongly disapprove,Desaprueba firmemente,0
+e5,2,2,2,11.11111
+e5,3,3,3,22.22222
+e5,4,4,4,33.33333
+e5,5,5,5,44.44444
+e5,6,6,6,55.55556
+e5,7,7,7,66.66666
+e5,8,8,8,77.77778
+e5,9,9,9,88.88889
+e5,10,Strongly approve,Aprueba firmemente,100
+ed,0,None,Ninguno,
+ed,1,1,1,
+ed,2,2,2,
+ed,3,3,3,
+ed,4,4,4,
+ed,5,5,5,
+ed,6,6,6,
+ed,7,7,7,
+ed,8,8,8,
+ed,9,9,9,
+ed,10,10,10,
+ed,11,11,11,
+ed,12,12,12,
+ed,13,13,13,
+ed,14,14,14,
+ed,15,15,15,
+ed,16,16,16,
+ed,17,17,17,
+ed,18,18+,18+,
+eff1,1,Strongly Disagree,Muy en desacuerdo,0
+eff1,2,2,2,16.66667
+eff1,3,3,3,33.33333
+eff1,4,4,4,50
+eff1,5,5,5,66.66666
+eff1,6,6,6,83.33334
+eff1,7,Strongly Agree,Muy de acuerdo,100
+eff2,1,Strongly Disagree,Muy en desacuerdo,0
+eff2,2,2,2,16.66667
+eff2,3,3,3,33.33333
+eff2,4,4,4,50
+eff2,5,5,5,66.66666
+eff2,6,6,6,83.33334
+eff2,7,Strongly Agree,Muy de acuerdo,100
+env1calt,1,Give resources to municipality/municipal/local government,Darle recursos a municipalidad/gobierno municipal/local,
+env1calt,2,Give resources to NGOs/non-governmental organizations or community organizations,Darle recursos a ONGs/organizaciones no gubernamentales u organizaciones comunitarias,
+env2b,1,Very Serious,Muy serio,
+env2b,2,Somewhat Serious,Algo serio,
+env2b,3,Not So Serious,Poco serio,
+env2b,4,Not Serious at All,Nada serio,
+estratosec,1,Large,Grande,
+estratosec,2,Medium,Mediana,
+estratosec,3,Small,Pequeña,
+estratosec,4,4,4,
+estratosec,5,5,5,
+exc11,0,No,No,0
+exc11,1,Yes,Sí,100
+exc13,0,No,No,0
+exc13,1,Yes,Sí,100
+exc14,0,No,No,0
+exc14,1,Yes,Sí,100
+exc15,0,No,No,0
+exc15,1,Yes,Sí,100
+exc16,0,No,No,0
+exc16,1,Yes,Sí,100
+exc18,0,No,No,0
+exc18,1,Yes,Sí,100
+exc2,0,No,No,0
+exc2,1,Yes,Sí,100
+exc6,0,No,No,0
+exc6,1,Yes,Sí,100
+exc7,4,Not Widespread at All,Nada generalizada,0
+exc7,3,Not Very Widespread,Poco generalizada,33.33333
+exc7,2,Somewhat Widespread,Algo generalizada,66.66666
+exc7,1,Very Widespread,Muy generalizada,100
+exc7new,1,None,Ninguno,
+exc7new,2,Less than half of them,Menos de la mitad,
+exc7new,3,Half of them,La mitad de los políticos,
+exc7new,4,More than half of them,Más de la mitad,
+exc7new,5,All,Todos,
+formal,2,No,No,0
+formal,1,Yes,Sí,100
+gi0n,1,Daily,Diariamente,
+gi0n,2,A few times a week,Algunas veces a la semana,
+gi0n,3,A few times a month,Algunas veces al mes,
+gi0n,4,A few times a year,Algunas veces al año,
+gi0n,5,Never,Nunca,
+idio2,1,Better,Mejor,
+idio2,2,Same,Igual,
+idio2,3,Worse,Peor,
+idiomaq,1,Spanish,Español,
+idiomaq,2,English,Inglés,
+idiomaq,3,Portuguese,Portugués,
+idiomaq,12,Dutch,Holandés,
+idiomaq,14,Kreyól (Haitian Creole),Kreyól (Creole Haitiano),
+idiomaq,102,102,102,
+idiomaq,902,902,902,
+idiomaq,1002,Quechua,Quechua,
+idiomaq,1003,Aymara,Aymara,
+idiomaq,1202,Spanish/Guarani,Español/Guarani,
+idiomaq,1203,1203,1203,
+idiomaq,1204,1204,1204,
+idiomaq,2713,2713,2713,
+idiomaq,4101,French,Francés,
+infrax,1,Less than 10 minutes,Menos de 10 minutos,
+infrax,2,Between 10 and 30 minutes,Entre 10 y hasta 30 minutos,
+infrax,3,More than 30 minutes and up to an hour,Más de 30 minutos y hasta una hora,
+infrax,4,More than 1 hour and up to 3 hours,Más de 1 hora y hasta 3 horas,
+infrax,5,More than 3 hours,Más de 3 horas,
+infrax,6,[Don't Read] There are no police/they would not come,[No Leer] No hay Policía/ No llegaría nunca,
+ing4,1,Strongly Disagree,Muy en desacuerdo,0
+ing4,2,2,2,16.66667
+ing4,3,3,3,33.33333
+ing4,4,4,4,50
+ing4,5,5,5,66.66666
+ing4,6,6,6,83.33334
+ing4,7,Strongly Agree,Muy de acuerdo,100
+inteval,1,Not at all interesting,Nada interesante,
+inteval,2,2,2,
+inteval,3,3,3,
+inteval,4,4,4,
+inteval,5,5,5,
+inteval,6,6,6,
+inteval,7,7,7,
+inteval,8,8,8,
+inteval,9,9,9,
+inteval,10,Very interesting,Muy interesante,
+inteval,11,11,11,
+inteval,12,12,12,
+it1,4,Untrustworthy,Nada confiable,0
+it1,3,Not Very Trustworthy,Poco confiable,33.33333
+it1,2,Somewhat Trustworthy,Algo confiable,66.66666
+it1,1,Very Trustworthy,Muy confiable,100
+jc10,2,"No, a military take-over of the state would not be justified",No se justificaría que los militares tomen el poder por un golpe de Estado,0
+jc10,1,"Yes, a military take-over of the state would be justified",Se justificaría que los militares tomen el poder por un golpe de Estado,100
+jc13,2,"No, a military take-over of the state would not be justified",No se justificaría que los militares tomen el poder por un golpe de Estado,0
+jc13,1,"Yes, a military take-over of the state would be justified",Se justificaría que los militares tomen el poder por un golpe de Estado,100
+jc15a,2,"No, it is not justified",No se justificaría,0
+jc15a,1,"Yes, it is justified",Sí se justificaría,100
+jc16a,2,"No, it is not justified",No se justificaría,0
+jc16a,1,"Yes, it is justified",Sí se justificaría,100
+l1,1,Left,Izquierda,
+l1,2,2,2,
+l1,3,3,3,
+l1,4,4,4,
+l1,5,5,5,
+l1,6,6,6,
+l1,7,7,7,
+l1,8,8,8,
+l1,9,9,9,
+l1,10,Right,Derecha,
+m1,5,Very Bad,Muy malo (pésimo),0
+m1,4,Bad,Malo,25
+m1,3,Neither Good nor Bad (Fair),Ni bueno ni malo (regular),50
+m1,2,Good,Bueno,75
+m1,1,Very Good,Muy bueno,100
+mil10a,4,Untrustworthy,Nada confiable,0
+mil10a,3,Not Very Trustworthy,Poco confiable,33.33333
+mil10a,2,Somewhat Trustworthy,Algo confiable,66.66666
+mil10a,1,Very Trustworthy,Muy confiable,100
+mil10e,4,Untrustworthy,Nada confiable,0
+mil10e,3,Not Very Trustworthy,Poco confiable,33.33333
+mil10e,2,Somewhat Trustworthy,Algo confiable,66.66666
+mil10e,1,Very Trustworthy,Muy confiable,100
+ocup1a,1,Salaried employee of government or state-owned enterprise,Asalariado del gobierno o empresa estatal,
+ocup1a,2,Salaried employee in the private sector,Asalariado en el sector privado,
+ocup1a,3,Owner or partner in a business,Patrono o socio de empresa,
+ocup1a,4,Self-employed,Trabajador por cuenta propia,
+ocup1a,5,Unpaid worker,Trabajador no remunerado o sin pago,
+ocup4a,1,Working,Trabajando,
+ocup4a,2,"Not working at the moment, but have a job",No está trabajando en este momento pero tiene trabajo,
+ocup4a,3,Actively looking for a job,Está buscando trabajo activamente,
+ocup4a,4,Student,Es estudiante,
+ocup4a,5,Taking care of the home,Se dedica a los quehaceres de su hogar,
+ocup4a,6,"Retired, pensioner or permanently disabled to work","Está jubilado, pensionado o incapacitado permanentemente para trabajar",
+ocup4a,7,Not working and not looking for a job,No trabaja y no está buscando trabajo,
+ocupoit,1,Directors and Managers,Directores y gerentes,
+ocupoit,2,Scientific and Intellectual Professionals,Profesionales científicos e intelectuales,
+ocupoit,3,Mid-level Technicians and Professionals,Técnicos y profesionales de nivel medio,
+ocupoit,4,Administrative Support Staff,Personal de apoyo administrativo,
+ocupoit,5,Service Workers and Sales Workers,Trabajadores de los servicios y vendedores de comercios y mercados,
+ocupoit,6,"Farmers and Skilled Agricultural, Forestry, and Fisherying Workers","Agricultores y trabajadores calificados agropecuarios, forestales y pesqueros",
+ocupoit,7,"Officials, Operators, and Mechanical Artisans, and Related Trade Workers","Oficiales, operarios y artesanos de artes mecánicas y de otros oficios",
+ocupoit,8,"Plant and Machine Operators, and Assemblers",Operadores de instalaciones y máquinas y ensambladores,
+ocupoit,9,Unskilled Occupations,Ocupaciones elementales,
+ocupoit,10,Armed Forces Occupations,Ocupaciones militares,
+pais,1,Mexico,México,
+pais,2,Guatemala,Guatemala,
+pais,3,El Salvador,El Salvador,
+pais,4,Honduras,Honduras,
+pais,5,Nicaragua,Nicaragua,
+pais,6,Costa Rica,Costa Rica,
+pais,7,Panama,Panamá,
+pais,8,Colombia,Colombia,
+pais,9,Ecuador,Ecuador,
+pais,10,Bolivia,Bolivia,
+pais,11,Peru,Perú,
+pais,12,Paraguay,Paraguay,
+pais,13,Chile,Chile,
+pais,14,Uruguay,Uruguay,
+pais,15,Brazil,Brasil,
+pais,16,Venezuela,Venezuela,
+pais,17,Argentina,Argentina,
+pais,21,Dominican Republic,República Dominicana,
+pais,22,Haiti,Haití,
+pais,23,Jamaica,Jamaica,
+pais,24,Guyana,Guyana,
+pais,25,Trinidad & Tobago,Trinidad & Tobago,
+pais,26,Belize,Belice,
+pais,27,Suriname,Surinam,
+pais,28,Bahamas,Bahamas,
+pais,29,Barbados,Barbados,
+pais,30,Grenada,Granada,
+pais,31,Saint Lucia,Santa Lucía,
+pais,32,Dominica,Dominica,
+pais,34,Saint Vincent and the Grenadines,San Vicente y las Granadinas,
+pais,35,Saint Kitts and Nevis,San Cristóbal y Nieves,
+pais,40,United States,Estados Unidos,
+pais,41,Canada,Canadá,
+pn4,4,Very Dissatisfied,Muy insatisfecho(a),0
+pn4,3,Dissatisfied,Insatisfecho(a),33.33333
+pn4,2,Satisfied,Satisfecho(a),66.66666
+pn4,1,Very Satisfied,Muy satisfecho(a),100
+pol1,4,None,Nada,0
+pol1,3,Little,Poco,33.33333
+pol1,2,Some,Algo,66.66666
+pol1,1,A lot,Mucho,100
+pra10,1,Extremely worried,Extremadamente preocupado,
+pra10,2,Seriously worried,Seriamente preocupado,
+pra10,3,Something worried,Algo preocupado,
+pra10,4,Nothing worried,Nada preocupado,
+pra2n,1,Very Qualified,Muy calificado,
+pra2n,2,Somewhat Qualified,Algo calificado,
+pra2n,3,A Little Qualified,Poco calificado,
+pra2n,4,Not at All Qualified,Nada calificado,
+pra8an_1,0,Not Selected,No seleccionado,
+pra8an_1,1,Selected,Seleccionado,
+pra8an_2,0,Not Selected,No seleccionado,
+pra8an_2,1,Selected,Seleccionado,
+pra8an_3,0,Not Selected,No seleccionado,
+pra8an_3,1,Selected,Seleccionado,
+pra8an_5,0,Not Selected,No seleccionado,
+pra8an_5,1,Selected,Seleccionado,
+pra8an_6,0,Not Selected,No seleccionado,
+pra8an_6,1,Selected,Seleccionado,
+pra8an_7,0,Not Selected,No seleccionado,
+pra8an_7,1,Selected,Seleccionado,
+pra8an_77,0,Not Selected,No seleccionado,
+pra8an_77,1,Selected,Seleccionado,
+pra8n,2,No,No,0
+pra8n,1,Yes,Sí,100
+prot3,2,"No, I have not participated",No ha participado,0
+prot3,1,"Yes, I have participated",Sí ha participado,100
+psc1,1,Piped water/public water pipe/tap water into dwelling,Tubería o red pública dentro del hogar,
+psc1,2,Piped water to yard/plot,Tubería o red pública en el patio/lote/parcela,
+psc1,3,Irregular connection (stealing) to public water pipe,Conexión irregular (colgado) a red pública,
+psc1,4,Public tap/standpipe/tank,Pila o tanque de uso público,
+psc1,5,Tubewell/borehole,Pozo entubado/pozo perforación,
+psc1,6,Protected dug well,Pozo excavado cubierto/aljibe,
+psc1,7,Unprotected dug well,Pozo excavado descubierto,
+psc1,8,Protected spring,Manantial cubierto,
+psc1,9,Unprotected spring,Manantial descubierto,
+psc1,10,Rainwater collection,Recolección de agua de lluvia,
+psc1,11,Bottled water,Agua embotellada,
+psc1,12,Cart with small tank/drum,Carreta con tanque pequeño/tambor,
+psc1,13,Tanker-truck,Carrotanque,
+psc1,14,"River, creek, stream, canal, irrigation canals","Río, arroyo, canal, canales de irrigación/riego",
+psc1,77,Other,Otro,
+psc10,0,No,No,
+psc10,1,1,1,
+psc10,2,2,2,
+psc10,3,3,3,
+psc10,4,4,4,
+psc10,5,5,5,
+psc10,6,6,6,
+psc10,7,[Don't Read] Did not pay because did not receive receipt,[No Leer] No pagó porque no recibió el recibo,
+psc11,1,Piped sewer system,Sistema de alcantarillado/desagüe,
+psc11,2,Septic tank/hole outside the house,Tanque/fosa séptica fuera de la casa,
+psc11,3,Tubing flowing to creek/waterway,Entubado hacia arroyo/curso de agua,
+psc11,4,Other [flows/discharges somewhere else],Otra respuesta [fluye/descarga hacia otro lugar],
+psc11,5,Flows/discharges to unknown place/not sure/does not know,Fluye/descarga a lugar desconocido/no está seguro/No sabe donde,
+psc11,6,Well/black well not connected to any system,Pozo/pozo negro no conectado a ningún sistema,
+psc11,7,Connected to treatment plant/system,Conectado a planta/sistema de tratamiento,
+psc11a,1,Ventilated pit latrine,Letrina mejorada con ventilación,
+psc11a,2,Pit latrine with slab,Letrina de pozo con inodoro,
+psc11a,3,Pit latrine without slab/open pit,Letrina de pozo sin inodoro/pozo abierto,
+psc11a,4,Composting toilet/dry toilet/eco toilet,Baño de composta/baño seco/sanitario seco/ecológico,
+psc11a,5,Bucket,Balde,
+psc11a,6,Hanging toilet/hanging latrine,Baño/retrete/letrina colgante,
+psc11a,7,No facilities or uses bush or field,No usa infraestructura o usa arbusto o campo/superficie,
+psc11a,77,Other,Otro,
+psc12,1,Yes,Sí,
+psc12,2,No,No,
+psc13_1,0,Not Selected,No seleccionado,
+psc13_1,1,Selected,Seleccionado,
+psc13_10,0,Not Selected,No seleccionado,
+psc13_10,1,Selected,Seleccionado,
+psc13_11,0,Not Selected,No seleccionado,
+psc13_11,1,Selected,Seleccionado,
+psc13_12,0,Not Selected,No seleccionado,
+psc13_12,1,Selected,Seleccionado,
+psc13_13,0,Not Selected,No seleccionado,
+psc13_13,1,Selected,Seleccionado,
+psc13_2,0,Not Selected,No seleccionado,
+psc13_2,1,Selected,Seleccionado,
+psc13_3,0,Not Selected,No seleccionado,
+psc13_3,1,Selected,Seleccionado,
+psc13_4,0,Not Selected,No seleccionado,
+psc13_4,1,Selected,Seleccionado,
+psc13_5,0,Not Selected,No seleccionado,
+psc13_5,1,Selected,Seleccionado,
+psc13_6,0,Not Selected,No seleccionado,
+psc13_6,1,Selected,Seleccionado,
+psc13_7,0,Not Selected,No seleccionado,
+psc13_7,1,Selected,Seleccionado,
+psc13_8,0,Not Selected,No seleccionado,
+psc13_8,1,Selected,Seleccionado,
+psc13_9,0,Not Selected,No seleccionado,
+psc13_9,1,Selected,Seleccionado,
+psc2,1,Piped water/public water pipe/tap water into dwelling,Tubería o red pública dentro del hogar,
+psc2,2,Piped water to yard/plot,Tubería o red pública en el patio/lote/parcela,
+psc2,3,Irregular connection (stealing) to public water pipe,Conexión irregular (colgado) a red pública,
+psc2,4,Public tap/standpipe/tank,Pila o tanque de uso público,
+psc2,5,Tubewell/borehole,Pozo entubado/pozo perforación,
+psc2,6,Protected dug well,Pozo excavado cubierto/aljibe,
+psc2,7,Unprotected dug well,Pozo excavado descubierto,
+psc2,8,Protected spring,Manantial cubierto,
+psc2,9,Unprotected spring,Manantial descubierto,
+psc2,10,Rainwater collection,Recolección de agua de lluvia,
+psc2,11,Bottled water,Agua embotellada,
+psc2,12,Cart with small tank/drum,Carreta con tanque pequeño/tambor,
+psc2,13,Tanker-truck,Carrotanque,
+psc2,14,"River, creek, stream, canal, irrigation canals","Río, arroyo, canal, canales de irrigación/riego",
+psc2,77,Other,Otro,
+psc3_0,0,Not Selected,No seleccionado,
+psc3_0,1,Selected,Seleccionado,
+psc3_1,0,Not Selected,No seleccionado,
+psc3_1,1,Selected,Seleccionado,
+psc3_2,0,Not Selected,No seleccionado,
+psc3_2,1,Selected,Seleccionado,
+psc3_3,0,Not Selected,No seleccionado,
+psc3_3,1,Selected,Seleccionado,
+psc4,1,National/Central government,Gobierno nacional,
+psc4,2,Regional government,Gobierno departamental,
+psc4,3,Local/Municipal government,Gobierno municipal,
+psc4,4,Water service company,Empresa proveedora del servicio de agua,
+psc4,5,Climate change or Extreme weather conditions,Cambio climático o condiciones climáticas extremas,
+psc4,6,People/ourselves,La gente/nosotros mismos,
+psc4,77,[Don't read] Other,[NO LEER] Otras respuestas,
+psc5,1,National/Central government,Gobierno nacional,
+psc5,2,Regional government,Gobierno departamental,
+psc5,3,Local/Municipal government,Gobierno municipal,
+psc5,4,Electricity company,Empresa proveedora del servicio eléctrico,
+psc5,5,Climate change or Extreme weather conditions,Cambio climático o condiciones climáticas extremas,
+psc5,6,People/ourselves,La gente/nosotros mismos,
+psc5,77,[Don't read] Other,[NO LEER] Otras respuestas,
+psc6,1,National/Central government,Gobierno nacional,
+psc6,2,Regional government,Gobierno departamental,
+psc6,3,Local/Municipal government,Gobierno municipal,
+psc6,5,Climate change or Extreme weather conditions,Cambio climático o condiciones climáticas extremas,
+psc6,6,People/ourselves,La gente/nosotros mismos,
+psc6,77,[Don't read] Other,[NO LEER] Otras respuestas,
+psc7,0,Less than once a week,Menos de una vez por semana,
+psc7,1,One day a week,Un día por semana,
+psc7,2,Two days per week,Dos días por semana,
+psc7,3,Three days per week,Tres días por semana,
+psc7,4,Four days per week,Cuatro días por semana,
+psc7,5,Five days per week,Cinco días por semana,
+psc7,6,Six days per week,Seis días por semana,
+psc7,7,Seven days per week,Siete días por semana,
+psc7,8,8,8,
+psc8,0,0,0,
+psc8,1,1,1,
+psc8,2,2,2,
+psc8,3,3,3,
+psc8,4,4,4,
+psc8,5,5,5,
+psc8,6,6,6,
+psc8,7,7,7,
+psc8,8,8,8,
+psc8,9,9,9,
+psc8,10,10,10,
+psc8,11,11,11,
+psc8,12,12,12,
+psc8,13,13,13,
+psc8,14,14,14,
+psc8,15,15,15,
+psc8,16,16,16,
+psc8,17,17,17,
+psc8,18,18,18,
+psc8,19,19,19,
+psc8,20,20,20,
+psc8,21,21,21,
+psc8,22,22,22,
+psc8,23,23,23,
+psc8,24,24,24,
+psc9,0,0,0,
+psc9,1,1,1,
+psc9,2,2,2,
+psc9,3,3,3,
+psc9,4,4,4,
+psc9,5,5,5,
+psc9,6,6,6,
+psc9,7,7,7,
+psc9,8,8,8,
+psc9,9,9,9,
+psc9,10,10,10,
+psc9,11,11,11,
+psc9,12,12,12,
+psc9,13,13,13,
+psc9,14,14,14,
+psc9,15,15,15,
+psc9,16,16,16,
+psc9,17,17,17,
+psc9,18,18,18,
+psc9,19,19,19,
+psc9,20,20,20,
+psc9,21,21,21,
+psc9,22,22,22,
+psc9,24,24,24,
+psc9,25,25,25,
+psc9,26,26,26,
+psc9,28,28,28,
+psc9,29,29,29,
+psc9,30,30,30,
+psc9,31,31,31,
+psc9,32,32,32,
+psc9,36,36,36,
+psc9,40,40,40,
+psc9,45,45,45,
+psc9,48,48,48,
+psc9,50,50+,50+,
+q1,1,Male,Hombre,
+q1,2,Female,Mujer,
+q1,3,Other,Otro,
+q10a,2,No,No,0
+q10a,1,Yes,Sí,100
+q10e,1,Increased,Aumentó,
+q10e,2,Remained the same,Permaneció igual,
+q10e,3,Decreased,Disminuyó,
+q11n,1,Single,Soltero,
+q11n,2,Married,Casado,
+q11n,3,Common law marriage (living together),Unión Libre (acompañado),
+q11n,4,Divorced,Divorciado,
+q11n,5,Separated,Separado,
+q11n,6,Widowed,Viudo,
+q11n,7,Civil Union (where applicable),Unión civil (donde se aplica),
+q12bn,0,None,Ninguno,
+q12bn,1,1,1,
+q12bn,2,2,2,
+q12bn,3,3,3,
+q12bn,4,4,4,
+q12bn,5,5,5,
+q12bn,6,6,6,
+q12bn,7,7,7,
+q12bn,8,8,8,
+q12bn,9,9,9,
+q12bn,10,10,10,
+q12bn,11,11,11,
+q12bn,12,12,12,
+q12bn,13,13,13,
+q12bn,14,14,14,
+q12bn,15,15,15,
+q12bn,16,16,16,
+q12bn,21,21,21,
+q12bn,22,22,22,
+q12bn,25,24+,25+,
+q12c,0,None,Ninguno,
+q12c,1,1,1,
+q12c,2,2,2,
+q12c,3,3,3,
+q12c,4,4,4,
+q12c,5,5,5,
+q12c,6,6,6,
+q12c,7,7,7,
+q12c,8,8,8,
+q12c,9,9,9,
+q12c,10,10,10,
+q12c,11,11,11,
+q12c,12,12,12,
+q12c,13,13,13,
+q12c,14,14,14,
+q12c,15,15,15,
+q12c,16,16,16,
+q12c,17,17,17,
+q12c,18,18,18,
+q12c,19,19,19,
+q12c,20,25+,20+,
+q12c,21,21,21,
+q12c,22,22,22,
+q12c,23,23,23,
+q12c,24,24,24,
+q12c,25,25,25,
+q12c,26,26,26,
+q12c,29,29,29,
+q12c,30,30,30,
+q12c,32,32,32,
+q12c,39,39,39,
+q12c,40,40,40,
+q12c,45,45,45,
+q12c,50,50,50,
+q12c,53,53,53,
+q12c,72,72,72,
+q14,1,Yes,Sí,
+q14,2,No,No,
+q2,16,16,16,
+q2,17,17,17,
+q2,18,18,18,
+q2,19,19,19,
+q2,20,20,20,
+q2,21,21,21,
+q2,22,22,22,
+q2,23,23,23,
+q2,24,24,24,
+q2,25,25,25,
+q2,26,26,26,
+q2,27,27,27,
+q2,28,28,28,
+q2,29,29,29,
+q2,30,30,30,
+q2,31,31,31,
+q2,32,32,32,
+q2,33,33,33,
+q2,34,34,34,
+q2,35,35,35,
+q2,36,36,36,
+q2,37,37,37,
+q2,38,38,38,
+q2,39,39,39,
+q2,40,40,40,
+q2,41,41,41,
+q2,42,42,42,
+q2,43,43,43,
+q2,44,44,44,
+q2,45,45,45,
+q2,46,46,46,
+q2,47,47,47,
+q2,48,48,48,
+q2,49,49,49,
+q2,50,50,50,
+q2,51,51,51,
+q2,52,52,52,
+q2,53,53,53,
+q2,54,54,54,
+q2,55,55,55,
+q2,56,56,56,
+q2,57,57,57,
+q2,58,58,58,
+q2,59,59,59,
+q2,60,60,60,
+q2,61,61,61,
+q2,62,62,62,
+q2,63,63,63,
+q2,64,64,64,
+q2,65,65,65,
+q2,66,66,66,
+q2,67,67,67,
+q2,68,68,68,
+q2,69,69,69,
+q2,70,70,70,
+q2,71,71,71,
+q2,72,72,72,
+q2,73,73,73,
+q2,74,74,74,
+q2,75,75,75,
+q2,76,76,76,
+q2,77,77,77,
+q2,78,78,78,
+q2,79,79,79,
+q2,80,80,80,
+q2,81,81,81,
+q2,82,82,82,
+q2,83,83,83,
+q2,84,84,84,
+q2,85,85,85,
+q2,86,86,86,
+q2,87,87,87,
+q2,88,88,88,
+q2,89,89,89,
+q2,90,90,90,
+q2,91,91,91,
+q2,92,92,92,
+q2,93,93,93,
+q2,94,94,94,
+q2,95,95,95,
+q2,96,96,96,
+q2,97,97,97,
+q2,98,98,98,
+q2,99,99,99,
+q2,100,100,100,
+q2,101,101,101,
+q2,112,112,112,
+q3cn,1,Catholic,Católico,
+q3cn,2,"Protestant, Mainline Protestant or Protestant non-Evangelical","Protestante, Protestante Tradicional o Protestante no Evangélico",
+q3cn,3,Non-Christian Eastern Religion,Religiones Orientales no Cristianas,
+q3cn,4,None (Believes in a Supreme Entity but does not belong to any religion),Ninguna (Cree en un Ser Superior pero no pertenece a ninguna religión),
+q3cn,5,Evangelical and Protestant,Evangélica y Pentecostal,
+q3cn,7,Traditional or Native Religion,Religiones Tradicionales,
+q3cn,11,Agnostic or Atheist (Does not believe in God),Agnóstico o ateo (no cree en Dios),
+q3cn,77,Other,Otro,
+q3cn,1501,Kardecian Spiritism,Espírita Kardecista,
+q5a,1,More than once a week,Más de una vez por semana,
+q5a,2,Once a week,Una vez por semana,
+q5a,3,Once a month,Una vez al mes,
+q5a,4,Once or twice a year,Una o dos veces al año,
+q5a,5,Never or almost never,Nunca o casi nunca,
+q5b,4,Not Important at All,Nada importante,0
+q5b,3,Not Very Important,Poco importante,33.33333
+q5b,2,Somewhat Important,Algo importante,66.66666
+q5b,1,Very Important,Muy importante,100
+r1,0,No,No,0
+r1,1,Yes,Sí,100
+r12,0,No,No,0
+r12,1,Yes,Sí,100
+r14,0,No,No,0
+r14,1,Yes,Sí,100
+r15,0,No,No,0
+r15,1,Yes,Sí,100
+r16,0,No,No,0
+r16,1,Yes,Sí,100
+r18,0,No,No,0
+r18,1,Yes,Sí,100
+r3,0,No,No,0
+r3,1,Yes,Sí,100
+r4,0,No,No,0
+r4,1,Yes,Sí,100
+r4a,0,No,No,0
+r4a,1,Yes,Sí,100
+r5,0,No,No,
+r5,1,One,Uno,
+r5,2,Two,Dos,
+r5,3,Three or more,Tres o más,
+r6,0,No,No,
+r6,1,Yes,Sí,
+r7,0,No,No,
+r7,1,Yes,Sí,
+r8,0,No,No,
+r8,1,Yes,Sí,
+redist1,1,Strongly Disagree,Muy en desacuerdo,0
+redist1,2,2,2,16.66667
+redist1,3,3,3,33.33333
+redist1,4,4,4,50
+redist1,5,5,5,66.66666
+redist1,6,6,6,83.33334
+redist1,7,Strongly Agree,Muy de acuerdo,100
+redist2a,1,Strongly Disagree,Muy en desacuerdo,0
+redist2a,2,2,2,16.66667
+redist2a,3,3,3,33.33333
+redist2a,4,4,4,50
+redist2a,5,5,5,66.66666
+redist2a,6,6,6,83.33334
+redist2a,7,Strongly Agree,Muy de acuerdo,100
+redist3,1,Strongly Disagree,Muy en desacuerdo,0
+redist3,2,2,2,16.66667
+redist3,3,3,3,33.33333
+redist3,4,4,4,50
+redist3,5,5,5,66.66666
+redist3,6,6,6,83.33334
+redist3,7,Strongly Agree,Muy de acuerdo,100
+ros4,1,Strongly Disagree,Muy en desacuerdo,0
+ros4,2,2,2,16.66667
+ros4,3,3,3,33.33333
+ros4,4,4,4,50
+ros4,5,5,5,66.66666
+ros4,6,6,6,83.33334
+ros4,7,Strongly Agree,Muy de acuerdo,100
+smedia1,2,No,No,0
+smedia1,1,Yes,Sí,100
+smedia2,1,Daily,Diariamente,
+smedia2,2,A few times a week,Algunas veces a la semana,
+smedia2,3,A few times a month,Algunas veces al mes,
+smedia2,4,A few times a year,Algunas veces al año,
+smedia2,5,Never,Nunca,
+smedia3,1,Daily,Diariamente,
+smedia3,2,A few times a week,Algunas veces a la semana,
+smedia3,3,A few times a month,Algunas veces al mes,
+smedia3,4,A few times a year,Algunas veces al año,
+smedia3,5,Never,Nunca,
+smedia4,2,No,No,0
+smedia4,1,Yes,Sí,100
+smedia5,1,Daily,Diariamente,
+smedia5,2,A few times a week,Algunas veces a la semana,
+smedia5,3,A few times a month,Algunas veces al mes,
+smedia5,4,A few times a year,Algunas veces al año,
+smedia5,5,Never,Nunca,
+smedia6,1,Daily,Diariamente,
+smedia6,2,A few times a week,Algunas veces a la semana,
+smedia6,3,A few times a month,Algunas veces al mes,
+smedia6,4,A few times a year,Algunas veces al año,
+smedia6,5,Never,Nunca,
+smedia7,2,No,No,0
+smedia7,1,Yes,Sí,100
+smedia8,1,Daily,Diariamente,
+smedia8,2,A few times a week,Algunas veces a la semana,
+smedia8,3,A few times a month,Algunas veces al mes,
+smedia8,4,A few times a year,Algunas veces al año,
+smedia8,5,Never,Nunca,
+smedia9,1,Daily,Diariamente,
+smedia9,2,A few times a week,Algunas veces a la semana,
+smedia9,3,A few times a month,Algunas veces al mes,
+smedia9,4,A few times a year,Algunas veces al año,
+smedia9,5,Never,Nunca,
+soct2,1,Better,Mejor,
+soct2,2,Same,Igual,
+soct2,3,Worse,Peor,
+ur,1,Urban,Urbano,
+ur,2,Rural,Rural,
+vb10,2,No,No,0
+vb10,1,Yes,Sí,100
+vb2,2,Did not vote,No votó,0
+vb2,1,Voted,Sí votó,100
+vb20,1,Wouldn't vote,No votaría,
+vb20,2,Would vote for a candidate or party of the current president/administration,Votaría por el candidato o partido del actual presidente/administración,
+vb20,3,Would vote a candidate or party different from the current president/administration,Votaría por algún candidato o partido diferente del actual gobierno,
+vb20,4,Would go to vote but would leave the ballot blank or would purposely cancel my vote,Iría a votar pero dejaría la boleta en blanco o la anularía,
+vb50,4,Strongly Disagree,Muy en desacuerdo,0
+vb50,3,Disagree,En desacuerdo,33.33333
+vb50,2,Agree,De acuerdo,66.66666
+vb50,1,Strongly Agree,Muy de acuerdo,100
+vb51,1,A Man,Un hombre,
+vb51,2,A Woman,Una mujer,
+vb51,3,Both Equally,Ambos por igual,
+vb52,1,A Man,Un hombre,
+vb52,2,A Woman,Una mujer,
+vb52,3,Does not matter,No importa,
+vb58,4,Strongly Disagree,Muy en desacuerdo,0
+vb58,3,Disagree,En desacuerdo,33.33333
+vb58,2,Agree,De acuerdo,66.66666
+vb58,1,Strongly Agree,Muy de acuerdo,100
+vic1ext,2,No,No,0
+vic1ext,1,Yes,Sí,100
+w14a,2,"No, it is not justified",No se justificaría,0
+w14a,1,"Yes, it is justified",Sí se justificaría,100
+wf1,2,No,No,0
+wf1,1,Yes,Sí,100
+year,2004,2004,2004,2004
+year,2006,2006,2006,2006
+year,2007,2006,2006,2006
+year,2008,2008,2008,2008
+year,2009,2008,2008,2008
+year,2010,2010,2010,2010
+year,2012,2012,2012,2012
+year,2014,2014,2014,2014
+year,2016,2016,2016,2016
+year,2017,2016,2016,2016
+year,2018,2018,2018,2018
+year,2019,2018,2018,2018

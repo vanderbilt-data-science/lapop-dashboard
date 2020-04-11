@@ -34,9 +34,6 @@ LAPOP_questions_labeled
 LAPOP_questions_labeled
 
 ```{r Import categories, message=FALSE}
-factored_categories <- read_csv('LAPOP_categories_labeled.csv')
-factored_categories <- factored_categories %>%
-  select(column_name_factor, category_es, category_en)
 
 unfactored_categories <- read_csv('LAPOP_categories_numeric.csv')
 unfactored_categories <- unfactored_categories %>%
@@ -46,16 +43,11 @@ unfactored_questions <- read_csv('LAPOP_questions_numeric.csv')
 unfactored_questions <- unfactored_questions %>%
   select(column_name, question_es, question_en)
 
-factored_questions <- read_csv('LAPOP_questions_labeled.csv')
-factored_questions <- factored_questions %>%
-  select(column_name_factor, question_labeled_es, question_labeled_en)
 ```
 ## Set Language
 
 
 ```{r Set Language, message=FALSE}
-factored_categories <- factored_categories %>%
-  mutate(category = category_en)
 
 unfactored_categories <- unfactored_categories %>%
   mutate(category = category_en)
@@ -63,8 +55,6 @@ unfactored_categories <- unfactored_categories %>%
 unfactored_questions <- unfactored_questions %>%
   mutate(question = question_es)
 
-factored_questions <- factored_questions %>%
-  mutate(question_factor = question_labeled_es)
 ```
 
 NOTE: 

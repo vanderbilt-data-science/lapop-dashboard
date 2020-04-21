@@ -41,10 +41,10 @@ Explicitly name the dimensions and measures
 Define list of all columns names that are measures
 ```{r Create measures/dimensions list}
 measures <- c(
-      "a4",
+      "a4r",
       "aoj11",
       "aoj12",
-      "b0",
+      #"b0", Removed per Maita to Yilin on 4/21/2020
       "b1",
       "b12",
       "b13",
@@ -122,7 +122,7 @@ measures <- c(
     )
 
 dimensions <- c(
-      "a4",
+      "a4r",
       "colorr",
       "conocim",
       "cp13",
@@ -252,7 +252,7 @@ write_csv(final_wide, "lapop_wide_v6.csv", na = "NULL ")
 ##Find specific questions
 ```{r Check specific question}
 total_long_common_narrow %>% 
-  filter(column_name == "a4")
+  filter(column_name == "a4r")
 
 ```
 

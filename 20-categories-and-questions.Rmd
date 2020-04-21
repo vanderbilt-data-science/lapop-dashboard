@@ -1,96 +1,137 @@
 ---
-title: "2-Categories and Questions"
+title: "20--Categories and Questions"
 output: html_notebook
 editor_options: 
   chunk_output_type: inline
 ---
-# Structure
-This document contains the most recent list of categories and columns LAPOP specificied. It comes from the Topic Menu Items_LAPOP AB Cores_07.29.19 file that Maita shared with us on 7/29/2019. In this file they listed the topics they wanted covered and the corresponding columns from the core questionnaires.
 
+# Load Latest Lookup Tables
 
-For the categories, we created two separate excel documents. They both have columns for column name and categories. They're separated depending on if they are factored or unfactored. For factored, column name is written as "column_name_factor". The elements in this column are also followed by "_factor". For unfactored it is written as "column_name". The column for category is listed as "category" for both.
+Read in the latest version of the lookup tables 
 
-The reason we use two separate names for "column_name" is so that we can differentiate between factor/unfactored, but we left category the same so that we could join the two datasets later on. 
+```{r}
+questions_cats <-
+  read_csv(
+    path("lookups", "questions_categories_v1-0.csv"),
+    col_types = cols(
+      column_name = col_character(),
+      question_short_es = col_character(),
+      question_short_en = col_character(),
+      question_es = col_character(),
+      question_en = col_character(),
+      category_en = col_character(),
+      category_short_en = col_character(),
+      category_es = col_character(),
+      category_short_es = col_character()
+    ),
+    locale = locale(encoding = "ISO-8859-1")
+  ) %>%
+  clean_names() # Yilin, add assertions here.
 
-For the questions, we created two separate excel documents, as well. They both have columns for column name and questions. The column name follows the same format as described aboved. The questions are slightly different because the factored spreadsheet, the question column is called "question_factor" and all of its elements are followed by "_factor". The unfactored version, "question_unfactor" has elements followed by "_unfactor" instead. 
-
-We needed to differentiate between the questions so that we can join on category later on.
-
-Some of these questions are not complete, and are highlighted in red and has an NA value. If you update the excel document, make sure you save it as a csv file and remove "-excel" from it.
-
-Make sure if you are adding a column name, that it does not repeat any of the ones already written.
-
-## Reading in .csv files
-You will need to replace the file name below with the file name that is listed on your computer. The most recent version of the files should be provided to you by LAPOP.
-
-If the .csv file is combining columns together, make sure you have dragged the column line in excel to be the width of the longest item.
-
-The reason we used `select()` was to ensure that you are only selecting the first two columns.
-
-New CSVs are 
-LAPOP_categories_labeled
-LAPOP_categories_numeric
-LAPOP_questions_labeled
-LAPOP_questions_labeled
-
-```{r Import categories, message=FALSE}
-factored_categories <- read_csv('LAPOP_categories_labeled.csv')
-factored_categories <- factored_categories %>%
-  select(column_name_factor, category_es, category_en)
-
-unfactored_categories <- read_csv('LAPOP_categories_numeric.csv')
-unfactored_categories <- unfactored_categories %>%
-  select(column_name, category_es, category_en)
-
-unfactored_questions <- read_csv('LAPOP_questions_numeric.csv')
-unfactored_questions <- unfactored_questions %>%
-  select(column_name, question_es, question_en)
-
-factored_questions <- read_csv('LAPOP_questions_labeled.csv')
-factored_questions <- factored_questions %>%
-  select(column_name_factor, question_labeled_es, question_labeled_en)
-```
-## Set Language
-
-
-```{r Set Language, message=FALSE}
-factored_categories <- factored_categories %>%
-  mutate(category = category_en)
-
-unfactored_categories <- unfactored_categories %>%
-  mutate(category = category_en)
-
-unfactored_questions <- unfactored_questions %>%
-  mutate(question = question_es)
-
-factored_questions <- factored_questions %>%
-  mutate(question_factor = question_labeled_es)
+values_labels <-
+  read_csv(
+    path("lookups", "values_labels_v1-0.csv"),
+    col_types = cols(
+      column_name = col_character(),
+      value = col_character(),
+      label_en = col_character(),
+      label_es = col_character(),
+      value_recoded = col_character()
+    ),
+    locale = locale(encoding = "ISO-8859-1")
+  ) %>%
+  clean_names() # Yilin, add assertions here.
 ```
 
-NOTE: 
-using original terms until code is refactored to use preferred terminology. We only have English categories and Spanish questions at the moment. 
+
+
+<!-- # Structure -->
+<!-- This document contains the most recent list of categories and columns LAPOP specificied. It comes from the Topic Menu Items_LAPOP AB Cores_07.29.19 file that Maita shared with us on 7/29/2019. In this file they listed the topics they wanted covered and the corresponding columns from the core questionnaires. -->
+
+
+<!-- For the categories, we created two separate excel documents. They both have columns for column name and categories. They're separated depending on if they are factored or unfactored. For factored, column name is written as "column_name_factor". The elements in this column are also followed by "_factor". For unfactored it is written as "column_name". The column for category is listed as "category" for both. -->
+
+<!-- The reason we use two separate names for "column_name" is so that we can differentiate between factor/unfactored, but we left category the same so that we could join the two datasets later on.  -->
+
+<!-- For the questions, we created two separate excel documents, as well. They both have columns for column name and questions. The column name follows the same format as described aboved. The questions are slightly different because the factored spreadsheet, the question column is called "question_factor" and all of its elements are followed by "_factor". The unfactored version, "question_unfactor" has elements followed by "_unfactor" instead.  -->
+
+<!-- We needed to differentiate between the questions so that we can join on category later on. -->
+
+<!-- Some of these questions are not complete, and are highlighted in red and has an NA value. If you update the excel document, make sure you save it as a csv file and remove "-excel" from it. -->
+
+<!-- Make sure if you are adding a column name, that it does not repeat any of the ones already written. -->
+
+<!-- ## Reading in .csv files -->
+<!-- You will need to replace the file name below with the file name that is listed on your computer. The most recent version of the files should be provided to you by LAPOP. -->
+
+<!-- If the .csv file is combining columns together, make sure you have dragged the column line in excel to be the width of the longest item. -->
+
+<!-- The reason we used `select()` was to ensure that you are only selecting the first two columns. -->
+
+<!-- New CSVs are  -->
+<!-- LAPOP_categories_labeled -->
+<!-- LAPOP_categories_numeric -->
+<!-- LAPOP_questions_labeled -->
+<!-- LAPOP_questions_labeled -->
+
+<!-- ```{r Import categories, message=FALSE} -->
+<!-- factored_categories <- read_csv('LAPOP_categories_labeled.csv') -->
+<!-- factored_categories <- factored_categories %>% -->
+<!--   select(column_name_factor, category_es, category_en) -->
+
+<!-- unfactored_categories <- read_csv('LAPOP_categories_numeric.csv') -->
+<!-- unfactored_categories <- unfactored_categories %>% -->
+<!--   select(column_name, category_es, category_en) -->
+
+<!-- unfactored_questions <- read_csv('LAPOP_questions_numeric.csv') -->
+<!-- unfactored_questions <- unfactored_questions %>% -->
+<!--   select(column_name, question_es, question_en) -->
+
+<!-- factored_questions <- read_csv('LAPOP_questions_labeled.csv') -->
+<!-- factored_questions <- factored_questions %>% -->
+<!--   select(column_name_factor, question_labeled_es, question_labeled_en) -->
+<!-- ``` -->
+<!-- ## Set Language -->
+
+
+<!-- ```{r Set Language, message=FALSE} -->
+<!-- factored_categories <- factored_categories %>% -->
+<!--   mutate(category = category_en) -->
+
+<!-- unfactored_categories <- unfactored_categories %>% -->
+<!--   mutate(category = category_en) -->
+
+<!-- unfactored_questions <- unfactored_questions %>% -->
+<!--   mutate(question = question_es) -->
+
+<!-- factored_questions <- factored_questions %>% -->
+<!--   mutate(question_factor = question_labeled_es) -->
+<!-- ``` -->
+
+<!-- NOTE:  -->
+<!-- using original terms until code is refactored to use preferred terminology. We only have English categories and Spanish questions at the moment.  -->
 
 
 
-# !Do not use, reference only
+<!-- # !Do not use, reference only -->
 
-## Categories
-1.  Geographic
-2.  Socio-Demographic
-3.  Control
-4.  Economic
-5.  Social Participation
-6.  Local Government
-7.  Interpersonal Trust
-8.  Crime and Rule of Law
-9.  Internal Conflict and War
-10. Political System Support
-11. Tolerance
-12. Positive-Negative Participation
-13. Democracy
-14. Authoritarian Values
-15. Corruption
-16. Elections and Political Rights
-17. International Context
-18. Special topics
+<!-- ## Categories -->
+<!-- 1.  Geographic -->
+<!-- 2.  Socio-Demographic -->
+<!-- 3.  Control -->
+<!-- 4.  Economic -->
+<!-- 5.  Social Participation -->
+<!-- 6.  Local Government -->
+<!-- 7.  Interpersonal Trust -->
+<!-- 8.  Crime and Rule of Law -->
+<!-- 9.  Internal Conflict and War -->
+<!-- 10. Political System Support -->
+<!-- 11. Tolerance -->
+<!-- 12. Positive-Negative Participation -->
+<!-- 13. Democracy -->
+<!-- 14. Authoritarian Values -->
+<!-- 15. Corruption -->
+<!-- 16. Elections and Political Rights -->
+<!-- 17. International Context -->
+<!-- 18. Special topics -->
 

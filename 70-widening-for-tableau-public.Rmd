@@ -20,15 +20,17 @@ In order to do this we are going to:
 ## Combining category and question
 ```{r Combine category and question}
 total_long_common_narrow <- total_long_common_recoded %>% 
+  left_join(questions_cats, by = "column_name") %>%
+  rename(category = category_short_es, question = question_short_es) %>% 
   unite(category_question, category, question, sep = ":", remove = FALSE) %>%
   unite(category_colname, category, column_name, sep = ":", remove = FALSE) %>%
-  select(country, wave, person_id = person_id_factor, weights, column_name, category_question, category_colname, question, column_name, answer_measure, answer_dimension) 
+  select(country, wave, person_id, weights, column_name, category_question, category_colname, question, column_name, answer_measure, answer_dimension) 
 ```
 
 Clear out all but needed dataframes to reduce memory
 
 ```{r Remove useless df}
-rm.all.but(c("total_long_common_recoded", "total_long_common", "total_long_common_narrow", "combined_clean", "label_val", "qword", "response_labels"))
+rm.all.but(c("total_long_common_recoded", "total_long_common", "total_long_common_narrow", "combined_clean", "response_labels"))
 ```
 
 
@@ -241,7 +243,9 @@ final_wide <- final_wide_dimension %>%
 #join
 
 # Update the version of the csv to reflect code cleanup
-write_csv(final_wide, "lapop_wide_v5.csv", na = "NULL ") 
+#Updating to version 6 to reflect the work on updating the lookup tables
+
+write_csv(final_wide, "lapop_wide_v6.csv", na = "NULL ") 
 ```
 
 

@@ -19,6 +19,8 @@ LAB_VAL_2018_Core_10plus_countries(v1.0).csv
 
 in 60. 
 
+**NOTE: We need to recode country--country name was done previously in factored data**
+
 
 NOTE: We are looking up the values instead of directly calculating because some are recoded, other are not. Some have highest mapped to 0, others have lowest. 
 
@@ -26,18 +28,17 @@ NOTE: We are looking up the values instead of directly calculating because some 
 
 # We'll need to join on both the question name and on the response to get the proper scaled score. 
 
-#Create a dataframe with question AND response labels
+# Use latest lookup tables
 
-response_labels <- label_val %>%
-  rename(column_name = lname) %>% 
-  left_join(qword, by = c("column_name" = "name")) %>%
-  select(column_name, question_es = qword_esp, value, recoded, label_esp) 
+response_labels <- values_labels %>% 
+  left_join(questions_cats, by = "column_name") %>% 
+  select(column_name, question_es, value, value_recoded, label_es)
 
-# # check to make sure join will work
-# total_long_common %>%
-#   mutate(answer_measure = as.character(answer_measure)) %>%
-#   anti_join(response_labels, 
-#             by = c("column_name" = "column_name", "answer_measure" = "value"))
+# Create countries lookup to Add country name into dataframe
+countries <- response_labels %>% 
+  filter(column_name == "pais") %>% 
+  rename(country = label_es, pais = value) %>% 
+  select(pais, country)
 
 ## Use recoded values only for answer_measure. If there is no recoding, it's not a measure 
 ## See Issue 52
@@ -46,9 +47,12 @@ total_long_common_recoded <- total_long_common %>%
   mutate(answer_measure = as.character(answer_measure)) %>%
   left_join(response_labels, 
             by = c("column_name" = "column_name", "answer_measure" = "value")) %>%
-  mutate(answer_measure = recoded,
-         answer_dimension = label_esp)
+  mutate(answer_measure = if_else(is.na(value_recoded),answer_measure,value_recoded),
+         answer_dimension = label_es) %>%
+  mutate(pais = as.character(pais)) %>% 
+  left_join(countries, by = "pais")  
 ```
+
 
 
 ## Add agegroup
@@ -69,16 +73,5 @@ total_long_common %>%
 ```
 
 
-
-
-## Examine q1
-```{r}
-total_long_common_recoded %>%
-  filter(column_name == "q1") %>%
-  select(answer_measure, answer_dimension) %>% 
-  distinct()
-  
-  tabyl(answer_measure)
-```
 
 

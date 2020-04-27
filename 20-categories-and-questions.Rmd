@@ -40,10 +40,39 @@ values_labels <-
     ),
     locale = locale(encoding = "ISO-8859-1")
   ) %>%
-  clean_names() # Yilin, add assertions here.
+  clean_names() 
+```
+
+```{r assert rows with NA for question}
+questions_cats %>% 
+  assert_rows(num_row_NAs,in_set(0), dplyr::everything(),error_fun = error_report)
+```
+
+```{r assert rows with NA for values_labels}
+values_labels %>% 
+  assert_rows(num_row_NAs,in_set(0), dplyr::everything(),error_fun = error_report)
+# no value recode for some questions
+```
+
+```{r}
+col_questions <- unique(questions_cats$column_name)
+col_values <- unique(values_labels$column_name)
+```
+
+```{r}
+assert_col <- function(x,y){
+  for (i in seq_along(x)){
+    if (x[i] %in% y == FALSE){
+      return (x[i])
+    }
+  }
+}
 ```
 
 
+```{r}
+assert_col(col_values,col_questions)
+```
 
 <!-- # Structure -->
 <!-- This document contains the most recent list of categories and columns LAPOP specificied. It comes from the Topic Menu Items_LAPOP AB Cores_07.29.19 file that Maita shared with us on 7/29/2019. In this file they listed the topics they wanted covered and the corresponding columns from the core questionnaires. -->

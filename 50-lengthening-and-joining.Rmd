@@ -180,7 +180,7 @@ clean <- function(country){
 # Unmerged combination
 This function takes in the unfactored version for before 2016 as well as after. It takes each dataframe, lengthens it, adds the unfactored versions to each other, and the factored versions to each other. Then it filters out the NAs from both, and combines them togehter. For the majority of each step there is a call to a function written above.
 ```{r Define unmerged()}
-unmerged <- function(unfactor, unfactor16, factor, factor16){
+unmerged <- function(unfactor, unfactor16){
   #Lengthens all dataframes through above wrtten lengthen functions
   unfactor <- lengthen(unfactor)
   unfactor16 <- lengthen_16(unfactor16)
@@ -212,7 +212,7 @@ unmerged <- function(unfactor, unfactor16, factor, factor16){
 # Merged combination
 Similar to the above function, but this is used when there is no need to merge other dataframes together from multiple years
 ```{r Define merged()}
-merged <- function(unfactor, factor){
+merged <- function(unfactor){
   #Lengthens all dataframes through above wrtten lengthen functions
   unfactor <- lengthen(unfactor) %>% 
     transform(answer_measure = as.numeric(answer_measure)) 
@@ -239,74 +239,74 @@ merged <- function(unfactor, factor){
 
 ```{r Create clean df for each country}
 #Argentina
-argentina_clean <- unmerged(argentina_unique_unfactor, argentina_16_unfactor, argentina_unique_factor, argentina_16_factor)
+argentina_clean <- unmerged(argentina_unique_unfactor, argentina_16_unfactor)
 
 #Belize
-belize_clean <- merged(belize_unique_unfactor, belize_unique_factor)
+belize_clean <- merged(belize_unique_unfactor)
 
 #Bolivia
-bolivia_clean <- unmerged(bolivia_unique_unfactor, bolivia_16_unfactor, bolivia_unique_factor, bolivia_16_factor)
+bolivia_clean <- unmerged(bolivia_unique_unfactor, bolivia_16_unfactor)
 
 #Brazil
-brazil_clean <- unmerged(brazil_unique_unfactor, brazil_16_unfactor, brazil_unique_factor, brazil_16_factor)
+brazil_clean <- unmerged(brazil_unique_unfactor, brazil_16_unfactor)
 
 #Canada
-canada_clean <- unmerged(canada_unique_unfactor, canada_16_unfactor, canada_unique_factor, canada_16_factor)
+canada_clean <- unmerged(canada_unique_unfactor, canada_16_unfactor)
 
 #Chile
-chile_clean <- unmerged(chile_unique_unfactor, chile_16_unfactor, chile_unique_factor, chile_16_factor)
+chile_clean <- unmerged(chile_unique_unfactor, chile_16_unfactor)
 
 #Colombia
-#colombia_clean <- unmerged(colombia_unique_unfactor, colombia_16_unfactor, colombia_unique_factor, colombia_16_factor)
+#colombia_clean <- unmerged(colombia_unique_unfactor, colombia_16_unfactor)
 #See Issue #11
 
 #Costa Rica
-costa_clean <- unmerged(costa_unique_unfactor, costa_16_unfactor, costa_unique_factor, costa_16_factor)
+costa_clean <- unmerged(costa_unique_unfactor, costa_16_unfactor)
 
 #Ecuador
-ecuador_clean <- unmerged(ecuador_unique_unfactor, ecuador_16_unfactor, ecuador_unique_factor, ecuador_16_factor)
+ecuador_clean <- unmerged(ecuador_unique_unfactor, ecuador_16_unfactor)
 
 #El Salvador
-elsalvador_clean <- unmerged(elsalvador_unique_unfactor, elsalvador_16_unfactor, elsalvador_unique_factor, elsalvador_16_factor)
+elsalvador_clean <- unmerged(elsalvador_unique_unfactor, elsalvador_16_unfactor)
 
 #Guatemala
-guatemala_clean <- unmerged(guatemala_unique_unfactor, guatemala_16_unfactor, guatemala_unique_factor, guatemala_16_factor)
+guatemala_clean <- unmerged(guatemala_unique_unfactor, guatemala_16_unfactor)
 
 #Guyana
-guyana_clean <- unmerged(guyana_unique_unfactor, guyana_16_unfactor, guyana_unique_factor, guyana_16_factor) 
+guyana_clean <- unmerged(guyana_unique_unfactor, guyana_16_unfactor) 
 
 #Honduras
-honduras_clean <- unmerged(honduras_unique_unfactor, honduras_16_unfactor, honduras_unique_factor, honduras_16_factor)
+honduras_clean <- unmerged(honduras_unique_unfactor, honduras_16_unfactor)
 
 #Jamaica
-jamaica_clean <- unmerged(jamaica_unique_unfactor, jamaica_16_unfactor, jamaica_unique_factor, jamaica_16_factor)
+jamaica_clean <- unmerged(jamaica_unique_unfactor, jamaica_16_unfactor)
 
 #Mexico
-mexico_clean <- unmerged(mexico_unique_unfactor, mexico_16_unfactor, mexico_unique_factor, mexico_16_factor)
+mexico_clean <- unmerged(mexico_unique_unfactor, mexico_16_unfactor)
 
 #Nicaragua
-nicaragua_clean <- unmerged(nicaragua_unique_unfactor, nicaragua_16_unfactor, nicaragua_unique_factor, nicaragua_16_factor)
+nicaragua_clean <- unmerged(nicaragua_unique_unfactor, nicaragua_16_unfactor)
 
 #Panama
-panama_clean <- unmerged(panama_unique_unfactor, panama_16_unfactor, panama_unique_factor, panama_16_factor)
+panama_clean <- unmerged(panama_unique_unfactor, panama_16_unfactor)
 
 #Paraguay
-paraguay_clean <- unmerged(paraguay_unique_unfactor, paraguay_16_unfactor, paraguay_unique_factor, paraguay_16_factor)
+paraguay_clean <- unmerged(paraguay_unique_unfactor, paraguay_16_unfactor)
 
 #Peru
-peru_clean <- unmerged(peru_unique_unfactor, peru_16_unfactor, peru_unique_factor, peru_16_factor)
+peru_clean <- unmerged(peru_unique_unfactor, peru_16_unfactor)
 
 #Suriname
-suriname_clean <- merged(suriname_unique_unfactor, suriname_unique_factor)
+suriname_clean <- merged(suriname_unique_unfactor)
 
 #United States
-usa_clean <- unmerged(usa_unique_unfactor, usa_16_unfactor, usa_unique_factor, usa_16_factor)
+usa_clean <- unmerged(usa_unique_unfactor, usa_16_unfactor)
 
 #Uruguay
-uruguay_clean <- unmerged(uruguay_unique_unfactor, uruguay_16_unfactor, uruguay_unique_factor, uruguay_16_factor)
+uruguay_clean <- unmerged(uruguay_unique_unfactor, uruguay_16_unfactor)
 
 #Venezuela
-venezuela_clean <- unmerged(venezuela_unique_unfactor, venezuela_16_unfactor, venezuela_unique_factor, venezuela_16_factor)
+venezuela_clean <- unmerged(venezuela_unique_unfactor, venezuela_16_unfactor)
 ```
 
 

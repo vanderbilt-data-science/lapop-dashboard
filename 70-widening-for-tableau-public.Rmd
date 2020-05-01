@@ -41,7 +41,7 @@ Explicitly name the dimensions and measures
 Define list of all columns names that are measures
 ```{r Create measures/dimensions list}
 measures <- c(
-      "a4r",
+      "a4",
       "aoj11",
       "aoj12",
       #"b0", Removed per Maita to Yilin on 4/21/2020
@@ -122,7 +122,7 @@ measures <- c(
     )
 
 dimensions <- c(
-      "a4r",
+      "a4",
       "colorr",
       "conocim",
       "cp13",

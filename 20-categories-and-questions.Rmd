@@ -24,7 +24,7 @@ questions_cats <-
       category_es = col_character(),
       category_short_es = col_character()
     ),
-    locale = locale(encoding = "ISO-8859-1")
+    locale = locale(encoding = "UTF-8")
   ) %>%
   clean_names() # Yilin, add assertions here.
 
@@ -38,9 +38,9 @@ values_labels <-
       label_es = col_character(),
       value_recoded = col_character()
     ),
-    locale = locale(encoding = "ISO-8859-1")
+    locale = locale(encoding = "UTF-8")
   ) %>%
-  clean_names() 
+  clean_names()
 ```
 
 ```{r assert rows with NA for question}

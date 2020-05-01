@@ -20,9 +20,13 @@ The unfactored and factored datasets will be joined later in the process.
 ```{r Define making_uniqueID() for unfactored df}
 making_uniqueID <- function(country){
   #Combines idnum and idnum_14 with "/"
+    # if (!('idnum_14' %in% colnames(country))){
+    #   country <- country %>% 
+    #     mutate(idnum_14 = '')
+    # }
     country <- country %>% 
     mutate(pais=as.character(pais)) %>% 
-    left_join(countries, by = "pais" ) %>% 
+    left_join(countries, by = "pais" ) %>%
     mutate(idnum = ifelse(idnum_14 == '',
                                    idnum,
                                    paste(idnum,idnum_14,sep = "_"))) %>%

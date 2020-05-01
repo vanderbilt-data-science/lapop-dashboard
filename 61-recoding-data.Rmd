@@ -3,6 +3,11 @@ title: "61-recoding-data"
 output: html_notebook
 ---
 
+```{r Import libraries, message=FALSE}
+library(rlist)
+library(data.table)
+```
+
 # Recoding Data
 
 In this section we'll rescale data according to the calculations by LAPOP (Issue #32) and add age grouping (Issue #29). Any additional recoding from the raw data should be included here as well. 
@@ -59,19 +64,20 @@ total_long_common_recoded <- total_long_common %>%
 
 Data is now in long format, so we need to recode within a answer_measure IF question_es is q2 Edad
 
+
 ```{r}
-total_long_common %>%
-  mutate(answer_dimension = if_else(column_name == "q2", 
-                                  as.character(cut(answer_measure, 
-                                      breaks = c(0, 25, 35, 45, 55, 65, 66), 
-                                      labels = c("18-25", "26-35", "36-45", "46-55", "56-65", "66-"))),
-                                  answer_dimension)) %>%
-  filter(column_name == "q2") %>%
-  select(answer_measure, answer_dimension, everything()) 
-           
-  
+# seperating q2 rows and non q2 rows
+testing_q2 <- total_long_common_recoded %>% filter(column_name =="q2")
+testing_non_q2 <- total_long_common_recoded %>% filter(column_name !="q2")
+
+# answer dimension for q2 rows
+testing_q2 <- testing_q2 %>%
+  mutate(answer_dimension = as.character(cut(as.numeric(answer_measure),
+                                             breaks = c(0, 25, 35, 45, 55, 65, Inf),
+                                             labels = c("18-25", "26-35", "36-45", "46-55", "56-65", "66-"))))
+
+# stacking back into full data
+total_long_common_recoded <- rbindlist(list(testing_q2, testing_non_q2), use.names=TRUE)
 ```
-
-
 
 

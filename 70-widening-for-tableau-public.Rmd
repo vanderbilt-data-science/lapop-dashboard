@@ -245,7 +245,7 @@ final_wide <- final_wide_dimension %>%
 # Update the version of the csv to reflect code cleanup
 #Updating to version 6 to reflect the work on updating the lookup tables
 
-write_csv(final_wide, "lapop_wide_v6.csv", na = "NULL ") 
+write_csv(final_wide, "lapop_wide_v8-new-person-id.csv", na = "NULL ") 
 ```
 
 

@@ -40,7 +40,7 @@ values_labels <-
     ),
     locale = locale(encoding = "UTF-8")
   ) %>%
-  clean_names() 
+  clean_names()
 ```
 
 ```{r assert rows with NA for question}

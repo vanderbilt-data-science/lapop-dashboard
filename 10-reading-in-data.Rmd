@@ -41,7 +41,55 @@ library(fs)
 
 ```
 
+# Read Lookup tables and create country lookup
 
+## Read in Lookup Tables
+```{r}
+questions_cats <-
+  read_csv(
+    path("lookups", "questions_categories_v1-0.csv"),
+    col_types = cols(
+      column_name = col_character(),
+      question_short_es = col_character(),
+      question_short_en = col_character(),
+      question_es = col_character(),
+      question_en = col_character(),
+      category_en = col_character(),
+      category_short_en = col_character(),
+      category_es = col_character(),
+      category_short_es = col_character()
+    ),
+    locale = locale(encoding = "UTF-8")
+  ) %>%
+  clean_names() # Yilin, add assertions here.
+
+values_labels <-
+  read_csv(
+    path("lookups", "values_labels_v1-1.csv"),
+    col_types = cols(
+      column_name = col_character(),
+      value = col_character(),
+      label_en = col_character(),
+      label_es = col_character(),
+      value_recoded = col_character()
+    ),
+    locale = locale(encoding = "UTF-8")
+  ) %>%
+  clean_names()
+```
+
+## Create Country Lookup Tables
+```{r}
+response_labels <- values_labels %>% 
+  left_join(questions_cats, by = "column_name") %>% 
+  select(column_name, question_es, value, value_recoded, label_es)
+
+# Create countries lookup to Add country name into dataframe
+countries <- response_labels %>% 
+  filter(column_name == "pais") %>% 
+  select(country = label_es, pais = value, country_code = value_recoded)
+ # select(pais, country)
+```
 
 # Reading in merged country files
 This is where we read in all the factored data. You should use the *most recent* merged country files for this section. The factored and unfactored file names are the same.
@@ -226,6 +274,9 @@ venezuela_16_unfactor  <- read_dta("data/2016_venezuela.dta") %>%
   assert(is_uniq, person_id) %>% 
   transform(person_id = as.character(person_id))
 ```
+
+
+
 
 
 

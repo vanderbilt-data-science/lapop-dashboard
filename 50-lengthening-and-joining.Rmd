@@ -183,6 +183,10 @@ This function takes in the unfactored version for before 2016 as well as after. 
 unmerged <- function(unfactor, unfactor16){
   #Lengthens all dataframes through above wrtten lengthen functions
   unfactor <- lengthen(unfactor)
+  
+  # pais in the unfactor dataframe is character, in unfactor16 it's haven-labelled, change to character to enable the union_all
+  unfactor16 <- unfactor16 %>%
+    mutate(pais = as.character(pais))
   unfactor16 <- lengthen_16(unfactor16)
   # factor <- lengthen_factor(factor)
   # factor16 <- lengthen_16factor(factor16)

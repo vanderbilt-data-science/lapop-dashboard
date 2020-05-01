@@ -14,12 +14,20 @@ Then, a similar function is written for the factored countries, but in this step
 
 The unfactored and factored datasets will be joined later in the process.
 
+
+
 ## Function to make unique ID for unfactored countries
 ```{r Define making_uniqueID() for unfactored df}
 making_uniqueID <- function(country){
   #Combines idnum and idnum_14 with "/"
-  country <- mutate(country,
-                    idnum = ifelse(idnum_14 == '',
+    # if (!('idnum_14' %in% colnames(country))){
+    #   country <- country %>% 
+    #     mutate(idnum_14 = '')
+    # }
+    country <- country %>% 
+    mutate(pais=as.character(pais)) %>% 
+    left_join(countries, by = "pais" ) %>%
+    mutate(idnum = ifelse(idnum_14 == '',
                                    idnum,
                                    paste(idnum,idnum_14,sep = "_"))) %>%
     #Adds a underscore followed by a row number
@@ -29,7 +37,8 @@ making_uniqueID <- function(country){
            person_id = paste(
              paste(
                #Takes first 3 letters of country names and capitalizes it
-               toupper(substr(pais, 1, 3)),
+               #toupper(substr(pais, 1, 3)),
+               country_code,
                #Selects last two digits of year
                substr(year, 3, 4), sep = ''),
              #Separates the country name from the year with underscore

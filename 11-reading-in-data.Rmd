@@ -1,0 +1,191 @@
+---
+title: "11-reading-in-data"
+output: html_notebook
+---
+
+```{r}
+library(purrr)
+library(tictoc)
+```
+
+```{r import lookup tables}
+questions_cats <-
+  read_csv(
+    path("lookups", "questions_categories_v1-0.csv"),
+    col_types = cols(
+      column_name = col_character(),
+      question_short_es = col_character(),
+      question_short_en = col_character(),
+      question_es = col_character(),
+      question_en = col_character(),
+      category_en = col_character(),
+      category_short_en = col_character(),
+      category_es = col_character(),
+      category_short_es = col_character()
+    ),
+    locale = locale(encoding = "ISO-8859-1")
+  ) %>%
+  clean_names() # Yilin, add assertions here.
+
+values_labels <-
+  read_csv(
+    path("lookups", "values_labels_v1-1.csv"),
+    col_types = cols(
+      column_name = col_character(),
+      value = col_character(),
+      label_en = col_character(),
+      label_es = col_character(),
+      value_recoded = col_character()
+    ),
+    locale = locale(encoding = "ISO-8859-1")
+  ) %>%
+  clean_names() 
+```
+
+
+```{r creating country-code lookup}
+
+target_vars <- questions_cats$column_name #unique columns to filter the data by
+
+response_labels <- values_labels %>%
+  left_join(questions_cats, by = "column_name") %>%
+  select(column_name, question_es, value, value_recoded, label_es)
+
+# Create countries lookup to Add country name into dataframe
+countries <- response_labels %>%
+  filter(column_name == "pais") %>%
+  rename(country = label_es, pais = value) %>%
+  select(pais, value_recoded)
+
+```
+
+
+```{r function to add country to data frame being read in}
+
+# This function checks if country column exists in the dataframe, and if it does then it makes sure that the country matches the country code.  If it doesn't then it adds the country code from the name of file. 
+get_country <- function(file, filename){
+  # inputs : 
+  # file - dataframe to be used
+  # filename - the name of the file being imported
+  # output : dataframe with correct country as a column
+  if("pais" %in% colnames(file)){
+    
+    pais_in_file <- file$pais %>% unique()
+    country_code <- countries %>% 
+      filter(pais == pais_in_file) %>% 
+      pull(value_recoded)
+    
+    print(paste0("Making sure country in data matches country in ", filename))
+    print(substr(filename,1,3))
+    print(file$pais[[1]])
+    print(country_code)
+    stopifnot(substr(filename,1,3)==country_code)
+    print("Successful!")
+    return(file)
+  }
+  else{
+    print( paste0("Replacing missing country in ", filename))
+    
+    country_num <- countries %>% 
+      filter(value_recoded == substr(filename, 1,3)) %>% 
+      pull(pais)
+    
+    file$pais <- country_num
+    print("Successful!")
+    return(file)
+  }
+  
+  #return(file)
+  
+}
+```
+
+
+
+
+
+```{r function to add year to data frame being read in}
+
+# This function checks if year column exists in the dataframe, and if it does then it makes sure that the year matches the year in filename.  If it doesn't then it adds the year from the name of file. 
+get_year <- function(file, filename){
+  # inputs : 
+  # file - dataframe to be used
+  # filename - the name of the file being imported
+  # output : dataframe with correct year as a column
+  if("year" %in% colnames(file)){
+    year_in_file <- file$year %>% unique()
+    print(paste0("Making sure year in data matches year in ", filename))
+    stopifnot(substr(filename,5,8)==year_in_file)
+    print("Successful!")
+    return(file)
+  }
+  else{
+    print( paste0("Replacing missing year in ", filename))
+    file$year <- substr(filename, 5,8)
+    print("Successful!")
+    return(file)
+  }
+  
+  # return(file)
+}
+
+```
+
+
+```{r}
+# Function to get the number of years and the number of countries present in each file
+get_country_dfs <- function(filename = dta_files[1]){
+  
+  filepath<- paste0("data/",filename) # look into fs
+  country_df <- read_dta(filepath) %>% 
+    clean_names() %>% 
+    get_country(filename = filename) %>% 
+    get_year(filename = filename) #%>% 
+  
+  return(country_df)
+}
+
+dta_files <- list.files("data", pattern = "\\.dta$ | *_cy_")
+#dta_files <- dta_files[grep(dta_files, pattern = "*_cy_")] 
+
+file_data <- data.frame()
+file_data <- rbind(file_data, data.frame(dta_files))
+```
+
+
+```{r warning=FALSE}
+
+
+country_list <- lapply(file_data$dta_files, get_country_dfs)
+
+final_country_df <- data.frame()
+
+
+# Combining the list of dataframes into one data frame.
+for(i in 1:length(country_list)){
+  
+  print(i)
+  country_df <- country_list[[i]] %>% 
+    select(one_of(target_vars)) %>% 
+    zap_labels() %>% 
+    mutate_at(vars(contains('idnum')), as.character) %>% 
+    mutate_at(vars(contains('pais')), as.numeric) %>% 
+    mutate_at(vars(contains('year')), as.numeric) %>% 
+    mutate_at(vars(contains('clusterdesc')), as.character) 
+  
+  final_country_df <- bind_rows(final_country_df, country_df)
+  
+}
+
+
+final_country_df %>% head()
+
+```
+
+```{r}
+write.csv(final_country_df, "final_country_df.csv")
+```
+
+
+
+

@@ -152,21 +152,45 @@ file_data <- data.frame()
 file_data <- rbind(file_data, data.frame(dta_files))
 ```
 
+```{r function to generate unique ids}
+# Function to generate unique id's that contain year, country and observation info
+making_uniqueID <- function(country) {
+  #Removes value_recoded from (some) files as it will be added to all with join to countries
+  country$value_recoded <- NA
+  country <- subset(country, select = -c(value_recoded)) %>%
+    mutate(pais = as.character(pais)) %>%
+    left_join(countries, by = "pais") %>%
+    #Set idnum to row_number
+    mutate(., idnum = row_number()) %>%
+    #Makes new column, person_id
+    mutate(.,
+           person_id = paste(paste( 
+             #Takes first 3 letters of country name
+             value_recoded,
+             #Selects last two digits of year
+             substr(year, 3, 4), sep = ''),
+             #Separates the country name from the year with underscore
+             idnum, sep = "_"))
+  
+  #Converts person_id column to a character
+  country <-
+    transform(country, person_id = as.character(person_id)) %>% select(person_id, everything())
+  return(country)
+}
+```
+
 
 ```{r warning=FALSE}
 
-
 country_list <- lapply(file_data$dta_files, get_country_dfs)
-
 final_country_df <- data.frame()
-
 
 # Combining the list of dataframes into one data frame.
 for(i in 1:length(country_list)){
   
   print(i)
-  country_df <- country_list[[i]] %>% 
-    select(one_of(target_vars)) %>% 
+  country_df <- making_uniqueID(country_list[[i]]) %>% 
+    select(person_id, one_of(target_vars)) %>% 
     zap_labels() %>% 
     mutate_at(vars(contains('idnum')), as.character) %>% 
     mutate_at(vars(contains('pais')), as.numeric) %>% 
@@ -177,7 +201,7 @@ for(i in 1:length(country_list)){
   
 }
 
-
+final_country_df %>% assert(is_uniq, person_id)
 final_country_df %>% head()
 
 ```

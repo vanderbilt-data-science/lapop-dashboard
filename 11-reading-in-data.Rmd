@@ -6,6 +6,10 @@ output: html_notebook
 ```{r}
 library(purrr)
 library(tictoc)
+library(tidyverse)
+library(fs)
+library(haven)
+library(janitor)
 ```
 
 ```{r import lookup tables}
@@ -179,7 +183,6 @@ for(i in 1:length(country_list)){
   
 }
 
-
 final_country_df %>% head()
 
 ```
@@ -188,6 +191,20 @@ final_country_df %>% head()
 write.csv(final_country_df, "final_country_df.csv")
 ```
 
-
+Check the files that had issues with year:
+```{r}
+library(data.table)
+install.packages("data.table")
+final_country_df<-as.data.table(final_country_df)
+# bra_2007_cy_por_p_v5.dta
+print(names(table(read_dta("data/bra_2007_cy_por_p_v5.dta")$year)))
+# guy_2008_cy_eng_p_v3.dta
+print(names(table(read_dta("data/guy_2008_cy_eng_p_v3.dta")$year)))
+# ury_2007_cy_spa_p.dta
+print(names(table(read_dta("data/ury_2007_cy_spa_p.dta")$year)))
+# ven_2007_cy_spa_p.dta
+print(names(table(read_dta("data/ven_2007_cy_spa_p.dta")$year)))
+```
+These are okay so far--let's stick with whatever happens for year/wave until we are at a point where we can actually see data in Tableau.
 
 

@@ -79,8 +79,9 @@ get_country <- function(file, filename){
     print(substr(filename,1,3))
     print(file$pais[[1]])
     print(country_code)
-    stopifnot(substr(filename,1,3)==country_code)
-    print("Successful!")
+    if(substr(filename,1,3)==country_code){
+      print("Successful!")
+    } else {print(paste0("DOUBLE CHECK COUNTRY IN ",filename))}
     return(file)
   }
   else{
@@ -115,8 +116,9 @@ get_year <- function(file, filename){
   if("year" %in% colnames(file)){
     year_in_file <- file$year %>% unique()
     print(paste0("Making sure year in data matches year in ", filename))
-    stopifnot(substr(filename,5,8)==year_in_file)
-    print("Successful!")
+    if(substr(filename,5,8)==year_in_file){
+      print("Successful!")
+    } else {print(paste0("DOUBLE CHECK YEAR IN ", filename))}
     return(file)
   }
   else{

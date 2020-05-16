@@ -75,24 +75,24 @@ get_country <- function(file, filename){
       filter(pais == pais_in_file) %>% 
       pull(value_recoded)
     
-    print(paste0("Making sure country in data matches country in ", filename))
-    print(substr(filename,1,3))
-    print(file$pais[[1]])
-    print(country_code)
+    # print(paste0("Making sure country in data matches country in ", filename))
+    # print(substr(filename,1,3))
+    # print(file$pais[[1]])
+    # print(country_code)
     if(substr(filename,1,3)==country_code){
-      print("Successful!")
+      cat("pais success... ")
     } else {print(paste0("DOUBLE CHECK COUNTRY IN ",filename))}
     return(file)
   }
   else{
-    print( paste0("Replacing missing country in ", filename))
+    #print( paste0("Replacing missing country in ", filename))
     
     country_num <- countries %>% 
       filter(value_recoded == substr(filename, 1,3)) %>% 
       pull(pais)
     
     file$pais <- country_num
-    print("Successful!")
+    cat("pais success... ")
     return(file)
   }
   
@@ -115,16 +115,16 @@ get_year <- function(file, filename){
   # output : dataframe with correct year as a column
   if("year" %in% colnames(file)){
     year_in_file <- file$year %>% unique()
-    print(paste0("Making sure year in data matches year in ", filename))
+    #print(paste0("Making sure year in data matches year in ", filename))
     if(substr(filename,5,8)==year_in_file){
-      print("Successful!")
+      cat("year success!")
     } else {print(paste0("DOUBLE CHECK YEAR IN ", filename))}
     return(file)
   }
   else{
-    print( paste0("Replacing missing year in ", filename))
+    #print( paste0("Replacing missing year in ", filename))
     file$year <- substr(filename, 5,8)
-    print("Successful!")
+    cat("year success!")
     return(file)
   }
   
@@ -137,7 +137,7 @@ get_year <- function(file, filename){
 ```{r}
 # Function to get the number of years and the number of countries present in each file
 get_country_dfs <- function(filename = dta_files[1]){
-  
+  cat(paste0("\nWorking on ",filename,"... "))
   filepath<- paste0("data/",filename) # look into fs
   country_df <- read_dta(filepath) %>% 
     clean_names() %>% 

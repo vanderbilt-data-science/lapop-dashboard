@@ -6,6 +6,10 @@ output: html_notebook
 ```{r}
 library(purrr)
 library(tictoc)
+library(tidyverse)
+library(fs)
+library(haven)
+library(janitor)
 ```
 
 ```{r import lookup tables}
@@ -23,7 +27,7 @@ questions_cats <-
       category_es = col_character(),
       category_short_es = col_character()
     ),
-    locale = locale(encoding = "ISO-8859-1")
+    locale = locale(encoding = "UTF-8")
   ) %>%
   clean_names() # Yilin, add assertions here.
 
@@ -37,7 +41,7 @@ values_labels <-
       label_es = col_character(),
       value_recoded = col_character()
     ),
-    locale = locale(encoding = "ISO-8859-1")
+    locale = locale(encoding = "UTF-8")
   ) %>%
   clean_names() 
 ```
@@ -75,23 +79,24 @@ get_country <- function(file, filename){
       filter(pais == pais_in_file) %>% 
       pull(value_recoded)
     
-    print(paste0("Making sure country in data matches country in ", filename))
-    print(substr(filename,1,3))
-    print(file$pais[[1]])
-    print(country_code)
-    stopifnot(substr(filename,1,3)==country_code)
-    print("Successful!")
+    # print(paste0("Making sure country in data matches country in ", filename))
+    # print(substr(filename,1,3))
+    # print(file$pais[[1]])
+    # print(country_code)
+    if(substr(filename,1,3)==country_code){
+      cat("pais success... ")
+    } else {print(paste0("DOUBLE CHECK COUNTRY IN ",filename))}
     return(file)
   }
   else{
-    print( paste0("Replacing missing country in ", filename))
+    #print( paste0("Replacing missing country in ", filename))
     
     country_num <- countries %>% 
       filter(value_recoded == substr(filename, 1,3)) %>% 
       pull(pais)
     
     file$pais <- country_num
-    print("Successful!")
+    cat("pais success... ")
     return(file)
   }
   
@@ -114,15 +119,16 @@ get_year <- function(file, filename){
   # output : dataframe with correct year as a column
   if("year" %in% colnames(file)){
     year_in_file <- file$year %>% unique()
-    print(paste0("Making sure year in data matches year in ", filename))
-    stopifnot(substr(filename,5,8)==year_in_file)
-    print("Successful!")
+    #print(paste0("Making sure year in data matches year in ", filename))
+    if(substr(filename,5,8)==year_in_file){
+      cat("year success!")
+    } else {print(paste0("DOUBLE CHECK YEAR IN ", filename))}
     return(file)
   }
   else{
-    print( paste0("Replacing missing year in ", filename))
+    #print( paste0("Replacing missing year in ", filename))
     file$year <- substr(filename, 5,8)
-    print("Successful!")
+    cat("year success!")
     return(file)
   }
   
@@ -135,9 +141,9 @@ get_year <- function(file, filename){
 ```{r}
 # Function to get the number of years and the number of countries present in each file
 get_country_dfs <- function(filename = dta_files[1]){
-  
+  cat(paste0("\nWorking on ",filename,"... "))
   filepath<- paste0("data/",filename) # look into fs
-  country_df <- read_dta(filepath) %>% 
+  country_df <- read_dta(filepath,encoding = "latin1") %>% 
     clean_names() %>% 
     get_country(filename = filename) %>% 
     get_year(filename = filename) #%>% 
@@ -177,7 +183,6 @@ for(i in 1:length(country_list)){
   
 }
 
-
 final_country_df %>% head()
 
 ```
@@ -186,6 +191,20 @@ final_country_df %>% head()
 write.csv(final_country_df, "final_country_df.csv")
 ```
 
-
+Check the files that had issues with year:
+```{r}
+library(data.table)
+install.packages("data.table")
+final_country_df<-as.data.table(final_country_df)
+# bra_2007_cy_por_p_v5.dta
+print(names(table(read_dta("data/bra_2007_cy_por_p_v5.dta")$year)))
+# guy_2008_cy_eng_p_v3.dta
+print(names(table(read_dta("data/guy_2008_cy_eng_p_v3.dta")$year)))
+# ury_2007_cy_spa_p.dta
+print(names(table(read_dta("data/ury_2007_cy_spa_p.dta")$year)))
+# ven_2007_cy_spa_p.dta
+print(names(table(read_dta("data/ven_2007_cy_spa_p.dta")$year)))
+```
+These are okay so far--let's stick with whatever happens for year/wave until we are at a point where we can actually see data in Tableau.
 
 

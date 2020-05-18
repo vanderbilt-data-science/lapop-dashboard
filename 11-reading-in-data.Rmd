@@ -207,12 +207,4 @@ print(names(table(read_dta("data/ven_2007_cy_spa_p.dta")$year)))
 ```
 These are okay so far--let's stick with whatever happens for year/wave until we are at a point where we can actually see data in Tableau.
 
-# convert to long data
-
-```{r}
-question_list <- colnames(final_country_df)
-remove <- c('pais','year','q2')
-question_list <- question_list[!question_list %in% remove]
-data_long <- gather(final_country_df, column_name, answer_measure, question_list)
-```
 

@@ -151,21 +151,55 @@ dta_files <- list.files("data", pattern = "\\.dta$ | *_cy_")
 file_data <- data.frame()
 file_data <- rbind(file_data, data.frame(dta_files))
 ```
-
+if (any(names(country) == "idnum" & any(names(country) == "idnum_14"))) {
+               paste(idnum,idnum_14,sep = "_")
+             }
 ```{r function to generate unique ids}
 # Function to generate unique id's that contain year, country and observation info
 making_uniqueID <- function(country) {
+  country <- as.data.frame(country)
   #Removes value_recoded from (some) files as it will be added to all with join to countries
   country$value_recoded <- NA
+  #Helper variables to determine what id used in data
+  indx_idnum <- grep('.idnum', colnames(country))
+  indx_idum <- grep('idum', colnames(country))
+  indx_obsid <- grep('obsid', colnames(country))
+  indx_respnum <- grep('respnum', colnames(country))
+  indx_uid <- grep('uniq_id', colnames(country))
   country <- subset(country, select = -c(value_recoded)) %>%
     mutate(pais = as.character(pais)) %>%
     left_join(countries, by = "pais") %>%
-    #Set idnum to row_number
-    mutate(., idnum = row_number()) %>%
+    #Use file id
+    mutate(.,
+       idnum =
+        (
+          if (length(indx_uid) == 1) {
+            country[[indx_uid]]
+          } else if (any(names(country) == "idnum" &
+                         any(names(country) == "idnum_14"))) {
+            paste(idnum, idnum_14, sep = "_")
+          } else if (any(names(country) == "idnum")) {
+            country$idnum
+          } else if (any(names(country) == "idnum_14")) {
+            country$idnum_14
+          } else if (any(names(country) == "id")) {
+            country$id
+          } else if (length(indx_respnum) == 1) {
+            country[[indx_respnum]]
+          } else if (length(indx_idnum) == 1) {
+            country[[indx_idnum]]
+          } else if (length(indx_idum) == 1) {
+            country[[indx_idum]]
+          } else if (length(indx_obsid) == 1) {
+            country[[indx_obsid]]
+          }
+        )
+    )  %>%
+    #Adding row number to id because some files have non-unique ids
+    mutate(., idnum = paste(idnum, row_number(), sep = "_")) %>%
     #Makes new column, person_id
     mutate(.,
-           person_id = paste(paste( 
-             #Takes first 3 letters of country name
+           person_id = paste(paste(#Takes first 3 letters of country name
              value_recoded,
              #Selects last two digits of year
              substr(year, 3, 4), sep = ''),
@@ -173,10 +207,13 @@ making_uniqueID <- function(country) {
              idnum, sep = "_"))
   
   #Converts person_id column to a character
+  country <- transform(country, idnum = as.character(idnum))
   country <-
     transform(country, person_id = as.character(person_id)) %>% select(person_id, everything())
   return(country)
 }
+
+country <- as.data.frame(country_list[69]) %>% select(pais, year)
 ```
 
 
@@ -188,7 +225,7 @@ final_country_df <- data.frame()
 # Combining the list of dataframes into one data frame.
 for(i in 1:length(country_list)){
   
-  print(i)
+  print(paste0(i, "/", length(country_list)))
   country_df <- making_uniqueID(country_list[[i]]) %>% 
     select(person_id, one_of(target_vars)) %>% 
     zap_labels() %>% 
@@ -203,12 +240,12 @@ for(i in 1:length(country_list)){
 
 final_country_df %>% assert(is_uniq, person_id)
 final_country_df %>% head()
-
 ```
 
 ```{r}
 write.csv(final_country_df, "final_country_df.csv")
 ```
+
 
 
 

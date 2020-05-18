@@ -27,7 +27,7 @@ questions_cats <-
       category_es = col_character(),
       category_short_es = col_character()
     ),
-    locale = locale(encoding = "ISO-8859-1")
+    locale = locale(encoding = "UTF-8")
   ) %>%
   clean_names() # Yilin, add assertions here.
 
@@ -41,7 +41,7 @@ values_labels <-
       label_es = col_character(),
       value_recoded = col_character()
     ),
-    locale = locale(encoding = "ISO-8859-1")
+    locale = locale(encoding = "UTF-8")
   ) %>%
   clean_names() 
 ```
@@ -143,7 +143,7 @@ get_year <- function(file, filename){
 get_country_dfs <- function(filename = dta_files[1]){
   cat(paste0("\nWorking on ",filename,"... "))
   filepath<- paste0("data/",filename) # look into fs
-  country_df <- read_dta(filepath) %>% 
+  country_df <- read_dta(filepath,encoding = "latin1") %>% 
     clean_names() %>% 
     get_country(filename = filename) %>% 
     get_year(filename = filename) #%>% 
@@ -207,4 +207,12 @@ print(names(table(read_dta("data/ven_2007_cy_spa_p.dta")$year)))
 ```
 These are okay so far--let's stick with whatever happens for year/wave until we are at a point where we can actually see data in Tableau.
 
+# convert to long data
+
+```{r}
+question_list <- colnames(final_country_df)
+remove <- c('pais','year','q2')
+question_list <- question_list[!question_list %in% remove]
+data_long <- gather(final_country_df, column_name, answer_measure, question_list)
+```
 

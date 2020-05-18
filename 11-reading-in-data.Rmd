@@ -27,7 +27,7 @@ questions_cats <-
       category_es = col_character(),
       category_short_es = col_character()
     ),
-    locale = locale(encoding = "ISO-8859-1")
+    locale = locale(encoding = "UTF-8")
   ) %>%
   clean_names() # Yilin, add assertions here.
 
@@ -41,7 +41,7 @@ values_labels <-
       label_es = col_character(),
       value_recoded = col_character()
     ),
-    locale = locale(encoding = "ISO-8859-1")
+    locale = locale(encoding = "UTF-8")
   ) %>%
   clean_names() 
 ```
@@ -143,7 +143,7 @@ get_year <- function(file, filename){
 get_country_dfs <- function(filename = dta_files[1]){
   cat(paste0("\nWorking on ",filename,"... "))
   filepath<- paste0("data/",filename) # look into fs
-  country_df <- read_dta(filepath) %>% 
+  country_df <- read_dta(filepath,encoding = "latin1") %>% 
     clean_names() %>% 
     get_country(filename = filename) %>% 
     get_year(filename = filename) #%>% 
@@ -204,14 +204,6 @@ print(names(table(read_dta("data/guy_2008_cy_eng_p_v3.dta")$year)))
 print(names(table(read_dta("data/ury_2007_cy_spa_p.dta")$year)))
 # ven_2007_cy_spa_p.dta
 print(names(table(read_dta("data/ven_2007_cy_spa_p.dta")$year)))
-# col_2009_cy_spa_p_v1.dta
-print(names(table(read_dta("data/col_2009_cy_spa_p_v1.dta")$year)))
-# col_2011_cy_spa_p_v1.dta
-print(names(table(read_dta("data/col_2011_cy_spa_p_v1.dta")$pais)))
-# col_2011_cy_spa_p.dta
-print(names(table(read_dta("data/col_2011_cy_spa_p.dta")$year)))
-# hti_2014_cy_spa-eng_p_v3-0.dta
-print(names(table(read_dta("data/hti_2014_cy_spa-eng_p_v3-0.dta")$pais)))
 ```
 These are okay so far--let's stick with whatever happens for year/wave until we are at a point where we can actually see data in Tableau.
 

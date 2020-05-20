@@ -198,7 +198,7 @@ making_uniqueID <- function(country) {
             country[[indx_idum]]
           } else if (length(indx_obsid) == 1) {
             country[[indx_obsid]]
-          }
+          } else {""}
         )
     )  %>%
     #Adding row number to id because some files have non-unique ids
@@ -219,7 +219,6 @@ making_uniqueID <- function(country) {
   return(country)
 }
 
-country <- as.data.frame(country_list[69]) %>% select(pais, year)
 ```
 
 

@@ -10,6 +10,7 @@ library(tidyverse)
 library(fs)
 library(haven)
 library(janitor)
+library(assertr)
 ```
 
 ```{r import lookup tables}
@@ -244,6 +245,7 @@ for(i in 1:length(country_list)){
 }
 
 final_country_df %>% head()
+final_country_df %>% assert(is_uniq, person_id)
 ```
 
 ```{r}

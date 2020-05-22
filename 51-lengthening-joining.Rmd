@@ -1,0 +1,17 @@
+---
+title: "51-lengenthing-joining"
+output: html_notebook
+---
+
+```{r}
+question_list <- colnames(final_country_df)
+remove <- c('pais','person_id')
+question_list <- question_list[!question_list %in% remove]
+final_data_long <- gather(final_country_df, column_name, answer_measure, question_list)
+```
+
+
+```{r}
+head(final_data_long)
+```
+

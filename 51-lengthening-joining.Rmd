@@ -15,3 +15,7 @@ final_data_long <- gather(final_country_df, column_name, answer_measure, questio
 head(final_data_long)
 ```
 
+```{r}
+head(combined_clean)
+```
+

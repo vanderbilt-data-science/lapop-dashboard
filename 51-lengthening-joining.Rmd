@@ -5,9 +5,10 @@ output: html_notebook
 
 ```{r}
 question_list <- colnames(final_country_df)
-remove <- c('pais','person_id')
+remove <- c('pais','person_id','weight')
 question_list <- question_list[!question_list %in% remove]
-final_data_long <- gather(final_country_df, column_name, answer_measure, question_list)
+final_data_long <- gather(final_country_df, column_name, answer_measure, question_list) %>% 
+  select(person_id,pais,column_name,answer_measure,weight)
 ```
 
 
@@ -16,6 +17,22 @@ head(final_data_long)
 ```
 
 ```{r}
-head(combined_clean)
+countries_new <- response_labels %>% 
+  filter(column_name == "pais") %>% 
+  rename(country = label_es, pais = value) %>% 
+  select(pais, country)
 ```
+
+
+```{r}
+total_long_common_recoded <- final_data_long %>%
+  mutate(answer_measure = as.character(answer_measure)) %>%
+  left_join(response_labels, 
+            by = c("column_name" = "column_name", "answer_measure" = "value")) %>%
+  mutate(answer_measure = if_else(is.na(value_recoded),answer_measure,value_recoded),
+         answer_dimension = label_es) %>%
+  mutate(pais = as.character(pais)) %>% 
+  left_join(countries_new, by = "pais")  
+```
+
 

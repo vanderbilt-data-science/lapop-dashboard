@@ -11,6 +11,7 @@ library(fs)
 library(haven)
 library(janitor)
 library(assertr)
+
 ```
 
 ```{r import lookup tables}
@@ -229,7 +230,7 @@ gen_weights <- function(country_df) {
   #loops through all rows and sets weight variable to ...
   #weight 1500 if possible
   #if no weight1500, then generate wt1500 from wt
-  #or 1 if no wt or wt15000
+  #or 1 weight then calculate wt1500 if no wt or wt15000
   for (i in 1:nrow(country_df)) {
     if (!is.na(country_df$weight1500[i])) {
       country_df$weight[i] <- country_df$weight1500[i]
@@ -242,7 +243,12 @@ gen_weights <- function(country_df) {
       ))
     } else if (is.na(country_df$weight1500[i]) &&
                is.na(country_df$wt[i])) {
-      country_df$weight[i] <- 1
+      country_df$weight[i] <- ((1500) / (nrow(
+        country_df %>% filter(
+          country_df$pais == country_df$pais[i] &
+            country_df$year == country_df$year[i]
+        ))
+      ))
     }
   }
   return(country_df)
@@ -271,10 +277,23 @@ for(i in 1:length(country_list)){
   
 }
 
+# Adding full country names to data frame.
+final_country_df <- left_join(final_country_df,
+                              (
+                                response_labels %>%
+                                  filter(column_name == "pais") %>%
+                                  mutate_at(vars(("value")), as.double)
+                              ),
+                              by = c("pais" = "value")) %>%
+  rename("country" = "label_es") %>%
+  select(-c("column_name", "question_es", "value_recoded"))
+
+# weight generation
 final_country_df <- gen_weights(final_country_df)
 
 final_country_df %>% select("person_id", "weight","wt","weight1500", everything()) %>% head()
 final_country_df %>% assert(is_uniq, person_id)
+
 ```
 
 

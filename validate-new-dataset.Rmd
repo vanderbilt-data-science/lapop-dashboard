@@ -1,0 +1,140 @@
+---
+title: "validate-new-dataset"
+output: html_notebook
+---
+```{r}
+dta_files
+```
+
+
+```{r}
+country_codes <- read_csv("iso_3166-1-alpha3_country-codes.csv")
+```
+
+```{r}
+final_country_df %>%
+  left_join(country_codes,by=c('pais'='code')) %>% 
+  group_by(pais,country_eng,year) %>% 
+  summarise(n=n())
+```
+
+```{r}
+v9<- read_csv("lapop_wide_v9-issue-57.csv")
+```
+
+```{r}
+v9 %>% 
+  group_by(country,wave) %>% 
+  summarise(n=n())
+  
+```
+
+
+# Guatemala 2010
+
+```{r gtm_new}
+gtm_2010_cy_spa_p_v3 <- read_dta("data/gtm_2010_cy_spa_p_v3.dta")
+```
+
+```{r gtm_old}
+guatemala_unfactor <- read_dta("data_old/merged_guatemala_2004_2014.zip")
+gtm_2010_old <- guatemala_unfactor %>% filter(wave==2010)
+```
+
+```{r}
+setdiff(gtm_2010_cy_spa_p_v3$idnum,gtm_2010_old$idnum)
+```
+
+
+# Canada 2010
+
+```{r can_new}
+can_2010_cy_eng_p_v2 <- read_dta("data/can_2010_cy_eng_p_v2.dta")
+```
+
+```{r can_old}
+canada_unfactor <- read_dta("data_old/merged_canada_2006_2017.dta") %>% 
+  #Fixing inconsistency
+  rename(idnum_14 = idnum_1416)
+
+canada_2010_old <- canada_unfactor %>% filter(wave == 2010)
+```
+
+```{r}
+setdiff(can_2010_cy_eng_p_v2$idnum,canada_2010_old$idnum)
+```
+
+# Nicaragua 2006
+
+```{r nic_new_2006}
+nic_2006_cy_spa_p <- read_dta("data/nic_2006_cy_spa_p.dta")
+```
+
+```{r nic_old_2006}
+nicaragua_unfactor <- read_dta("data_old/merged_nicaragua_2004_2014.zip")
+nicaragua_2006_old <- nicaragua_unfactor %>%  filter(wave == 2006)
+```
+
+```{r}
+setdiff(nic_2006_cy_spa_p$IDNUM,nicaragua_2006_old$idnum)
+```
+
+# Nicaragua 2008
+
+```{r nic_new_2008}
+nic_2008_cy_spa_p_v10 <- read_dta("data/nic_2008_cy_spa_p_v10.dta")
+```
+
+```{r nic_old_2008}
+nicaragua_2008_old <- nicaragua_unfactor %>%  filter(wave == 2008)
+```
+
+```{r}
+setdiff(nic_2008_cy_spa_p_v10$idnum,nicaragua_2008_old$idnum)
+```
+
+# Brazil 2012
+
+```{r bra_new}
+bra_2012_cy_por_p_v1 <- read_dta("data/bra_2012_cy_por_p_v1.dta")
+```
+
+```{r bra_old}
+brazil_unfactor <- read_dta("data_old/merged_brazil_2007_2014.zip")
+brazil_2012_old <- brazil_unfactor %>% filter(wave == 2012)
+```
+
+```{r}
+setdiff(bra_2012_cy_por_p_v1$idnum,brazil_2012_old$idnum)
+```
+
+# Ecuador 2010
+
+```{r}
+ecu_2010_cy_spa_p_v3 <- read_dta("data/ecu_2010_cy_spa_p_v3.dta")
+```
+
+```{r}
+ecuador_unfactor <- read_dta("data_old/merged_ecuador_2004_2014.zip")
+ecuador_2010_old <- ecuador_unfactor %>%  filter(wave == 2010)
+```
+
+```{r}
+setdiff(ecu_2010_cy_spa_p_v3$idnum,ecuador_2010_old$idnum)
+```
+
+# Paraguay 2010
+
+```{r}
+pry_2010_cy_spa_p_v4 <- read_dta("data/pry_2010_cy_spa_p_v4.dta")
+```
+
+```{r}
+paraguay_unfactor <- read_dta("data_old/merged_paraguay_2006_2014.zip")
+paraguay_2010_old <- paraguay_unfactor %>% filter(wave == 2010)
+```
+
+```{r}
+setdiff(pry_2010_cy_spa_p_v4$idnum,paraguay_2010_old$idnum)
+```
+

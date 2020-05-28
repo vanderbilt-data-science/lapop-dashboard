@@ -1,0 +1,58 @@
+---
+title: "lengthening & recoding"
+output: html_notebook
+---
+
+# lengthening
+
+```{r}
+question_list <- colnames(final_country_df)
+remove <- c('pais','person_id','weight','country')
+question_list <- question_list[!question_list %in% remove]
+final_data_long <- gather(final_country_df, column_name, answer_measure, question_list) %>% 
+  select(person_id,pais,country,column_name,answer_measure,weight)
+```
+
+# recoding
+
+```{r}
+total_long_common_recoded <- final_data_long %>%
+  mutate(answer_measure = as.character(answer_measure)) %>%
+  left_join(response_labels, 
+            by = c("column_name" = "column_name", "answer_measure" = "value")) %>%
+  mutate(answer_measure = if_else(is.na(value_recoded),answer_measure,value_recoded),
+         answer_dimension = label_es)
+```
+
+# add age group
+
+```{r}
+# Separate our q2 rows, add agegroup, then bind all together
+common_only_q2 <-
+  total_long_common_recoded %>% filter(column_name == "q2") %>%
+  mutate(answer_dimension = as.character(cut(
+    as.numeric(answer_measure),
+    breaks = c(0, 25, 35, 45, 55, 65, Inf),
+    labels = c("18-25", "26-35", "36-45", "46-55", "56-65", "66-")
+  )))
+
+# stacking back into full data
+total_long_common_recoded <- total_long_common_recoded %>% 
+  filter(column_name !="q2") %>%  #Only non-q2 rows left
+  bind_rows(common_only_q2)
+```
+
+# assert
+
+```{r age_group}
+total_long_common_recoded %>% 
+  filter(column_name == 'q2') %>% 
+  select(answer_measure,answer_dimension)
+```
+
+```{r}
+total_long_common_recoded %>% 
+  filter(column_name == 'year') %>% 
+  distinct(answer_measure)
+```
+

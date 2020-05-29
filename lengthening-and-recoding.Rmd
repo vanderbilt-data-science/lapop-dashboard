@@ -5,6 +5,9 @@ output: html_notebook
 
 # lengthening
 
+this part transform the data from wide to long
+the output long data has six columns: person_id, pais, country, weight, column_name, answer_measure
+
 ```{r}
 question_list <- colnames(final_country_df)
 remove <- c('pais','person_id','weight','country','X1')
@@ -14,6 +17,9 @@ final_data_long <- gather(final_country_df, column_name, answer_measure, questio
 ```
 
 # recoding
+
+this part will recode the answer_measure column to a sacle of 0-100
+if there is no value recoded, the answer measure will show its original answer
 
 ```{r}
 total_long_common_recoded <- final_data_long %>%
@@ -25,6 +31,8 @@ total_long_common_recoded <- final_data_long %>%
 ```
 
 # add age group
+
+this part will add age group as a dimension
 
 ```{r}
 # Separate our q2 rows, add agegroup, then bind all together
@@ -44,11 +52,19 @@ total_long_common_recoded <- total_long_common_recoded %>%
 
 # assert
 
+check the age group
+it should show actual age in measure and age group in dimension
+
 ```{r age_group}
 total_long_common_recoded %>% 
   filter(column_name == 'q2') %>% 
   select(answer_measure,answer_dimension)
 ```
+
+check the year recoding
+2009 is recoded to 2008
+2017 is recoded to 2016
+2019 is recoded to 2018
 
 ```{r}
 total_long_common_recoded %>% 
@@ -56,7 +72,32 @@ total_long_common_recoded %>%
   distinct(answer_measure)
 ```
 
+check if the recoding value is in sacle of 0-100
+
+```{r}
+unique(final_wide$b4)
+```
+
+```{r}
+final_wide %>% 
+  filter(b4 == '98') %>% 
+  select(person_id,b4,everything())
+```
+
+```{r}
+final_wide %>% 
+  filter(b13 == '98') %>% 
+  select(person_id,b13,everything())
+```
+
+```{r}
+final_country_df %>% 
+  filter(country == 'Colombia' & year == 2013) %>% 
+  distinct(b4)
+```
+
 ## Combining category and question
+
 ```{r Combine category and question}
 total_long_common_narrow <- total_long_common_recoded %>% 
   left_join(questions_cats, by = "column_name") %>%
@@ -67,6 +108,8 @@ total_long_common_narrow <- total_long_common_recoded %>%
 ```
 
 ## Pivoting Wider 
+
+This part will transform the data from long to wide for tableau
 
 Explicitly name the dimensions and measures 
 

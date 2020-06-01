@@ -298,7 +298,10 @@ final_country_df %>% assert(is_uniq, person_id)
 
 
 ```{r}
-write.csv(final_country_df, "final_country_df.csv")
+write_csv(final_country_df, "final_country_df.csv")
+final_country_df <- read_csv("final_country_df.csv",col_types = cols(.default = col_double(),
+                                                                     person_id = col_character(),
+                                                                     country = col_character()))
 ```
 
 Check the files that had issues with year:

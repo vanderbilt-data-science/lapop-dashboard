@@ -12,7 +12,13 @@ the output long data has six columns: person_id, pais, country, weight, column_n
 question_list <- colnames(final_country_df)
 remove <- c('pais','person_id','weight','country','X1')
 question_list <- question_list[!question_list %in% remove]
-final_data_long <- gather(final_country_df, column_name, answer_measure, question_list) %>% 
+final_data_long <- final_country_df %>% 
+  group_by(person_id,country) %>% # >> hack added to make person_id unique
+  mutate(rowid = row_number()) %>%
+  ungroup() %>%
+  mutate(person_id = paste(person_id, rowid, sep="_")) %>%
+  select(-rowid) %>%# << hack added to make person_id unique
+  gather(column_name, answer_measure, question_list) %>% 
   select(person_id,pais,country,column_name,answer_measure,weight)
 ```
 
@@ -72,29 +78,7 @@ total_long_common_recoded %>%
   distinct(answer_measure)
 ```
 
-check if the recoding value is in sacle of 0-100
 
-```{r}
-unique(final_wide$b4)
-```
-
-```{r}
-final_wide %>% 
-  filter(b4 == '98') %>% 
-  select(person_id,b4,everything())
-```
-
-```{r}
-final_wide %>% 
-  filter(b13 == '98') %>% 
-  select(person_id,b13,everything())
-```
-
-```{r}
-final_country_df %>% 
-  filter(country == 'Colombia' & year == 2013) %>% 
-  distinct(b4)
-```
 
 ## Combining category and question
 
@@ -323,4 +307,31 @@ final_wide <- final_wide_dimension %>%
 
 write_csv(final_wide, "lapop_wide_v10.csv", na = "NULL ") 
 
+```
+
+
+
+Checks that were previously earlier:
+check if the recoding value is in sacle of 0-100
+
+```{r}
+unique(final_wide$b4)
+```
+
+```{r}
+final_wide %>% 
+  filter(b4 == '98') %>% 
+  select(person_id,b4,everything())
+```
+
+```{r}
+final_wide %>% 
+  filter(b13 == '98') %>% 
+  select(person_id,b13,everything())
+```
+
+```{r}
+final_country_df %>% 
+  filter(country == 'Colombia' & year == 2013) %>% 
+  distinct(b4)
 ```

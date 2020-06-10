@@ -204,6 +204,7 @@ all.df %>% assert(is_uniq, person_id)
 write_csv(all.df, "all.df.csv")
 all.df <- read_csv("all.df.csv",col_types = cols(.default = col_double(),
                                                                      person_id = col_character(),
+                                                                     label_es = col_character(),
                                                                      country = col_character()))
 ```
 

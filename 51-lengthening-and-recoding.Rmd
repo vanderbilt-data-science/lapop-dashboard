@@ -334,7 +334,7 @@ final_wide <- final_wide_dimension %>%
 #Updating to version 6 to reflect the work on updating the lookup tables
 
 
-write_csv(final_wide, "lapop_wide_v0-11.csv", na = "NULL ") 
+write_csv(final_wide, "lapop_wide_v0-12.csv", na = "NULL ") 
 
 ```
 
@@ -367,5 +367,5 @@ all.df %>%
   distinct(b4)
 ```
 ```{r}
-all.df %>% filter(a4 == 62)
+final_wide %>% filter(a4_m == 62)
 ```

@@ -344,7 +344,7 @@ Checks that were previously earlier:
 check if the recoding value is in sacle of 0-100
 
 ```{r}
-unique(final_wide$b4)
+distinct(final_wide,a4)
 ```
 
 ```{r}
@@ -354,13 +354,18 @@ final_wide %>%
 ```
 
 ```{r}
-final_wide %>% 
-  filter(b13 == '98') %>% 
-  select(person_id,b13,everything())
+distinct(final_wide,b13)
+distinct(final_wide,jc13)
+distinct(final_wide,exc16)
+distinct(final_wide,exc11)
+
 ```
 
 ```{r}
-final_country_df %>% 
-  filter(country == 'Colombia' & year == 2013) %>% 
+all.df %>% 
+  filter(country == 'Colombia') %>% 
   distinct(b4)
+```
+```{r}
+all.df %>% filter(a4 == 62)
 ```

@@ -9,23 +9,46 @@ this part transform the data from wide to long
 the output long data has six columns: person_id, pais, country, weight, column_name, answer_measure
 
 ```{r}
-question_list <- colnames(final_country_df)
-remove <- c('pais','person_id','weight','country','X1')
+question_list <- colnames(all.df)
+remove <- c('pais','person_id','weight1500','country','X1')
 question_list <- question_list[!question_list %in% remove]
-final_data_long <- final_country_df %>% 
-  group_by(person_id,country) %>% # >> hack added to make person_id unique
-  mutate(rowid = row_number()) %>%
-  ungroup() %>%
-  mutate(person_id = paste(person_id, rowid, sep="_")) %>%
-  select(-rowid) %>%# << hack added to make person_id unique
+final_data_long <- all.df %>% 
+  # group_by(person_id,country) %>% # >> hack added to make person_id unique
+  # mutate(rowid = row_number()) %>%
+  # ungroup() %>%
+  # mutate(person_id = paste(person_id, rowid, sep="_")) %>%
+  # select(-rowid) %>%# << hack added to make person_id unique
   gather(column_name, answer_measure, question_list) %>% 
-  select(person_id,pais,country,column_name,answer_measure,weight)
+  select(person_id,pais,country,column_name,answer_measure,weight1500)
+```
+
+# Understand what is going on with strange values
+```{r}
+# library(stringr)
+# problematic <- filter(final_data_long, answer_measure%in%c(98,99,100)&column_name!="q2")
+# table(problematic$column_name,problematic$answer_measure)
+# table(problematic$column_name,str_match(problematic$person_id,".{3}(\\d{2})")[,2])
+# table(problematic$column_name,problematic$country)
+# table(problematic$answer_measure)
+# problematic %>% filter(answer_measure==100)
 ```
 
 # recoding
 
 this part will recode the answer_measure column to a sacle of 0-100
 if there is no value recoded, the answer measure will show its original answer
+
+## First, fix the bad NA values
+```{r}
+# final_data_long_fixed <- mutate(final_data_long, 
+#                           answer_measure = ifelse(column_name=="q2",
+#                                                    answer_measure,
+#                                                    recode(final_data_long$answer_measure,
+#                                                           `98`=NA_real_,`99`=NA_real_,`100`=NA_real_)))
+```
+
+
+## Then, the actual recoding
 
 ```{r}
 total_long_common_recoded <- final_data_long %>%
@@ -35,6 +58,12 @@ total_long_common_recoded <- final_data_long %>%
   mutate(answer_measure = if_else(is.na(value_recoded),answer_measure,value_recoded),
          answer_dimension = label_es)
 ```
+# Understand what is going on with strange values
+```{r}
+# table(filter(total_long_common_recoded,answer_measure==98)$column_name)
+# table(filter(values_labels, column_name=="q10a")$value_recoded)
+```
+
 
 # add age group
 
@@ -88,7 +117,7 @@ total_long_common_narrow <- total_long_common_recoded %>%
   rename(category = category_short_es, question = question_short_es) %>% 
   unite(category_question, category, question, sep = ":", remove = FALSE) %>%
   unite(category_colname, category, column_name, sep = ":", remove = FALSE) %>%
-  select(country, person_id, weight, column_name, category_question, category_colname, question, column_name, answer_measure, answer_dimension) 
+  select(country, person_id, weight1500, column_name, category_question, category_colname, question, column_name, answer_measure, answer_dimension) 
 ```
 
 ## Pivoting Wider 
@@ -278,7 +307,7 @@ final_wide_measure <-
     column_name %in% measures
   ) %>%
   pivot_wider(
-    id_cols = c(person_id, country,weight),
+    id_cols = c(person_id, country,weight1500),
     names_from = column_name,
     values_from = answer_measure
   )
@@ -290,13 +319,13 @@ final_wide_dimension <-
     column_name %in% dimensions
   ) %>%
   pivot_wider(
-    id_cols = c(person_id, country,weight),
+    id_cols = c(person_id, country,weight1500),
     names_from = column_name,
     values_from = answer_dimension
   )
 
 final_wide <- final_wide_dimension %>%
-  left_join(final_wide_measure, by = c("person_id", "country",'weight'), suffix = c("_d", "_m"))
+  left_join(final_wide_measure, by = c("person_id", "country",'weight1500'), suffix = c("_d", "_m"))
   
   
 #join
@@ -305,7 +334,7 @@ final_wide <- final_wide_dimension %>%
 #Updating to version 6 to reflect the work on updating the lookup tables
 
 
-write_csv(final_wide, "lapop_wide_v10.csv", na = "NULL ") 
+write_csv(final_wide, "lapop_wide_v0-12.csv", na = "NULL ") 
 
 ```
 
@@ -315,7 +344,7 @@ Checks that were previously earlier:
 check if the recoding value is in sacle of 0-100
 
 ```{r}
-unique(final_wide$b4)
+distinct(final_wide,a4)
 ```
 
 ```{r}
@@ -325,13 +354,18 @@ final_wide %>%
 ```
 
 ```{r}
-final_wide %>% 
-  filter(b13 == '98') %>% 
-  select(person_id,b13,everything())
+distinct(final_wide,b13)
+distinct(final_wide,jc13)
+distinct(final_wide,exc16)
+distinct(final_wide,exc11)
+
 ```
 
 ```{r}
-final_country_df %>% 
-  filter(country == 'Colombia' & year == 2013) %>% 
+all.df %>% 
+  filter(country == 'Colombia') %>% 
   distinct(b4)
+```
+```{r}
+final_wide %>% filter(a4_m == 62)
 ```

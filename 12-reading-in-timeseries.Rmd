@@ -1,0 +1,214 @@
+---
+title: "11-reading-in-data"
+output: html_notebook
+---
+
+```{r}
+library(purrr)
+library(tictoc)
+library(tidyverse)
+library(fs)
+library(haven)
+library(janitor)
+library(assertr)
+
+```
+
+```{r import lookup tables}
+questions_cats <-
+  read_csv(
+    path("lookups", "questions_categories_v1-1.csv"),
+    col_types = cols(
+      column_name = col_character(),
+      question_short_es = col_character(),
+      question_short_en = col_character(),
+      question_es = col_character(),
+      question_en = col_character(),
+      category_en = col_character(),
+      category_short_en = col_character(),
+      category_es = col_character(),
+      category_short_es = col_character()
+    ),
+    locale = locale(encoding = "UTF-8")
+  ) %>%
+  clean_names() # Yilin, add assertions here.
+
+values_labels <-
+  read_csv(
+    path("lookups", "values_labels_v1-1.csv"),
+    col_types = cols(
+      column_name = col_character(),
+      value = col_character(),
+      label_en = col_character(),
+      label_es = col_character(),
+      value_recoded = col_character()
+    ),
+    locale = locale(encoding = "UTF-8")
+  ) %>%
+  clean_names() 
+```
+
+
+```{r creating country-code lookup}
+
+target_vars <- questions_cats$column_name #unique columns to filter the data by
+
+response_labels <- values_labels %>%
+  left_join(questions_cats, by = "column_name") %>%
+  select(column_name, question_es, value, value_recoded, label_es)
+
+# Create countries lookup to Add country name into dataframe
+countries <- response_labels %>%
+  filter(column_name == "pais") %>%
+  rename(country = label_es, pais = value) %>%
+  select(pais, value_recoded)
+
+```
+
+
+```{r function to check data frame being read in has "pais"}
+
+# This function checks if pais column exists in the dataframe
+check_pais <- function(df, filename){
+  # inputs : 
+  # df - dataframe to be used
+  # filename - the name of the file being imported
+  # output : dataframe with correct country as a column
+  if(! "pais" %in% colnames(df)){
+    print("'pais' missing!")
+  }
+  return(df)
+}
+```
+
+```{r function to add year to data frame being read in}
+
+# This function checks if year column exists in the dataframe, and if it does then it makes sure that the year matches the year in filename.  If it doesn't then it adds the year from the name of file. 
+add_year <- function(df, filename){
+  # inputs : 
+  # df - dataframe to be used
+  # filename - the name of the file being imported
+  # output : dataframe with correct year as a column
+  if(!("year" %in% names(df))){
+    year <- str_extract(filename, "\\d{4}")
+    df$year <- year
+    cat(paste0("\nSet year to ",year))
+  }
+  return(df)
+}
+
+```
+
+```{r Getting list of time series files, or single cy files}
+ts.list <- list.files("data",pattern = "_ts_.*.dta",full.names = T)
+cy.list <- list.files("data",pattern = "_cy_.*.dta",full.names = T)
+
+country.abb <- unique(str_extract(list.files("data",pattern = ".dta"),"^.{3}"))
+
+get_filenames <- function(abb){
+  filename <- grep(abb,ts.list,value = T)
+  if(length(filename)<1){
+    filename <- grep(abb, cy.list, value = T)
+  }
+  return(filename)
+}
+
+country.filenames <- sapply(country.abb, get_filenames)
+country.filenames[["all"]] <- NULL
+```
+
+```{r Function to read in TIME SERIES}
+# Function to get the number of years and the number of countries present in each file
+get_country_df <- function(filepath = country.filenames[[1]]){
+  cat(paste0("\nWorking on ",filepath,"... "))
+  country_df <- read_dta(filepath,encoding = "latin1") %>% 
+    clean_names() %>%
+    zap_labels() %>%
+    check_pais(filename = filepath) %>% 
+    add_year(filename = filepath) #%>% 
+  
+  return(country_df)
+}
+
+```
+
+
+```{r function to generate unique ids TIME SERIES}
+# Function to generate unique id's that contain year, country and observation info
+add_uniqueID <- function(df) {
+  df <- df %>%
+    mutate(person_id = paste(year, pais, idnum,sep = "_")) %>%
+    group_by(person_id) %>% 
+    mutate(id_count = row_number()) %>% 
+    ungroup() %>%
+    mutate(person_id = paste(person_id, id_count, sep = "_"),
+           id_count = NULL)
+    #Adding more stuff to id because some files have non-unique ids
+    assert(df, is_uniq, person_id)
+    return(df)
+}
+
+# df <- add_uniqueID(get_country_df())
+```
+
+
+```{r function to generate/get weights OLD}
+add_weight1500 <- function(country_df) {
+  #creates final output variable
+  if (!"weight1500"%in%names(country_df)){
+    country_df <- mutate(country_df, weight1500=wt/n()*1500)
+  }
+  return(country_df)
+}
+```
+
+
+```{r warning=FALSE}
+# 
+# country_list <- lapply(file_data$dta_files, get_country_dfs)
+country.dfs <- sapply(country.filenames, get_country_df)
+
+# Combining the list of dataframes into one data frame.
+country.dfs.tidied <- sapply(country.dfs, function(df){
+  df %>%
+    add_uniqueID() %>% 
+    add_weight1500() %>%
+    select(person_id, one_of(target_vars)) %>%  
+    mutate_at(vars(contains('idnum')), as.character) %>% 
+    mutate_at(vars(contains('pais')), as.numeric) %>% 
+    mutate_at(vars(contains('year')), as.numeric) %>% 
+    mutate_at(vars(contains('clusterdesc')), as.character) 
+})
+
+all.df <- reduce(country.dfs.tidied, bind_rows)
+
+
+# Adding full country names to data frame.
+all.df <- left_join(all.df,
+                    (
+                      response_labels %>%
+                        filter(column_name == "pais") %>%
+                        mutate_at(vars(("value")), as.double) %>%
+                        select(value, label_es)
+                    ),
+                    by = c("pais" = "value")) %>%
+            mutate(country = label_es)
+
+all.df %>% select("person_id","wt","weight1500", everything()) %>% head()
+all.df %>% assert(is_uniq, person_id)
+
+```
+
+
+```{r}
+write_csv(all.df, "all.df.csv")
+all.df <- read_csv("all.df.csv",col_types = cols(.default = col_double(),
+                                                                     person_id = col_character(),
+                                                                     label_es = col_character(),
+                                                                     country = col_character()))
+```
+
+
+
+
+

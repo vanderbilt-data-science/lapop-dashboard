@@ -14,7 +14,7 @@ Join to lookup tables to get short categories and short questions
 Use Glue to put together string or prints
 
 ## Create category/short question dataframe
-```{r}
+```{r setup, echo=FALSE, results='hide'}
 library(glue)
 cat_numxl <- read_csv("lookups/questions_categories_v1-1.csv") 
 
@@ -35,7 +35,7 @@ dimensions_cat_short <- tibble(column_name = dimensions) %>%
 
 
 Copy and paste this output into the Parameter dialog to select variables and set text for them
-```{r}
+```{r var selection, echo=FALSE}
 measures_cat_short %>% 
   arrange(category_short_es, question_short_es) %>% 
   glue_data('{column_name}, {category_short_es}:{question_short_es}')
@@ -46,7 +46,7 @@ measures_cat_short %>%
 
 In Tableau, custom parameters will be used to select variables to display on the dashboards. The following output should be cut and pasted into the code window for calculated fields. 
 
-```{r}
+```{r calc measures, echo=FALSE}
 cat("CASE [Choose Variable]
 ")
 
@@ -63,7 +63,7 @@ END")
 
 Cut and paste the code below into a field for Short Question
 
-```{r}
+```{r calc qtext, echo=FALSE}
 cat("CASE [Choose Variable]
 ")
 
@@ -79,7 +79,7 @@ END")
 
 Cut and paste the code below into a calculated field for 'Full Question'
 
-```{r}
+```{r calc fullq, echo=FALSE}
 cat("CASE [Choose Variable]
 ")
 
@@ -98,7 +98,7 @@ For numerics with both numbers and text, just the text.
 
 Copy and paste this output into the Parameter dialog to select dimension variables and set text for them
 
-```{r}
+```{r select dim, echo=FALSE}
 dimensions_cat_short %>% 
   arrange(category_short_es, question_short_es) %>% 
   glue_data('{column_name}, {category_short_es}:{question_short_es}')
@@ -111,7 +111,7 @@ dimensions_cat_short %>%
 
 In Tableau, custom parameters will be used to select variables to display on the dashboards. The following output should be cut and pasted into the code window for calculated fields. 
 
-```{r}
+```{r custom param, echo=FALSE}
 cat("CASE [Choose Crosstab Dimension]
 ")
 
@@ -127,12 +127,12 @@ END")
 
 Grouped mutate to roll up multiple lines into one with /n separators, tabs?
 
-```{r}
+```{r val label setup, echo=FALSE, results='hide'}
 label_val <- read_csv("lookups/values_labels_v1-1.csv")
 ```
 
 
-```{r}
+```{r calc measure, echo=FALSE}
   cat("CASE [Choose Variable]
 ")
 

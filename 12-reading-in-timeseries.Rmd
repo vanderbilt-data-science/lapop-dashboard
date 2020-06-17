@@ -1,5 +1,5 @@
 ---
-title: "11-reading-in-data"
+title: "12-reading-in-timeseries"
 output: html_notebook
 ---
 
@@ -17,7 +17,7 @@ library(assertr)
 ```{r import lookup tables}
 questions_cats <-
   read_csv(
-    path("lookups", "questions_categories_v1-1.csv"),
+    path("lookups", "questions_categories_v1-2.csv"),
     col_types = cols(
       column_name = col_character(),
       question_short_es = col_character(),
@@ -35,7 +35,7 @@ questions_cats <-
 
 values_labels <-
   read_csv(
-    path("lookups", "values_labels_v1-1.csv"),
+    path("lookups", "values_labels_v1-2.csv"),
     col_types = cols(
       column_name = col_character(),
       value = col_character(),

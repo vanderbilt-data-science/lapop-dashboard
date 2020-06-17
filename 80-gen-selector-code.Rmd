@@ -16,7 +16,7 @@ Use Glue to put together string or prints
 ## Create category/short question dataframe
 ```{r setup, echo=FALSE, results='hide'}
 library(glue)
-cat_numxl <- read_csv("lookups/questions_categories_v1-1.csv") 
+cat_numxl <- read_csv("lookups/questions_categories_v1-2.csv") 
 
 measures_cat_short <- tibble(column_name = measures) %>%
   left_join(cat_numxl, by=("column_name")) %>%
@@ -128,7 +128,9 @@ END")
 Grouped mutate to roll up multiple lines into one with /n separators, tabs?
 
 ```{r val label setup, echo=FALSE, results='hide'}
-label_val <- read_csv("lookups/values_labels_v1-1.csv")
+label_val <- read_csv("lookups/values_labels_v1-2.csv") %>%
+  mutate(value_recoded = if_else(is.na(value_recoded), value, value_recoded))
+
 ```
 
 

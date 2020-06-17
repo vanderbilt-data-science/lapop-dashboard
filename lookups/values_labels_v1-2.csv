@@ -1,0 +1,925 @@
+column_name,value,label_en,label_es,value_recoded
+a4,1,Economy,Economía,1
+a4,2,Economy,Economía,1
+a4,3,Economy,Economía,1
+a4,4,Economy,Economía,1
+a4,7,Economy,Economía,1
+a4,9,Economy,Economía,1
+a4,26,Economy,Economía,1
+a4,1082,Economy,Economía,1
+a4,1092,Economy,Economía,1
+a4,1562,Economy,Economía,1
+a4,1563,Economy,Economía,1
+a4,1697,Economy,Economía,1
+a4,10105,Economy,Economía,1
+a4,5,Security,Seguridad,2
+a4,14,Security,Seguridad,2
+a4,17,Security,Seguridad,2
+a4,27,Security,Seguridad,2
+a4,31,Security,Seguridad,2
+a4,33,Security,Seguridad,2
+a4,57,Security,Seguridad,2
+a4,80,Security,Seguridad,2
+a4,862,Security,Seguridad,2
+a4,863,Security,Seguridad,2
+a4,1091,Security,Seguridad,2
+a4,1165,Security,Seguridad,2
+a4,1687,Security,Seguridad,2
+a4,18,Basic Services,Servicios básicos,3
+a4,19,Basic Services,Servicios básicos,3
+a4,21,Basic Services,Servicios básicos,3
+a4,22,Basic Services,Servicios básicos,3
+a4,23,Basic Services,Servicios básicos,3
+a4,24,Basic Services,Servicios básicos,3
+a4,55,Basic Services,Servicios básicos,3
+a4,60,Basic Services,Servicios básicos,3
+a4,1564,Basic Services,Servicios básicos,3
+a4,13,Politics,Política,4
+a4,15,Politics,Política,4
+a4,30,Politics,Política,4
+a4,56,Politics,Política,4
+a4,59,Politics,Política,4
+a4,61,Politics,Política,4
+a4,62,Politics,Política,4
+a4,471,Politics,Política,4
+a4,472,Politics,Política,4
+a4,474,Politics,Política,4
+a4,1071,Politics,Política,4
+a4,1076,Politics,Política,4
+a4,1077,Politics,Política,4
+a4,1078,Politics,Política,4
+a4,1079,Politics,Política,4
+a4,1083,Politics,Política,4
+a4,1084,Politics,Política,4
+a4,1085,Politics,Política,4
+a4,1689,Politics,Política,4
+a4,10102,Politics,Política,4
+a4,6,Other,Otros,5
+a4,10,Other,Otros,5
+a4,11,Other,Otros,5
+a4,12,Other,Otros,5
+a4,16,Other,Otros,5
+a4,20,Other,Otros,5
+a4,25,Other,Otros,5
+a4,32,Other,Otros,5
+a4,58,Other,Otros,5
+a4,70,Other,Otros,5
+a4,864,Other,Otros,5
+a4,865,Other,Otros,5
+a4,1081,Other,Otros,5
+a4,1362,Other,Otros,5
+a4,1471,Other,Otros,5
+a4,1496,Other,Otros,5
+a4,2262,Other,Otros,5
+a4,2465,Other,Otros,5
+a4,2466,Other,Otros,5
+a4,10101,Other,Otros,5
+a4,10106,Other,Otros,5
+a4,10107,Other,Otros,5
+a4,10108,Other,Otros,5
+aoj11,4,Very Unsafe,Muy inseguro(a),0
+aoj11,3,Somewhat Unsafe,Algo inseguro(a),33.33333
+aoj11,2,Somewhat Safe,Algo seguro(a),66.66666
+aoj11,1,Very Safe,Muy seguro(a),100
+aoj12,4,None,Nada,0
+aoj12,3,Little,Poco,33.33333
+aoj12,2,Some,Algo,66.66666
+aoj12,1,A lot,Mucho,100
+b1,1,Not at All,Nada,0
+b1,2,2,2,16.66667
+b1,3,3,3,33.33333
+b1,4,4,4,50
+b1,5,5,5,66.66666
+b1,6,6,6,83.33334
+b1,7,A Lot,Mucho,100
+b12,1,Not at All,Nada,0
+b12,2,2,2,16.66667
+b12,3,3,3,33.33333
+b12,4,4,4,50
+b12,5,5,5,66.66666
+b12,6,6,6,83.33334
+b12,7,A Lot,Mucho,100
+b13,1,Not at All,Nada,0
+b13,2,2,2,16.66667
+b13,3,3,3,33.33333
+b13,4,4,4,50
+b13,5,5,5,66.66666
+b13,6,6,6,83.33334
+b13,7,A Lot,Mucho,100
+b18,1,Not at All,Nada,0
+b18,2,2,2,16.66667
+b18,3,3,3,33.33333
+b18,4,4,4,50
+b18,5,5,5,66.66666
+b18,6,6,6,83.33334
+b18,7,A Lot,Mucho,100
+b2,1,Not at All,Nada,0
+b2,2,2,2,16.66667
+b2,3,3,3,33.33333
+b2,4,4,4,50
+b2,5,5,5,66.66666
+b2,6,6,6,83.33334
+b2,7,A Lot,Mucho,100
+b21,1,Not at All,Nada,0
+b21,2,2,2,16.66667
+b21,3,3,3,33.33333
+b21,4,4,4,50
+b21,5,5,5,66.66666
+b21,6,6,6,83.33334
+b21,7,A Lot,Mucho,100
+b21a,1,Not at All,Nada,0
+b21a,2,2,2,16.66667
+b21a,3,3,3,33.33333
+b21a,4,4,4,50
+b21a,5,5,5,66.66666
+b21a,6,6,6,83.33334
+b21a,7,A Lot,Mucho,100
+b3,1,Not at All,Nada,0
+b3,2,2,2,16.66667
+b3,3,3,3,33.33333
+b3,4,4,4,50
+b3,5,5,5,66.66666
+b3,6,6,6,83.33334
+b3,7,A Lot,Mucho,100
+b31,1,Not at All,Nada,0
+b31,2,2,2,16.66667
+b31,3,3,3,33.33333
+b31,4,4,4,50
+b31,5,5,5,66.66666
+b31,6,6,6,83.33334
+b31,7,A Lot,Mucho,100
+b32,1,Not at All,Nada,0
+b32,2,2,2,16.66667
+b32,3,3,3,33.33333
+b32,4,4,4,50
+b32,5,5,5,66.66666
+b32,6,6,6,83.33334
+b32,7,A Lot,Mucho,100
+b37,1,Not at All,Nada,0
+b37,2,2,2,16.66667
+b37,3,3,3,33.33333
+b37,4,4,4,50
+b37,5,5,5,66.66666
+b37,6,6,6,83.33334
+b37,7,A Lot,Mucho,100
+b4,1,Not at All,Nada,0
+b4,2,2,2,16.66667
+b4,3,3,3,33.33333
+b4,4,4,4,50
+b4,5,5,5,66.66666
+b4,6,6,6,83.33334
+b4,7,A Lot,Mucho,100
+b47a,1,Not at All,Nada,0
+b47a,2,2,2,16.66667
+b47a,3,3,3,33.33333
+b47a,4,4,4,50
+b47a,5,5,5,66.66666
+b47a,6,6,6,83.33334
+b47a,7,A Lot,Mucho,100
+b6,1,Not at All,Nada,0
+b6,2,2,2,16.66667
+b6,3,3,3,33.33333
+b6,4,4,4,50
+b6,5,5,5,66.66666
+b6,6,6,6,83.33334
+b6,7,A Lot,Mucho,100
+cct1b,2,No,No,0
+cct1b,1,Yes,Sí,100
+cp13,1,Once a Week,Una vez a la semana,NA
+cp13,2,Once or Twice a Month,Una o dos veces al mes,NA
+cp13,3,Once or Twice a Year,Una o dos veces al año,NA
+cp13,4,Never,Nunca,NA
+cp6,1,Once a Week,Una vez a la semana,NA
+cp6,2,Once or Twice a Month,Una o dos veces al mes,NA
+cp6,3,Once or Twice a Year,Una o dos veces al año,NA
+cp6,4,Never,Nunca,NA
+cp7,1,Once a Week,Una vez a la semana,NA
+cp7,2,Once or Twice a Month,Una o dos veces al mes,NA
+cp7,3,Once or Twice a Year,Una o dos veces al año,NA
+cp7,4,Never,Nunca,NA
+cp8,1,Once a Week,Una vez a la semana,NA
+cp8,2,Once or Twice a Month,Una o dos veces al mes,NA
+cp8,3,Once or Twice a Year,Una o dos veces al año,NA
+cp8,4,Never,Nunca,NA
+d1,1,Strongly disapprove,Desaprueba firmemente,0
+d1,2,2,2,11.11111
+d1,3,3,3,22.22222
+d1,4,4,4,33.33333
+d1,5,5,5,44.44444
+d1,6,6,6,55.55556
+d1,7,7,7,66.66666
+d1,8,8,8,77.77778
+d1,9,9,9,88.88889
+d1,10,Strongly approve,Aprueba firmemente,100
+d2,1,Strongly disapprove,Desaprueba firmemente,0
+d2,2,2,2,11.11111
+d2,3,3,3,22.22222
+d2,4,4,4,33.33333
+d2,5,5,5,44.44444
+d2,6,6,6,55.55556
+d2,7,7,7,66.66666
+d2,8,8,8,77.77778
+d2,9,9,9,88.88889
+d2,10,Strongly approve,Aprueba firmemente,100
+d3,1,Strongly disapprove,Desaprueba firmemente,0
+d3,2,2,2,11.11111
+d3,3,3,3,22.22222
+d3,4,4,4,33.33333
+d3,5,5,5,44.44444
+d3,6,6,6,55.55556
+d3,7,7,7,66.66666
+d3,8,8,8,77.77778
+d3,9,9,9,88.88889
+d3,10,Strongly approve,Aprueba firmemente,100
+d4,1,Strongly disapprove,Desaprueba firmemente,0
+d4,2,2,2,11.11111
+d4,3,3,3,22.22222
+d4,4,4,4,33.33333
+d4,5,5,5,44.44444
+d4,6,6,6,55.55556
+d4,7,7,7,66.66666
+d4,8,8,8,77.77778
+d4,9,9,9,88.88889
+d4,10,Strongly approve,Aprueba firmemente,100
+d5,1,Strongly disapprove,Desaprueba firmemente,0
+d5,2,2,2,11.11111
+d5,3,3,3,22.22222
+d5,4,4,4,33.33333
+d5,5,5,5,44.44444
+d5,6,6,6,55.55556
+d5,7,7,7,66.66666
+d5,8,8,8,77.77778
+d5,9,9,9,88.88889
+d5,10,Strongly approve,Aprueba firmemente,100
+d6,1,Strongly disapprove,Desaprueba firmemente,0
+d6,2,2,2,11.11111
+d6,3,3,3,22.22222
+d6,4,4,4,33.33333
+d6,5,5,5,44.44444
+d6,6,6,6,55.55556
+d6,7,7,7,66.66666
+d6,8,8,8,77.77778
+d6,9,9,9,88.88889
+d6,10,Strongly approve,Aprueba firmemente,100
+drk1,1,Not Likely at All,Nada probable,NA
+drk1,2,A Little Likely,Poco probable,NA
+drk1,3,Somewhat Likely,Algo probable,NA
+drk1,4,Very Likely,Muy probable,NA
+dst1b,1,Strongly Disagree,Muy en desacuerdo,0
+dst1b,2,2,2,16.66667
+dst1b,3,3,3,33.33333
+dst1b,4,4,4,50
+dst1b,5,5,5,66.66666
+dst1b,6,6,6,83.33334
+dst1b,7,Strongly Agree,Muy de acuerdo,100
+e5,1,Strongly disapprove,Desaprueba firmemente,0
+e5,2,2,2,11.11111
+e5,3,3,3,22.22222
+e5,4,4,4,33.33333
+e5,5,5,5,44.44444
+e5,6,6,6,55.55556
+e5,7,7,7,66.66666
+e5,8,8,8,77.77778
+e5,9,9,9,88.88889
+e5,10,Strongly approve,Aprueba firmemente,100
+ed,0,None,Ninguno,NA
+ed,1,1,1,NA
+ed,2,2,2,NA
+ed,3,3,3,NA
+ed,4,4,4,NA
+ed,5,5,5,NA
+ed,6,6,6,NA
+ed,7,7,7,NA
+ed,8,8,8,NA
+ed,9,9,9,NA
+ed,10,10,10,NA
+ed,11,11,11,NA
+ed,12,12,12,NA
+ed,13,13,13,NA
+ed,14,14,14,NA
+ed,15,15,15,NA
+ed,16,16,16,NA
+ed,17,17,17,NA
+ed,18,18+,18+,NA
+eff1,1,Strongly Disagree,Muy en desacuerdo,0
+eff1,2,2,2,16.66667
+eff1,3,3,3,33.33333
+eff1,4,4,4,50
+eff1,5,5,5,66.66666
+eff1,6,6,6,83.33334
+eff1,7,Strongly Agree,Muy de acuerdo,100
+eff2,1,Strongly Disagree,Muy en desacuerdo,0
+eff2,2,2,2,16.66667
+eff2,3,3,3,33.33333
+eff2,4,4,4,50
+eff2,5,5,5,66.66666
+eff2,6,6,6,83.33334
+eff2,7,Strongly Agree,Muy de acuerdo,100
+env2b,1,Very Serious,Muy serio,NA
+env2b,2,Somewhat Serious,Algo serio,NA
+env2b,3,Not So Serious,Poco serio,NA
+env2b,4,Not Serious at All,Nada serio,NA
+exc11,0,No,No,0
+exc11,1,Yes,Sí,100
+exc13,0,No,No,0
+exc13,1,Yes,Sí,100
+exc14,0,No,No,0
+exc14,1,Yes,Sí,100
+exc15,0,No,No,0
+exc15,1,Yes,Sí,100
+exc16,0,No,No,0
+exc16,1,Yes,Sí,100
+exc18,0,No,No,0
+exc18,1,Yes,Sí,100
+exc2,0,No,No,0
+exc2,1,Yes,Sí,100
+exc6,0,No,No,0
+exc6,1,Yes,Sí,100
+exc7,4,Not Widespread at All,Nada generalizada,0
+exc7,3,Not Very Widespread,Poco generalizada,33.33333
+exc7,2,Somewhat Widespread,Algo generalizada,66.66666
+exc7,1,Very Widespread,Muy generalizada,100
+exc7new,1,None,Ninguno,NA
+exc7new,2,Less than half of them,Menos de la mitad,NA
+exc7new,3,Half of them,La mitad de los políticos,NA
+exc7new,4,More than half of them,Más de la mitad,NA
+exc7new,5,All,Todos,NA
+gi0n,1,Daily,Diariamente,NA
+gi0n,2,A few times a week,Algunas veces a la semana,NA
+gi0n,3,A few times a month,Algunas veces al mes,NA
+gi0n,4,A few times a year,Algunas veces al año,NA
+gi0n,5,Never,Nunca,NA
+idio2,1,Better,Mejor,NA
+idio2,2,Same,Igual,NA
+idio2,3,Worse,Peor,NA
+infrax,1,Less than 10 minutes,Menos de 10 minutos,NA
+infrax,2,Between 10 and 30 minutes,Entre 10 y hasta 30 minutos,NA
+infrax,3,More than 30 minutes and up to an hour,Más de 30 minutos y hasta una hora,NA
+infrax,4,More than 1 hour and up to 3 hours,Más de 1 hora y hasta 3 horas,NA
+infrax,5,More than 3 hours,Más de 3 horas,NA
+infrax,6,[Don't Read] There are no police/they would not come,[No Leer] No hay Policía/ No llegaría nunca,NA
+ing4,1,Strongly Disagree,Muy en desacuerdo,0
+ing4,2,2,2,16.66667
+ing4,3,3,3,33.33333
+ing4,4,4,4,50
+ing4,5,5,5,66.66666
+ing4,6,6,6,83.33334
+ing4,7,Strongly Agree,Muy de acuerdo,100
+it1,4,Untrustworthy,Nada confiable,0
+it1,3,Not Very Trustworthy,Poco confiable,33.33333
+it1,2,Somewhat Trustworthy,Algo confiable,66.66666
+it1,1,Very Trustworthy,Muy confiable,100
+jc10,2,"No, a military take-over of the state would not be justified",No se justificaría que los militares tomen el poder por un golpe de Estado,0
+jc10,1,"Yes, a military take-over of the state would be justified",Se justificaría que los militares tomen el poder por un golpe de Estado,100
+jc13,2,"No, a military take-over of the state would not be justified",No se justificaría que los militares tomen el poder por un golpe de Estado,0
+jc13,1,"Yes, a military take-over of the state would be justified",Se justificaría que los militares tomen el poder por un golpe de Estado,100
+jc15a,2,"No, it is not justified",No se justificaría,0
+jc15a,1,"Yes, it is justified",Sí se justificaría,100
+jc16a,2,"No, it is not justified",No se justificaría,0
+jc16a,1,"Yes, it is justified",Sí se justificaría,100
+l1,1,Left,Izquierda,NA
+l1,2,2,2,NA
+l1,3,3,3,NA
+l1,4,4,4,NA
+l1,5,5,5,NA
+l1,6,6,6,NA
+l1,7,7,7,NA
+l1,8,8,8,NA
+l1,9,9,9,NA
+l1,10,Right,Derecha,NA
+m1,5,Very Bad,Muy malo (pésimo),0
+m1,4,Bad,Malo,25
+m1,3,Neither Good nor Bad (Fair),Ni bueno ni malo (regular),50
+m1,2,Good,Bueno,75
+m1,1,Very Good,Muy bueno,100
+mil10a,4,Untrustworthy,Nada confiable,0
+mil10a,3,Not Very Trustworthy,Poco confiable,33.33333
+mil10a,2,Somewhat Trustworthy,Algo confiable,66.66666
+mil10a,1,Very Trustworthy,Muy confiable,100
+mil10e,4,Untrustworthy,Nada confiable,0
+mil10e,3,Not Very Trustworthy,Poco confiable,33.33333
+mil10e,2,Somewhat Trustworthy,Algo confiable,66.66666
+mil10e,1,Very Trustworthy,Muy confiable,100
+ocup1a,1,Salaried employee of government or state-owned enterprise,Asalariado del gobierno o empresa estatal,NA
+ocup1a,2,Salaried employee in the private sector,Asalariado en el sector privado,NA
+ocup1a,3,Owner or partner in a business,Patrono o socio de empresa,NA
+ocup1a,4,Self-employed,Trabajador por cuenta propia,NA
+ocup1a,5,Unpaid worker,Trabajador no remunerado o sin pago,NA
+ocup4a,1,Working,Trabajando,NA
+ocup4a,2,"Not working at the moment, but have a job",No está trabajando en este momento pero tiene trabajo,NA
+ocup4a,3,Actively looking for a job,Está buscando trabajo activamente,NA
+ocup4a,4,Student,Es estudiante,NA
+ocup4a,5,Taking care of the home,Se dedica a los quehaceres de su hogar,NA
+ocup4a,6,"Retired, pensioner or permanently disabled to work","Está jubilado, pensionado o incapacitado permanentemente para trabajar",NA
+ocup4a,7,Not working and not looking for a job,No trabaja y no está buscando trabajo,NA
+pn4,4,Very Dissatisfied,Muy insatisfecho(a),0
+pn4,3,Dissatisfied,Insatisfecho(a),33.33333
+pn4,2,Satisfied,Satisfecho(a),66.66666
+pn4,1,Very Satisfied,Muy satisfecho(a),100
+pol1,4,None,Nada,0
+pol1,3,Little,Poco,33.33333
+pol1,2,Some,Algo,66.66666
+pol1,1,A lot,Mucho,100
+prot3,2,"No, I have not participated",No ha participado,0
+prot3,1,"Yes, I have participated",Sí ha participado,100
+q1,1,Male,Hombre,NA
+q1,2,Female,Mujer,NA
+q1,3,Other,Otro,NA
+q10a,2,No,No,0
+q10a,1,Yes,Sí,100
+q10e,1,Increased,Aumentó,NA
+q10e,2,Remained the same,Permaneció igual,NA
+q10e,3,Decreased,Disminuyó,NA
+q11n,1,Single,Soltero,NA
+q11n,2,Married,Casado,NA
+q11n,3,Common law marriage (living together),Unión Libre (acompañado),NA
+q11n,4,Divorced,Divorciado,NA
+q11n,5,Separated,Separado,NA
+q11n,6,Widowed,Viudo,NA
+q11n,7,Civil Union (where applicable),Unión civil (donde se aplica),NA
+q12bn,0,None,Ninguno,NA
+q12bn,1,1,1,NA
+q12bn,2,2,2,NA
+q12bn,3,3,3,NA
+q12bn,4,4,4,NA
+q12bn,5,5,5,NA
+q12bn,6,6,6,NA
+q12bn,7,7,7,NA
+q12bn,8,8,8,NA
+q12bn,9,9,9,NA
+q12bn,10,10,10,NA
+q12bn,11,11,11,NA
+q12bn,12,12,12,NA
+q12bn,13,13,13,NA
+q12bn,14,14,14,NA
+q12bn,15,15,15,NA
+q12bn,16,16,16,NA
+q12bn,21,21,21,NA
+q12bn,22,22,22,NA
+q12bn,25,24+,25+,NA
+q12c,0,None,Ninguno,NA
+q12c,1,1,1,NA
+q12c,2,2,2,NA
+q12c,3,3,3,NA
+q12c,4,4,4,NA
+q12c,5,5,5,NA
+q12c,6,6,6,NA
+q12c,7,7,7,NA
+q12c,8,8,8,NA
+q12c,9,9,9,NA
+q12c,10,10,10,NA
+q12c,11,11,11,NA
+q12c,12,12,12,NA
+q12c,13,13,13,NA
+q12c,14,14,14,NA
+q12c,15,15,15,NA
+q12c,16,16,16,NA
+q12c,17,17,17,NA
+q12c,18,18,18,NA
+q12c,19,19,19,NA
+q12c,20,25+,20+,NA
+q12c,21,21,21,NA
+q12c,22,22,22,NA
+q12c,23,23,23,NA
+q12c,24,24,24,NA
+q12c,25,25,25,NA
+q12c,26,26,26,NA
+q12c,29,29,29,NA
+q12c,30,30,30,NA
+q12c,32,32,32,NA
+q12c,39,39,39,NA
+q12c,40,40,40,NA
+q12c,45,45,45,NA
+q12c,50,50,50,NA
+q12c,53,53,53,NA
+q12c,72,72,72,NA
+q14,1,Yes,Sí,NA
+q14,2,No,No,NA
+q2,16,16,16,NA
+q2,17,17,17,NA
+q2,18,18,18,NA
+q2,19,19,19,NA
+q2,20,20,20,NA
+q2,21,21,21,NA
+q2,22,22,22,NA
+q2,23,23,23,NA
+q2,24,24,24,NA
+q2,25,25,25,NA
+q2,26,26,26,NA
+q2,27,27,27,NA
+q2,28,28,28,NA
+q2,29,29,29,NA
+q2,30,30,30,NA
+q2,31,31,31,NA
+q2,32,32,32,NA
+q2,33,33,33,NA
+q2,34,34,34,NA
+q2,35,35,35,NA
+q2,36,36,36,NA
+q2,37,37,37,NA
+q2,38,38,38,NA
+q2,39,39,39,NA
+q2,40,40,40,NA
+q2,41,41,41,NA
+q2,42,42,42,NA
+q2,43,43,43,NA
+q2,44,44,44,NA
+q2,45,45,45,NA
+q2,46,46,46,NA
+q2,47,47,47,NA
+q2,48,48,48,NA
+q2,49,49,49,NA
+q2,50,50,50,NA
+q2,51,51,51,NA
+q2,52,52,52,NA
+q2,53,53,53,NA
+q2,54,54,54,NA
+q2,55,55,55,NA
+q2,56,56,56,NA
+q2,57,57,57,NA
+q2,58,58,58,NA
+q2,59,59,59,NA
+q2,60,60,60,NA
+q2,61,61,61,NA
+q2,62,62,62,NA
+q2,63,63,63,NA
+q2,64,64,64,NA
+q2,65,65,65,NA
+q2,66,66,66,NA
+q2,67,67,67,NA
+q2,68,68,68,NA
+q2,69,69,69,NA
+q2,70,70,70,NA
+q2,71,71,71,NA
+q2,72,72,72,NA
+q2,73,73,73,NA
+q2,74,74,74,NA
+q2,75,75,75,NA
+q2,76,76,76,NA
+q2,77,77,77,NA
+q2,78,78,78,NA
+q2,79,79,79,NA
+q2,80,80,80,NA
+q2,81,81,81,NA
+q2,82,82,82,NA
+q2,83,83,83,NA
+q2,84,84,84,NA
+q2,85,85,85,NA
+q2,86,86,86,NA
+q2,87,87,87,NA
+q2,88,88,88,NA
+q2,89,89,89,NA
+q2,90,90,90,NA
+q2,91,91,91,NA
+q2,92,92,92,NA
+q2,93,93,93,NA
+q2,94,94,94,NA
+q2,95,95,95,NA
+q2,96,96,96,NA
+q2,97,97,97,NA
+q2,98,98,98,NA
+q2,99,99,99,NA
+q2,100,100,100,NA
+q2,101,101,101,NA
+q2,112,112,112,NA
+q3cn,1,Catholic,Católico,NA
+q3cn,2,"Protestant, Mainline Protestant or Protestant non-Evangelical","Protestante, Protestante Tradicional o Protestante no Evangélico",NA
+q3cn,3,Non-Christian Eastern Religion,Religiones Orientales no Cristianas,NA
+q3cn,4,None (Believes in a Supreme Entity but does not belong to any religion),Ninguna (Cree en un Ser Superior pero no pertenece a ninguna religión),NA
+q3cn,5,Evangelical and Protestant,Evangélica y Pentecostal,NA
+q3cn,7,Traditional or Native Religion,Religiones Tradicionales,NA
+q3cn,11,Agnostic or Atheist (Does not believe in God),Agnóstico o ateo (no cree en Dios),NA
+q3cn,77,Other,Otro,NA
+q3cn,1501,Kardecian Spiritism,Espírita Kardecista,NA
+q5a,1,More than once a week,Más de una vez por semana,NA
+q5a,2,Once a week,Una vez por semana,NA
+q5a,3,Once a month,Una vez al mes,NA
+q5a,4,Once or twice a year,Una o dos veces al año,NA
+q5a,5,Never or almost never,Nunca o casi nunca,NA
+q5b,4,Not Important at All,Nada importante,0
+q5b,3,Not Very Important,Poco importante,33.33333
+q5b,2,Somewhat Important,Algo importante,66.66666
+q5b,1,Very Important,Muy importante,100
+r1,0,No,No,0
+r1,1,Yes,Sí,100
+r12,0,No,No,0
+r12,1,Yes,Sí,100
+r14,0,No,No,0
+r14,1,Yes,Sí,100
+r15,0,No,No,0
+r15,1,Yes,Sí,100
+r16,0,No,No,0
+r16,1,Yes,Sí,100
+r18,0,No,No,0
+r18,1,Yes,Sí,100
+r3,0,No,No,0
+r3,1,Yes,Sí,100
+r4,0,No,No,0
+r4,1,Yes,Sí,100
+r4a,0,No,No,0
+r4a,1,Yes,Sí,100
+r5,0,No,No,NA
+r5,1,One,Uno,NA
+r5,2,Two,Dos,NA
+r5,3,Three or more,Tres o más,NA
+r6,0,No,No,NA
+r6,1,Yes,Sí,NA
+r7,0,No,No,NA
+r7,1,Yes,Sí,NA
+r8,0,No,No,NA
+r8,1,Yes,Sí,NA
+redist1,1,Strongly Disagree,Muy en desacuerdo,0
+redist1,2,2,2,16.66667
+redist1,3,3,3,33.33333
+redist1,4,4,4,50
+redist1,5,5,5,66.66666
+redist1,6,6,6,83.33334
+redist1,7,Strongly Agree,Muy de acuerdo,100
+redist2a,1,Strongly Disagree,Muy en desacuerdo,0
+redist2a,2,2,2,16.66667
+redist2a,3,3,3,33.33333
+redist2a,4,4,4,50
+redist2a,5,5,5,66.66666
+redist2a,6,6,6,83.33334
+redist2a,7,Strongly Agree,Muy de acuerdo,100
+redist3,1,Strongly Disagree,Muy en desacuerdo,0
+redist3,2,2,2,16.66667
+redist3,3,3,3,33.33333
+redist3,4,4,4,50
+redist3,5,5,5,66.66666
+redist3,6,6,6,83.33334
+redist3,7,Strongly Agree,Muy de acuerdo,100
+ros4,1,Strongly Disagree,Muy en desacuerdo,0
+ros4,2,2,2,16.66667
+ros4,3,3,3,33.33333
+ros4,4,4,4,50
+ros4,5,5,5,66.66666
+ros4,6,6,6,83.33334
+ros4,7,Strongly Agree,Muy de acuerdo,100
+smedia1,2,No,No,0
+smedia1,1,Yes,Sí,100
+smedia4,2,No,No,0
+smedia4,1,Yes,Sí,100
+smedia7,2,No,No,0
+smedia7,1,Yes,Sí,100
+soct2,1,Better,Mejor,NA
+soct2,2,Same,Igual,NA
+soct2,3,Worse,Peor,NA
+ur,1,Urban,Urbano,NA
+ur,2,Rural,Rural,NA
+vb10,2,No,No,0
+vb10,1,Yes,Sí,100
+vb2,2,Did not vote,No votó,0
+vb2,1,Voted,Sí votó,100
+vb20,1,Wouldn't vote,No votaría,NA
+vb20,2,Would vote for a candidate or party of the current president/administration,Votaría por el candidato o partido del actual presidente/administración,NA
+vb20,3,Would vote a candidate or party different from the current president/administration,Votaría por algún candidato o partido diferente del actual gobierno,NA
+vb20,4,Would go to vote but would leave the ballot blank or would purposely cancel my vote,Iría a votar pero dejaría la boleta en blanco o la anularía,NA
+vb50,4,Strongly Disagree,Muy en desacuerdo,0
+vb50,3,Disagree,En desacuerdo,33.33333
+vb50,2,Agree,De acuerdo,66.66666
+vb50,1,Strongly Agree,Muy de acuerdo,100
+vb51,1,A Man,Un hombre,NA
+vb51,2,A Woman,Una mujer,NA
+vb51,3,Both Equally,Ambos por igual,NA
+vb52,1,A Man,Un hombre,NA
+vb52,2,A Woman,Una mujer,NA
+vb52,3,Does not matter,No importa,NA
+vic1ext,2,No,No,0
+vic1ext,1,Yes,Sí,100
+w14a,2,"No, it is not justified",No se justificaría,0
+w14a,1,"Yes, it is justified",Sí se justificaría,100
+wf1,2,No,No,0
+wf1,1,Yes,Sí,100
+year,2004,2004,2004,2004
+year,2006,2006,2006,2006
+year,2007,2006,2006,2006
+year,2008,2008,2008,2008
+year,2009,2008,2008,2008
+year,2010,2010,2010,2010
+year,2012,2012,2012,2012
+year,2014,2014,2014,2014
+year,2016,2016,2016,2016
+year,2017,2016,2016,2016
+year,2018,2018,2018,2018
+year,2019,2018,2018,2018
+fs2,0,No,No,0
+fs2,1,Yes,Sí,100
+fs8,0,No,No,0
+fs8,1,Yes,Sí,100
+redist2,1,Strongly Disagree,Muy en desacuerdo,0
+redist2,2,2,2,16.66667
+redist2,3,3,3,33.33333
+redist2,4,4,4,50
+redist2,5,5,5,66.66666
+redist2,6,6,6,83.33334
+redist2,7,Strongly Agree,Muy de acuerdo,100
+cp2,2,No,No,0
+cp2,1,Yes,Sí,100
+cp20,1,Once a Week,Una vez a la semana,NA
+cp20,2,Once or Twice a Month,Una o dos veces al mes,NA
+cp20,3,Once or Twice a Year,Una o dos veces al año,NA
+cp20,4,Never,Nunca,NA
+np1,2,No,No,0
+np1,1,Yes,Sí,100
+sd2new2,4,Very Dissatisfied,Muy insatisfecho(a),0
+sd2new2,3,Dissatisfied,Insatisfecho(a),33.33333
+sd2new2,2,Satisfied,Satisfecho(a),66.66666
+sd2new2,1,Very Satisfied,Muy satisfecho(a),100
+sd3new2,4,Very Dissatisfied,Muy insatisfecho(a),0
+sd3new2,3,Dissatisfied,Insatisfecho(a),33.33333
+sd3new2,2,Satisfied,Satisfecho(a),66.66666
+sd3new2,1,Very Satisfied,Muy satisfecho(a),100
+sd6new2,4,Very Dissatisfied,Muy insatisfecho(a),0
+sd6new2,3,Dissatisfied,Insatisfecho(a),33.33333
+sd6new2,2,Satisfied,Satisfecho(a),66.66666
+sd6new2,1,Very Satisfied,Muy satisfecho(a),100
+b20,1,Not at All,Nada,0
+b20,2,2,2,16.66667
+b20,3,3,3,33.33333
+b20,4,4,4,50
+b20,5,5,5,66.66666
+b20,6,6,6,83.33334
+b20,7,A Lot,Mucho,100
+b20a,1,Not at All,Nada,0
+b20a,2,2,2,16.66667
+b20a,3,3,3,33.33333
+b20a,4,4,4,50
+b20a,5,5,5,66.66666
+b20a,6,6,6,83.33334
+b20a,7,A Lot,Mucho,100
+lib1,1,Very Little,Muy poca,0
+lib1,2,Enough,Suficiente,50
+lib1,3,Too Much,Demasiada,100
+lib2c,1,Very Little,Muy poca,0
+lib2c,2,Enough,Suficiente,50
+lib2c,3,Too Much,Demasiada,100
+vic1exta,0,0,0,NA
+vic1exta,1,1,1,NA
+vic1exta,2,2,2,NA
+vic1exta,3,3,3,NA
+vic1exta,4,4,4,NA
+vic1exta,5,5,5,NA
+vic1exta,6,6,6,NA
+vic1exta,7,7,7,NA
+vic1exta,8,8,8,NA
+vic1exta,9,9,9,NA
+vic1exta,10,10,10,NA
+vic1exta,11,11,11,NA
+vic1exta,12,12,12,NA
+vic1exta,13,13,13,NA
+vic1exta,14,14,14,NA
+vic1exta,15,15,15,NA
+vic1exta,16,16,16,NA
+vic1exta,17,17,17,NA
+vic1exta,18,18,18,NA
+vic1exta,19,19,19,NA
+vic1exta,20,20+,20+,NA
+exc20,0,No,No,0
+exc20,1,Yes,Sí,100
+gi0,1,Daily,Diariamente,NA
+gi0,2,A few times a week,Algunas veces a la semana,NA
+gi0,3,A few times a month,Algunas veces al mes,NA
+gi0,4,Rarely,Rara vez,NA
+gi0,5,Never,Nunca,NA
+clien1n,2,No,No,0
+clien1n,1,Yes,Sí,100
+clien1na,2,No,No,0
+clien1na,1,Yes,Sí,100
+env1c,1,The environment must be the main priority,El medio ambiente debe ser la principal prioridad,NA
+env1c,2,2,2,NA
+env1c,3,3,3,NA
+env1c,4,4,4,NA
+env1c,5,5,5,NA
+env1c,6,6,6,NA
+env1c,7,Economic growth as priority,Crecimiento económico es prioridad,NA
+v58,4,Strongly Disagree,Muy en desacuerdo,0
+v58,3,Disagree,En desacuerdo,33.33333
+v58,2,Agree,De acuerdo,66.66666
+v58,1,Strongly Agree,Muy de acuerdo,100
+l1b,1,Liberal,Liberal,NA
+l1b,2,2,2,NA
+l1b,3,3,3,NA
+l1b,4,4,4,NA
+l1b,5,5,5,NA
+l1b,6,6,6,NA
+l1b,7,7,7,NA
+l1b,8,8,8,NA
+l1b,9,9,9,NA
+l1b,10,Conservative,Conservador,NA
+q10new,0,No Income,Ningún ingreso,NA
+q10new,1,1,1,NA
+q10new,2,2,2,NA
+q10new,3,3,3,NA
+q10new,4,4,4,NA
+q10new,5,5,5,NA
+q10new,6,6,6,NA
+q10new,7,7,7,NA
+q10new,8,8,8,NA
+q10new,9,9,9,NA
+q10new,10,10,10,NA
+q10new,11,11,11,NA
+q10new,12,12,12,NA
+q10new,13,13,13,NA
+q10new,14,14,14,NA
+q10new,15,15,15,NA
+q10new,16,16,16,NA
+q12,0,None,Ninguno,NA
+q12,1,1,1,NA
+q12,2,2,2,NA
+q12,3,3,3,NA
+q12,4,4,4,NA
+q12,5,5,5,NA
+q12,6,6,6,NA
+q12,7,7,7,NA
+q12,8,8,8,NA
+q12,9,9,9,NA
+q12,10,10,10,NA
+q12,11,11,11,NA
+q12,12,12,12,NA
+q12,13,13,13,NA
+q12,14,14,14,NA
+q12,15,15,15,NA
+q12,16,16,16,NA
+q12,17,17,17,NA
+q12,18,18,18,NA
+q12,19,19,19,NA
+q12,20,20,20,NA
+q12,21,21,21,NA
+q12,22,22,22,NA
+q12,23,23,23,NA
+q12,24,24,24,NA
+q12,25,25+,25+,NA
+etid,1,White,Blanca,NA
+etid,2,Mestizo,Mestiza,NA
+etid,3,Indigenous,Indígena,NA
+etid,4,Black,Negra,NA
+etid,5,Mulatto,Mulata,NA
+etid,7,Other,Otra,NA
+etid,1110,Quechua,Quechua,NA
+etid,1111,Aymara,Aymara,NA
+etid,1112,Amazonian,De la Amazonia,NA
+etid,1113,Zamba,Zamba,NA
+etid,1106,Oriental,Oriental,NA
+etid,1506,Asian,Amarillo,NA
+etid,1606,Morena,Morena,NA
+etid,2306,Indian,Indios Orientales,NA
+etid,2309,Chinese,Chino,NA
+etid,2406,Chinese,Chino,NA
+etid,2408,Portuguese,Portugués,NA
+etid,3009,Chinese,Chino,NA
+etid,3020,East Indian,Indios Orientales,NA
+etid,3109,Chinese,Chino,NA
+etid,3120,East Indian,Indios Orientales,NA
+etid,3209,Chinese,Chino,NA
+etid,3220,East Indian,Indios Orientales,NA
+etid,3309,Chinese,Chino,NA
+etid,3320,East Indian,Indios Orientales,NA
+etid,3409,Chinese,Chino,NA
+etid,3420,East Indian,Indios Orientales,NA
+etid,3509,Chinese,Chino,NA
+etid,3520,East Indian,Indios Orientales,NA
+etid,4003,Hispanic or Latino,Hispano o Latino,NA
+etid,4004,Asian or Asian American,Asiático o Asiático americano,NA
+etid,4005,Native American,Indígena,NA
+etid,4006,Mixed Race,Mestizo,NA
+etid,4007,Middle Eastern,Medio Oriente,NA
+etid,4008,Middle Eastern,Medio Oriente,NA
+leng1,1,Castilian/Spanish,Castellano/español,NA
+leng1,2,Indigenous or Amerindian language,Nativo indígena,NA
+leng1,4,Other (indigenous),Otro (nativo),NA
+leng1,5,Other foreign,Otro extranjero,NA
+leng1,2401,English,Inglés,NA
+leng1,2402,Indigenous or Amerindian language,Indígena o Amerindio,NA
+leng1,2403,Chinese,Chino,NA
+leng1,2405,Other foreign,Otro extranjero,NA
+leng1,3001,English only,Solo Inglés,NA
+leng1,3002,Grenadian Creole English,Creole Inglés Granadino,NA
+leng1,3003,Grenadian Creole French,Creole Francés Granadino,NA
+leng1,3004,Other (indigenous),Otro (nativo),NA
+leng1,3005,Other foreign,Otro extranjero,NA
+leng1,3006,Spanish,Español,NA
+leng1,3101,English only,Solo Inglés,NA
+leng1,3102,Patois/Creole,Patois/Creole,NA
+leng1,3104,Other (indigenous),Otro (nativo),NA
+leng1,3105,Other foreign,Otro extranjero,NA
+leng1,3106,Spanish,Español,NA
+leng1,3201,English only,Solo Inglés,NA
+leng1,3202,Dominican Creole English,Creole Inglés Dominiqués,NA
+leng1,3203,Patois,Patois,NA
+leng1,3204,Other (indigenous),Otro (nativo),NA
+leng1,3205,Other foreign,Otro extranjero,NA
+leng1,3206,Spanish,Español,NA
+leng1,3301,English only,Solo Inglés,NA
+leng1,3302,Antiguan Creole (English),Creole Antiguano (Inglés),NA
+leng1,3304,Other (indigenous),Otro (nativo),NA
+leng1,3305,Other foreign,Otro extranjero,NA
+leng1,3306,Spanish,Español,NA
+leng1,3401,English only,Solo Inglés,NA
+leng1,3402,Vincentian Creole,Creole Sanvincentino,NA
+leng1,3405,Other foreign,Otro extranjero,NA
+leng1,3406,Spanish,Español,NA
+leng1,3501,English only,Solo Inglés,NA
+leng1,3504,Other (indigenous),Otro (nativo),NA
+leng1,3505,Other foreign,Otro extranjero,NA
+leng1,3506,Spanish,Español,NA

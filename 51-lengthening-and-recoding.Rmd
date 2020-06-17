@@ -428,7 +428,7 @@ final_wide <- final_wide_dimension %>%
 #Updating to version 6 to reflect the work on updating the lookup tables
 
 
-write_csv(final_wide, "lapop_wide_v0-13.csv", na = "NULL ") 
+write_csv(final_wide, "lapop_wide_v0-13-1.csv", na = "NULL ") 
 
 ```
 

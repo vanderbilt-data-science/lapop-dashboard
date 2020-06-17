@@ -923,3 +923,37 @@ leng1,3501,English only,Solo Inglés,NA
 leng1,3504,Other (indigenous),Otro (nativo),NA
 leng1,3505,Other foreign,Otro extranjero,NA
 leng1,3506,Spanish,Español,NA
+pais,1,Mexico,México,mex
+pais,2,Guatemala,Guatemala,gtm
+pais,3,El Salvador,El Salvador,slv
+pais,4,Honduras,Honduras,hnd
+pais,5,Nicaragua,Nicaragua,nic
+pais,6,Costa Rica,Costa Rica,cri
+pais,7,Panama,Panamá,pan
+pais,8,Colombia,Colombia,col
+pais,9,Ecuador,Ecuador,ecu
+pais,10,Bolivia,Bolivia,bol
+pais,11,Peru,Perú,per
+pais,12,Paraguay,Paraguay,pry
+pais,13,Chile,Chile,chl
+pais,14,Uruguay,Uruguay,ury
+pais,15,Brazil,Brasil,bra
+pais,16,Venezuela,Venezuela,ven
+pais,17,Argentina,Argentina,arg
+pais,21,Dominican Republic,República Dominicana,dom
+pais,22,Haiti,Haití,hti
+pais,23,Jamaica,Jamaica,jam
+pais,24,Guyana,Guyana,guy
+pais,25,Trinidad & Tobago,Trinidad & Tobago,tto
+pais,26,Belize,Belice,blz
+pais,27,Suriname,Surinam,sur
+pais,28,Bahamas,Bahamas,bhs
+pais,29,Barbados,Barbados,brb
+pais,30,Grenada,Granada,grd
+pais,31,Saint Lucia,Santa Lucía,lca
+pais,32,Dominica,Dominica,dma
+pais,33,Antigua and Barbuda, Antigua y Barbuda,atg
+pais,34,Saint Vincent and the Grenadines,San Vicente y las Granadinas,vct
+pais,35,Saint Kitts and Nevis,San Cristóbal y Nieves,kna
+pais,40,United States,Estados Unidos,usa
+pais,41,Canada,Canadá,can

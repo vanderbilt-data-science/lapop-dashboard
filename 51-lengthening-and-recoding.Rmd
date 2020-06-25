@@ -55,9 +55,12 @@ total_long_common_recoded <- final_data_long %>%
   mutate(answer_measure = as.character(answer_measure)) %>%
   left_join(response_labels, 
             by = c("column_name" = "column_name", "answer_measure" = "value")) %>%
-  mutate(answer_measure = if_else(is.na(value_recoded),answer_measure,value_recoded),
-         answer_dimension = label_es)
+  mutate(answer_dimension = paste0(answer_measure,": ", label_es),
+         answer_measure = if_else(is.na(value_recoded),answer_measure,value_recoded)
+         )
 ```
+
+
 # Understand what is going on with strange values
 ```{r}
 # table(filter(total_long_common_recoded,answer_measure==98)$column_name)
@@ -428,7 +431,7 @@ final_wide <- final_wide_dimension %>%
 #Updating to version 6 to reflect the work on updating the lookup tables
 
 
-write_csv(final_wide, "lapop_wide_v0-13-1.csv", na = "NULL ") 
+write_csv(final_wide, "lapop_wide_v0-13-2.csv", na = "NULL ") 
 
 ```
 

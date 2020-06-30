@@ -38,15 +38,6 @@ final_data_long <- all.df %>%
 this part will recode the answer_measure column to a sacle of 0-100
 if there is no value recoded, the answer measure will show its original answer
 
-## First, fix the bad NA values
-```{r}
-# final_data_long_fixed <- mutate(final_data_long, 
-#                           answer_measure = ifelse(column_name=="q2",
-#                                                    answer_measure,
-#                                                    recode(final_data_long$answer_measure,
-#                                                           `98`=NA_real_,`99`=NA_real_,`100`=NA_real_)))
-```
-
 
 ## Then, the actual recoding
 
@@ -55,18 +46,12 @@ total_long_common_recoded <- final_data_long %>%
   mutate(answer_measure = as.character(answer_measure)) %>%
   left_join(response_labels, 
             by = c("column_name" = "column_name", "answer_measure" = "value")) %>%
-  mutate(answer_dimension = paste0(answer_measure,": ", label_es),
+  mutate(answer_dimension = if_else(column_name=="year"|is.na(label_es), #making sure that in the dropdown menu, year doesn't have too many leading spaces,
+                                    label_es,
+                                    paste0(answer_measure,":", paste(rep(" ",100),collapse=""), label_es)),
          answer_measure = if_else(is.na(value_recoded),answer_measure,value_recoded)
          )
 ```
-
-
-# Understand what is going on with strange values
-```{r}
-# table(filter(total_long_common_recoded,answer_measure==98)$column_name)
-# table(filter(values_labels, column_name=="q10a")$value_recoded)
-```
-
 
 # add age group
 
@@ -87,6 +72,13 @@ total_long_common_recoded <- total_long_common_recoded %>%
   filter(column_name !="q2") %>%  #Only non-q2 rows left
   bind_rows(common_only_q2)
 ```
+
+
+```{r}
+
+```
+
+
 
 # assert
 
@@ -431,7 +423,7 @@ final_wide <- final_wide_dimension %>%
 #Updating to version 6 to reflect the work on updating the lookup tables
 
 
-write_csv(final_wide, "lapop_wide_v0-13-2.csv", na = "NULL ") 
+write_csv(final_wide, "lapop_wide_v0-13-4.csv", na = "NULL ") 
 
 ```
 

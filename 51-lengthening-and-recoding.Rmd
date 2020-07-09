@@ -46,13 +46,19 @@ total_long_common_recoded <- final_data_long %>%
   mutate(answer_measure = as.character(answer_measure)) %>%
   left_join(response_labels, 
             by = c("column_name" = "column_name", "answer_measure" = "value")) %>%
-  mutate(answer_dimension = if_else(column_name=="year"|is.na(label_es), #making sure that in the dropdown menu, year doesn't have too many leading spaces,
-                                    label_es,
-                                    paste0(answer_measure,":", paste(rep(" ",100),collapse=""), label_es)),
+  mutate(#answer_dimension = label_es,
          answer_measure = if_else(is.na(value_recoded),answer_measure,value_recoded)
-         )
+         ) %>%
+  # hack to get better labels on crosstab
+  group_by(column_name) %>%
+  mutate(sortid=as.integer(as.factor(answer_measure))) %>%
+  mutate(sortid=max(sortid,na.rm = T)-sortid) %>%
+  ungroup() %>%
+  mutate(answer_dimension = if_else(is.na(label_es),
+                                    label_es,
+                                    str_c('"',str_dup(" ",sortid), label_es,'"')),
+         sortid = NULL)
 ```
-
 # add age group
 
 this part will add age group as a dimension

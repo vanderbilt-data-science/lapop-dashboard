@@ -20,12 +20,14 @@ cat_numxl <- read_csv("lookups/questions_categories_v1-2.csv")
 
 measures_cat_short <- tibble(column_name = measures) %>%
   left_join(cat_numxl, by=("column_name")) %>%
-  select(column_name, category_short_es, question_short_es, question_es) %>% 
+  select(column_name, paste0("category_short_",lang), paste0("question_short_",lang), paste0("question_",lang)) %>%
+  rename(category_short = paste0("category_short_",lang), question_short = paste0("question_short_",lang), question = paste0("question_",lang)) %>% 
   semi_join(total_long_common_narrow, by = "column_name") #Remove any column_names that are not in total_long_common_narrow
 
 dimensions_cat_short <- tibble(column_name = dimensions) %>%
   left_join(cat_numxl, by=("column_name")) %>%
-  select(column_name, category_short_es, question_short_es, question_es) %>% 
+  select(column_name, paste0("category_short_",lang), paste0("question_short_",lang), paste0("question_",lang)) %>% 
+  rename(category_short = paste0("category_short_",lang), question_short = paste0("question_short_",lang), question = paste0("question_",lang)) %>%
   semi_join(total_long_common_narrow, by = "column_name") #Remove any column_names that are not in total_long_common_narrow
 
 ```
@@ -37,8 +39,8 @@ dimensions_cat_short <- tibble(column_name = dimensions) %>%
 Copy and paste this output into the Parameter dialog to select variables and set text for them
 ```{r var selection, echo=FALSE}
 measures_cat_short %>% 
-  arrange(category_short_es, question_short_es) %>% 
-  glue_data('{column_name}, {category_short_es}:{question_short_es}')
+  arrange(paste0(category_short, question_short)) %>% 
+  glue_data('{column_name}, {category_short}:{question_short}')
 ```
 
 
@@ -68,7 +70,7 @@ cat("CASE [Choose Variable]
 ")
 
 measures_cat_short %>% 
-  glue_data("WHEN '{column_name}' THEN '{question_short_es}'")
+  glue_data("WHEN '{column_name}' THEN '{question_short}'")
 
 cat("ELSE ''
 END")
@@ -84,7 +86,7 @@ cat("CASE [Choose Variable]
 ")
 
 measures_cat_short %>% 
-  glue_data("WHEN '{column_name}' THEN '{question_es}'")
+  glue_data("WHEN '{column_name}' THEN '{question}'")
 
 cat("ELSE ''
 END")
@@ -100,8 +102,8 @@ Copy and paste this output into the Parameter dialog to select dimension variabl
 
 ```{r select dim, echo=FALSE}
 dimensions_cat_short %>% 
-  arrange(category_short_es, question_short_es) %>% 
-  glue_data('{column_name}, {category_short_es}:{question_short_es}')
+  arrange(category_short, question_short) %>% 
+  glue_data('{column_name}, {category_short}:{question_short}')
 ```
 
 ## Code for Dimensions Text
@@ -128,7 +130,8 @@ END")
 Grouped mutate to roll up multiple lines into one with /n separators, tabs?
 
 ```{r val label setup, echo=FALSE, results='hide'}
-label_val <- read_csv("lookups/values_labels_v1-2.csv") %>%
+label_val <- read_csv("lookups/values_labels_v1-2.csv",col_types = cols(.default = col_character()), na = "NA") %>%
+  rename(label = paste0("label_",lang)) %>%
   mutate(value_recoded = if_else(is.na(value_recoded), value, value_recoded))
 
 ```
@@ -140,8 +143,8 @@ label_val <- read_csv("lookups/values_labels_v1-2.csv") %>%
 
 label_val %>% 
   group_by(column_name) %>% 
-  distinct(label_es, .keep_all = T) %>%
-  summarise(lab_val = paste0(label_es, "--", value_recoded, collapse = "\n")) %>% 
+  distinct(label, .keep_all = T) %>%
+  summarise(lab_val = paste0(label, "--", value_recoded, collapse = "\n")) %>% 
   ungroup() %>%
   glue_data("WHEN '{column_name}' THEN '{lab_val}'")
 

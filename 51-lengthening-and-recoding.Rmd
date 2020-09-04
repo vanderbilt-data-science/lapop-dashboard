@@ -46,18 +46,20 @@ total_long_common_recoded <- final_data_long %>%
   mutate(answer_measure = as.character(answer_measure)) %>%
   left_join(response_labels, 
             by = c("column_name" = "column_name", "answer_measure" = "value")) %>%
-  mutate(#answer_dimension = label_es,
+  mutate(answer_dimension = if_else(column_name=="year"|is.na(label), #make sure year is ok for dropdown menu
+                                    label,
+                                    paste0(answer_measure, ": ", label)),
          answer_measure = if_else(is.na(value_recoded),answer_measure,value_recoded)
-         ) %>%
+         )
   # hack to get better labels on crosstab
-  group_by(column_name) %>%
-  mutate(sortid=as.integer(as.factor(answer_measure))) %>%
-  mutate(sortid=max(sortid,na.rm = T)-sortid) %>%
-  ungroup() %>%
-  mutate(answer_dimension = if_else(is.na(label_es),
-                                    label_es,
-                                    str_c('"',str_dup(" ",sortid), label_es,'"')),
-         sortid = NULL)
+  # group_by(column_name) %>%
+  # mutate(sortid=as.integer(as.factor(answer_measure))) %>%
+  # mutate(sortid=max(sortid,na.rm = T)-sortid) %>%
+  # ungroup() %>%
+  # mutate(answer_dimension = if_else(is.na(label_es),
+  #                                   label_es,
+  #                                   str_c('"',str_dup(" ",sortid), label_es,'"')),
+  #        sortid = NULL)
 ```
 # add age group
 
@@ -78,12 +80,6 @@ total_long_common_recoded <- total_long_common_recoded %>%
   filter(column_name !="q2") %>%  #Only non-q2 rows left
   bind_rows(common_only_q2)
 ```
-
-
-```{r}
-
-```
-
 
 
 # assert
@@ -115,10 +111,10 @@ total_long_common_recoded %>%
 ```{r Combine category and question}
 total_long_common_narrow <- total_long_common_recoded %>% 
   left_join(questions_cats, by = "column_name") %>%
-  rename(category = category_short_es, question = question_short_es) %>% 
-  unite(category_question, category, question, sep = ":", remove = FALSE) %>%
-  unite(category_colname, category, column_name, sep = ":", remove = FALSE) %>%
-  select(country, person_id, weight1500, column_name, category_question, category_colname, question, column_name, answer_measure, answer_dimension) 
+  rename(category_short = paste0("category_short_",lang), question_short = paste0("question_short_",lang)) %>% 
+  unite(category_question, category_short, question_short, sep = ":", remove = FALSE) %>%
+  unite(category_colname, category_short, column_name, sep = ":", remove = FALSE) %>%
+  select(country, person_id, weight1500, column_name, category_question, category_colname, question_short, column_name, answer_measure, answer_dimension) 
 ```
 
 ## Pivoting Wider 
@@ -429,7 +425,7 @@ final_wide <- final_wide_dimension %>%
 #Updating to version 6 to reflect the work on updating the lookup tables
 
 
-write_csv(final_wide, "lapop_wide_v0-13-4.csv", na = "NULL ") 
+write_csv(final_wide, "lapop_wide_en_v1.csv", na = "NULL ") 
 
 ```
 
@@ -442,11 +438,7 @@ check if the recoding value is in sacle of 0-100
 distinct(final_wide,a4)
 ```
 
-```{r}
-final_wide %>% 
-  filter(b4 == '98') %>% 
-  select(person_id,b4,everything())
-```
+
 
 ```{r}
 distinct(final_wide,b13)

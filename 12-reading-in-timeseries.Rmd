@@ -14,6 +14,12 @@ library(assertr)
 
 ```
 
+# set language for labels here--"en" or "es"
+```{r}
+lang <- "en"
+```
+
+
 ```{r import lookup tables}
 questions_cats <-
   read_csv(
@@ -55,12 +61,13 @@ target_vars <- questions_cats$column_name #unique columns to filter the data by
 
 response_labels <- values_labels %>%
   left_join(questions_cats, by = "column_name") %>%
-  select(column_name, question_es, value, value_recoded, label_es)
+  select(column_name, paste0("question_",lang), value, value_recoded, paste0("label_",lang)) %>%
+  rename(label = starts_with("label_"), question = starts_with("question_"))
 
 # Create countries lookup to Add country name into dataframe
 countries <- response_labels %>%
   filter(column_name == "pais") %>%
-  rename(country = label_es, pais = value) %>%
+  rename(country = label, pais = value) %>%
   select(pais, value_recoded)
 
 ```
@@ -189,10 +196,10 @@ all.df <- left_join(all.df,
                       response_labels %>%
                         filter(column_name == "pais") %>%
                         mutate_at(vars(("value")), as.double) %>%
-                        select(value, label_es)
+                        select(value, label)
                     ),
                     by = c("pais" = "value")) %>%
-            mutate(country = label_es)
+            mutate(country = label)
 
 all.df %>% select("person_id","wt","weight1500", everything()) %>% head()
 all.df %>% assert(is_uniq, person_id)
@@ -201,10 +208,10 @@ all.df %>% assert(is_uniq, person_id)
 
 
 ```{r}
-write_csv(all.df, "all.df.csv")
-all.df <- read_csv("all.df.csv",col_types = cols(.default = col_double(),
+write_csv(all.df, paste0("all.df.", lang,".csv"))
+all.df <- read_csv(paste0("all.df.", lang,".csv"),col_types = cols(.default = col_double(),
                                                                      person_id = col_character(),
-                                                                     label_es = col_character(),
+                                                                     label = col_character(),
                                                                      country = col_character()))
 ```
 

@@ -1,0 +1,64 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+```{r}
+library(readxl)
+library(knitr)
+new_vallabels <- fread("lookups/values_labels_v1-1.csv", encoding = "UTF-8")
+new_catlabels <- fread("lookups/questions_categories_v1-1.csv", encoding = "UTF-8")
+old_catlabels <- as.data.table(read_excel("lookups/Archive/LAPOP_categories_numeric_es.xlsx"))
+# a4r changed to a4
+old_catlabels[column_name=="a4r",column_name:="a4"]
+
+old_vars <- distinct(old_catlabels,column_name)
+new_vars_cat <- distinct(new_catlabels, column_name)
+new_vars_val <- distinct(new_vallabels, column_name)
+
+```
+
+
+# New variables in new tables
+```{r}
+kable(new_vars_cat[!column_name%in%old_vars$column_name, column_name])
+kable(new_vars_val[!column_name%in%old_vars&!duplicated(column_name), column_name])
+```
+
+# Variables from Mariana's table missing now
+```{r}
+missing <- old_vars[!column_name%in%new_vars_cat$column_name, column_name]
+kable(missing)
+```
+
+```{r}
+names(old_catlabels)
+names(new_catlabels)
+
+catlabels_fixed <- rbind(
+  new_catlabels[column_name%in%old_catlabels$column_name],
+  old_catlabels[column_name%in%missing],
+  fill=T
+)
+
+fwrite(catlabels_fixed, "lookups/questions_categories_v1-2.csv")
+```
+
+```{r}
+missing.val <- old_vars[!column_name%in%new_vars_val$column_name, column_name]
+kable(missing.val)
+missing.val==missing
+```
+```{r}
+names(new_vallabels)
+
+vallabels_fixed <- rbind(
+  new_vallabels[column_name%in%old_catlabels$column_name],
+  data.table(column_name=missing),
+  fill=T
+)
+
+fwrite(vallabels_fixed, "lookups/values_labels_v1-2.csv")
+```
+

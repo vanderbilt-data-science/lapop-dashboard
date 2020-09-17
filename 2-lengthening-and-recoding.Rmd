@@ -1,5 +1,5 @@
 ---
-title: "lengthening & recoding"
+title: "2 lengthening & recoding"
 output: html_notebook
 ---
 
@@ -115,6 +115,7 @@ total_long_common_narrow <- total_long_common_recoded %>%
   unite(category_question, category_short, question_short, sep = ":", remove = FALSE) %>%
   unite(category_colname, category_short, column_name, sep = ":", remove = FALSE) %>%
   select(country, person_id, weight1500, column_name, category_question, category_colname, question_short, column_name, answer_measure, answer_dimension) 
+total_long_commom_narrow$category_colname
 ```
 
 ## Pivoting Wider 

@@ -125,7 +125,7 @@ country.filenames[["all"]] <- NULL
 ```
 
 ```{r Function to read in TIME SERIES}
-# Function to get the number of years and the number of countries present in each file
+# Function to read in and clean up a dataframe, given a filename to a .dta
 get_country_df <- function(filepath = country.filenames[[1]]){
   cat(paste0("\nWorking on ",filepath,"... "))
   country_df <- read_dta(filepath,encoding = "latin1") %>% 

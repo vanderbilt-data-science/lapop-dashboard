@@ -115,7 +115,6 @@ total_long_common_narrow <- total_long_common_recoded %>%
   unite(category_question, category_short, question_short, sep = ":", remove = FALSE) %>%
   unite(category_colname, category_short, column_name, sep = ":", remove = FALSE) %>%
   select(country, person_id, weight1500, column_name, category_question, category_colname, question_short, column_name, answer_measure, answer_dimension) 
-total_long_commom_narrow$category_colname
 ```
 
 ## Pivoting Wider 
@@ -392,8 +391,8 @@ dimensions <- c(
 ```
 
 
-```{r Save wide data as .csv}
-final_wide_measure <-
+```{r prepare variables to be saved}
+measure.df <-
   total_long_common_narrow %>% # Include only measures (cols with recode)
   filter(
     column_name %in% measures
@@ -402,10 +401,9 @@ final_wide_measure <-
     id_cols = c(person_id, country,weight1500),
     names_from = column_name,
     values_from = answer_measure
-  )
-# Put _m or m_ in names here to simplify measure/dimension designation
+  ) %>% rename_at(measures, ~ paste0(.,"_m"))
 
-final_wide_dimension <-
+dimension.df <-
   total_long_common_narrow %>% # Include only dimensions (cols with label or no recode )
   filter(
     column_name %in% dimensions
@@ -414,19 +412,40 @@ final_wide_dimension <-
     id_cols = c(person_id, country,weight1500),
     names_from = column_name,
     values_from = answer_dimension
-  )
+  ) %>% rename_at(dimensions, ~ paste0(.,"_d"))
 
-final_wide <- final_wide_dimension %>%
-  left_join(final_wide_measure, by = c("person_id", "country",'weight1500'), suffix = c("_d", "_m"))
+measure.label.df <-
+  total_long_common_narrow %>% # Include only measures (cols with recode)
+  filter(
+    column_name %in% measures
+  ) %>%
+  pivot_wider(
+    id_cols = c(person_id, country,weight1500),
+    names_from = column_name,
+    values_from = answer_dimension
+  ) %>% rename_at(measures, ~ paste0(.,"_l"))
+
+dimension.order.df <-
+  total_long_common_narrow %>% # Include only dimensions (cols with label or no recode )
+  filter(
+    column_name %in% dimensions
+  ) %>%
+  pivot_wider(
+    id_cols = c(person_id, country,weight1500),
+    names_from = column_name,
+    values_from = answer_measure
+  ) %>% rename_at(dimensions, ~ paste0(.,"_o")) 
+
+final_wide <- measure.df %>%
+  left_join(dimension.df, by = c("person_id", "country",'weight1500')) %>%
+  left_join(measure.label.df, by = c("person_id", "country",'weight1500')) %>%
+  left_join(dimension.order.df, by = c("person_id", "country",'weight1500'))
   
-  
-#join
-
-# Update the version of the csv to reflect code cleanup
-#Updating to version 6 to reflect the work on updating the lookup tables
+```
 
 
-write_csv(final_wide, "lapop_wide_en_v1.csv", na = "NULL ") 
+```{r Save wide data as .csv}
+write_csv(final_wide, "lapop_wide_en_v2.csv", na = "NULL ") 
 
 ```
 

@@ -48,12 +48,25 @@ measures_cat_short %>%
 
 In Tableau, custom parameters will be used to select variables to display on the dashboards. The following output should be cut and pasted into the code window for calculated fields. 
 
-```{r calc measures, echo=FALSE}
+Code to calculate field "*Variable*"
+```{r define measure variable, echo=FALSE}
 cat("CASE [Choose Variable]
 ")
 
 measures_cat_short %>% 
-  glue_data("WHEN '{column_name}' THEN [{column_name}]")
+  glue_data(paste0("WHEN '{column_name}' THEN [{column_name}","_m","]"))
+
+cat("ELSE NULL
+END")
+```
+
+Code to calculate field "*Variable Label*"
+```{r define measure label, echo=FALSE}
+cat("CASE [Choose Variable]
+")
+
+measures_cat_short %>% 
+  glue_data(paste0("WHEN '{column_name}' THEN [{column_name}","_l","]"))
 
 cat("ELSE NULL
 END")
@@ -63,9 +76,9 @@ END")
 
 ## Calculated Field Code for Question Text Short
 
-Cut and paste the code below into a field for Short Question
+Cut and paste the code below into a field for Short Question (I think we're currently not using, but maybe we want to?)
 
-```{r calc qtext, echo=FALSE}
+```{r define question text to display, echo=FALSE}
 cat("CASE [Choose Variable]
 ")
 
@@ -79,9 +92,9 @@ END")
 
 ## Calculated Field Code for Question Text Long
 
-Cut and paste the code below into a calculated field for 'Full Question'
+Cut and paste the code below into a calculated field for *Full Question*
 
-```{r calc fullq, echo=FALSE}
+```{r define long question text to display, echo=FALSE}
 cat("CASE [Choose Variable]
 ")
 
@@ -100,7 +113,7 @@ For numerics with both numbers and text, just the text.
 
 Copy and paste this output into the Parameter dialog to select dimension variables and set text for them
 
-```{r select dim, echo=FALSE}
+```{r select dimension, echo=FALSE}
 dimensions_cat_short %>% 
   arrange(category_short, question_short) %>% 
   glue_data('{column_name}, {category_short}:{question_short}')
@@ -113,17 +126,29 @@ dimensions_cat_short %>%
 
 In Tableau, custom parameters will be used to select variables to display on the dashboards. The following output should be cut and pasted into the code window for calculated fields. 
 
-```{r custom param, echo=FALSE}
+Code to calculate field "*Dimension*"
+```{r define dimension variable, echo=FALSE}
 cat("CASE [Choose Crosstab Dimension]
 ")
 
 dimensions_cat_short %>% 
-  glue_data("WHEN '{column_name}' THEN [{column_name}]")
+  glue_data(paste0("WHEN '{column_name}' THEN [{column_name}","_d","]"))
 
 cat("ELSE NULL
 END")
 ```
 
+Code to calculate field "*Dimension Order*"
+```{r define dimension sort order, echo=FALSE}
+cat("CASE [Choose Crosstab Dimension]
+")
+
+dimensions_cat_short %>% 
+  glue_data(paste0("WHEN '{column_name}' THEN [{column_name}","_o","]"))
+
+cat("ELSE NULL
+END")
+```
 
 ## Generate code for Calculated Field for measure label/values
 
@@ -136,7 +161,7 @@ label_val <- read_csv("lookups/values_labels_v1-2.csv",col_types = cols(.default
 
 ```
 
-
+Code to calculate field "*Label Value*"
 ```{r calc measure, echo=FALSE}
   cat("CASE [Choose Variable]
 ")

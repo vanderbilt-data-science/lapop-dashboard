@@ -46,11 +46,11 @@ total_long_common_recoded <- final_data_long %>%
   mutate(answer_measure = as.character(answer_measure)) %>%
   left_join(response_labels, 
             by = c("column_name" = "column_name", "answer_measure" = "value")) %>%
-  mutate(answer_dimension = if_else(column_name=="year"|is.na(label), #make sure year is ok for dropdown menu
-                                    label,
-                                    paste0(answer_measure, ": ", label)),
+  mutate(answer_dimension = label,
          answer_measure = if_else(is.na(value_recoded),answer_measure,value_recoded)
          )
+
+
   # hack to get better labels on crosstab
   # group_by(column_name) %>%
   # mutate(sortid=as.integer(as.factor(answer_measure))) %>%
@@ -445,8 +445,7 @@ final_wide <- measure.df %>%
 
 
 ```{r Save wide data as .csv}
-write_csv(final_wide, "lapop_wide_en_v2.csv", na = "NULL ") 
-
+write_csv(final_wide, "lapop_wide_en_v3.csv", na = "NULL ") 
 ```
 
 

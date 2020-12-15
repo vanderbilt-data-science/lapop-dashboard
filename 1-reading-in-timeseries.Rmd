@@ -11,12 +11,11 @@ library(fs)
 library(haven)
 library(janitor)
 library(assertr)
-
 ```
 
 # set language for labels here--"en" or "es"
 ```{r}
-lang <- "en"
+lang <- "es"
 ```
 
 
@@ -41,7 +40,7 @@ questions_cats <-
 
 values_labels <-
   read_csv(
-    path("lookups", "values_labels_v1-2.csv"),
+    path("lookups", "values_labels_v1-3.csv"),
     col_types = cols(
       column_name = col_character(),
       value = col_character(),
@@ -124,6 +123,9 @@ country.filenames <- sapply(country.abb, get_filenames)
 country.filenames[["all"]] <- NULL
 ```
 
+
+
+
 ```{r Function to read in TIME SERIES}
 # Function to read in and clean up a dataframe, given a filename to a .dta
 get_country_df <- function(filepath = country.filenames[[1]]){
@@ -138,7 +140,6 @@ get_country_df <- function(filepath = country.filenames[[1]]){
 }
 
 ```
-
 
 ```{r function to generate unique ids TIME SERIES}
 # Function to generate unique id's that contain year, country and observation info
@@ -206,6 +207,10 @@ all.df %>% assert(is_uniq, person_id)
 
 ```
 
+```{r delete-COL-OC-Studies}
+all.df <- all.df[!(all.df$country == "Colombia" & (all.df$year == 2005 | all.df$year == 2007 | all.df$year == 2009 | all.df$year == 2011)), ]
+```
+
 
 ```{r}
 write_csv(all.df, paste0("all.df.", lang,".csv"))
@@ -214,8 +219,6 @@ all.df <- read_csv(paste0("all.df.", lang,".csv"),col_types = cols(.default = co
                                                                      label = col_character(),
                                                                      country = col_character()))
 ```
-
-
 
 
 

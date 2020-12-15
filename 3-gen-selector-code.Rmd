@@ -1,6 +1,9 @@
 ---
 title: "3-gen-selector-code"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
+    toc: true
 ---
 
 # Generate Selector Code for Tableau
@@ -13,9 +16,19 @@ Join to lookup tables to get short categories and short questions
 
 Use Glue to put together string or prints
 
+<!-- yes  -->
+
+```{r, echo=F, results = 'hide'}
+# remove leading ## from html output
+library(knitr)
+opts_chunk$set(comment="")
+```
+
+
 ## Create category/short question dataframe
 ```{r setup, echo=FALSE, results='hide'}
-library(glue)
+ library(glue)
+
 cat_numxl <- read_csv("lookups/questions_categories_v1-2.csv") 
 
 measures_cat_short <- tibble(column_name = measures) %>%
@@ -37,10 +50,10 @@ dimensions_cat_short <- tibble(column_name = dimensions) %>%
 
 
 Copy and paste this output into the Parameter dialog to select variables and set text for them
-```{r var selection, echo=FALSE}
+```{r var selection, echo=FALSE, comment=""}
 measures_cat_short %>% 
   arrange(paste0(category_short, question_short)) %>% 
-  glue_data('{column_name}, {category_short}:{question_short}')
+  glue_data('{column_name}, {category_short}:{question_short} ({column_name})' )
 ```
 
 
@@ -116,7 +129,7 @@ Copy and paste this output into the Parameter dialog to select dimension variabl
 ```{r select dimension, echo=FALSE}
 dimensions_cat_short %>% 
   arrange(category_short, question_short) %>% 
-  glue_data('{column_name}, {category_short}:{question_short}')
+  glue_data('{column_name}, {category_short}:{question_short} ({column_name})')
 ```
 
 ## Code for Dimensions Text
@@ -155,7 +168,7 @@ END")
 Grouped mutate to roll up multiple lines into one with /n separators, tabs?
 
 ```{r val label setup, echo=FALSE, results='hide'}
-label_val <- read_csv("lookups/values_labels_v1-2.csv",col_types = cols(.default = col_character()), na = "NA") %>%
+label_val <- read_csv("lookups/values_labels_v1-3.csv",col_types = cols(.default = col_character()), na = "NA") %>%
   rename(label = paste0("label_",lang)) %>%
   mutate(value_recoded = if_else(is.na(value_recoded), value, value_recoded))
 
@@ -176,7 +189,6 @@ label_val %>%
 cat("ELSE NULL
 END")
   
-
-
+# rmarkdown::render("C:/Users/plutowl/Documents/GitHub/lapop-dashboard/3-gen-selector-code.Rmd")
 ```
 

@@ -445,8 +445,12 @@ final_wide <- measure.df %>%
 
 
 ```{r Save wide data as .csv}
+<<<<<<< Updated upstream
 write_csv(final_wide, "lapop_wide_en_v2.csv", na = "NULL ") 
 
+=======
+write_csv(final_wide, paste0("lapop_wide_", lang,"_v4.csv"), na = "NULL ")
+>>>>>>> Stashed changes
 ```
 
 
@@ -455,17 +459,16 @@ Checks that were previously earlier:
 check if the recoding value is in sacle of 0-100
 
 ```{r}
-distinct(final_wide,a4)
+distinct(final_wide,a4_o)
 ```
 
 
 
 ```{r}
-distinct(final_wide,b13)
-distinct(final_wide,jc13)
-distinct(final_wide,exc16)
-distinct(final_wide,exc11)
-
+distinct(final_wide,b13_d)
+distinct(final_wide,jc13_o)
+distinct(final_wide,exc16_o)
+distinct(final_wide,exc11_o)
 ```
 
 ```{r}
@@ -473,6 +476,7 @@ all.df %>%
   filter(country == 'Colombia') %>% 
   distinct(b4)
 ```
+
 ```{r}
 final_wide %>% filter(a4_m == 62)
 ```
